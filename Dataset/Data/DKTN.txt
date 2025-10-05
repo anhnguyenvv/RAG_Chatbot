@@ -1,0 +1,144 @@
+1. ĐIỀU KIỆN ĐĂNG KÝ KHÓA LUẬN TỐT NGHIỆP, THỰC TẬP TỐT NGHIỆP VÀ THỰC TẬP DỰ ÁN TỐT NGHIỆP
+Khóa 2021
+
+1.1 Điều kiện đăng ký của sinh viên
+1.1.1 Đạt 4 học phần Anh văn trong CTĐT hoặc chứng chỉ chuẩn ngoại ngữ 
+đầu ra 
+1.1.2. Điểm trung bình học tập >= 6.5/10
+1.1.3.
+- Tích lũy >= 44/56 tín chỉ giai đoạn đại cương
+- Tích lũy >= 34/38 tín chỉ cơ sở ngành
+- Tích lũy >= 16/24 tín chỉ bắt buộc ngành + tự chọn ngành
+
+Lưu ý: Sinh viên cam kết thỏa điều kiện khi đăng ký. Trong quá trình về sau, nếu phát hiện vi phạm Khoa có quyền hủy đăng ký của sinh viên.
+
+1.2. So sánh các hình thức tốt nghiệp
+1.2.1. Hình thức tốt nghiệp: Khóa luận tốt nghiệp
+   - Số tín chỉ: 10
+   - Phạm vi đề tài: Dự án trong lĩnh vực học thuật
+   - Hướng dẫn thực hiện: Giảng viên
+   - Số lượng sinh viên: Tối đa 2 sinh viên
+   - Thành viên Hội đồng: 3 - 5 giảng viên
+
+1.2.2. Hình thức tốt nghiệp: Thực tập tốt nghiệp
+   - Số tín chỉ: 10
+   - Phạm vi đề tài: Dự án thực tế đang triển khai tại doanh nghiệp
+   - Hướng dẫn thực hiện: Giảng viên + Đại diện Doanh nghiệp
+   - Số lượng sinh viên: Tối đa 2 sinh viên
+   - Thành viên Hội đồng: 3 - 5 giảng viên
+
+1.2.3. Hình thức tốt nghiệp: Thực tập dự án tốt nghiệp
+   - Số tín chỉ: 6
+   - Phạm vi đề tài: Dự án trong lĩnh vực học thuật hoặc Dự án thực tế đang triển khai tại doanh nghiệp
+   - Hướng dẫn thực hiện: Giảng viên + Đại diện Doanh nghiệp (nếu là dự án thực tế)
+   - Số lượng sinh viên: Từ 2 - 6 sinh viên
+   - Thành viên Hội đồng: 3 giảng viên
+
+1.2.4. Hình thức tốt nghiệp: Học phần tốt nghiệp
+   - Số tín chỉ: 4
+   - Hình thức giống như các học phần chuyên ngành khác
+
+Lưu ý: Cả 3 hình thức 1, 2, 3 đều trải qua phỏng vấn và phản biện trước khi ra bảo vệ.
+Hình thức Thực tập và Thực tập dự án tốt nghiệp có thể có yêu cầu thực tập tại doanh nghiệp.
+(*) tiêu chí đánh giá dựa trên quá trình, kết quả công việc, các kỹ năng, sản phẩm cuối
+
+
+2. QUY TRÌNH ĐĂNG KÝ THỰC HIỆN ĐỀ TÀI TỐT NGHIỆP (KHÓA LUẬN/THỰC TẬP/THỰC TẬP DỰ ÁN TỐT NGHIỆP) 
+(Dành cho sinh viên, áp dụng từ Khóa 2021) 
+2.1. CÁCH THỨC ĐĂNG KÝ 
+Thực hiện đăng ký qua 3 bước: 
+B1. Đăng ký học phần tốt nghiệp 
+B2. Đăng ký đề tài tốt nghiệp trực tuyến 
+B3. Nộp đơn đăng ký thực hiện đề tài chính thức 
+
+2.1.1. B1 - ĐĂNG KÝ HỌC PHẦN TỐT NGHIỆP
+Thông tin cần chuẩn bị:
+- Họ tên, MSSV, email liên lạc của sinh viên 
+- Ngành và chuyên ngành của sinh viên 
+- Loại học phần sinh viên đăng ký thực hiện: Khóa luận tốt nghiệp, Thực tập tốt 
+nghiệp, Thực tập dự án tốt nghiệp 
+- Có nguyện vọng thực hiện đề tài doanh nghiệp? 
+- Thông tin nhóm: 
+	• Sinh viên chưa có nhóm 
+	• Nhóm chỉ 01 thành viên (đối với Khóa luận tốt nghiệp và Thực tập tốt nghiệp) 
+	• Sinh viên nếu đã có nhóm cần điền thông tin Mã nhóm thực hiện đề tài theo 
+	quy tắc: chuỗi ghép MSSV của tất cả thành viên trong nhóm xếp theo thứ tự 
+	tăng dần, liên kết bằng ký tự “-” không khoảng trắng. 
+	Ví dụ: 22120151, 22120101, 22120131  
+	→ Mã nhóm: 22120101-22120131-22120151 
+- Sinh viên nếu đã có đề tài và giảng viên hướng dẫn cần cung cấp thông tin tên đề 
+tài và họ tên (các) giảng viên hướng dẫn. 
+- Hội đồng đánh giá đăng ký bảo vệ (nếu đã có đề tài và giảng viên hướng dẫn) 
+- Trình độ tiếng Anh (4 học phần Anh văn, chứng chỉ chuẩn đầu ra Chương trình 
+đào tạo, Đánh giá năng lực của ĐHQG, chưa đạt)
+
+Lưu ý:  
+• Mặc định sinh viên phải đăng ký thực hiện đề tài và bảo vệ ở hội đồng đánh giá 
+dành cho chuyên ngành của mình. 
+• Hội đồng đánh giá đăng ký bảo vệ phải là 1 trong các hội đồng dành cho ngành/ 
+chuyên ngành của sinh viên trong nhóm. 
+• Đối với đề tài Thực tập dự án tốt nghiệp, hội đồng đánh giá đăng ký bảo vệ phải 
+là hội đồng dành cho ngành/ chuyên ngành của ĐA SỐ sinh viên trong nhóm. 
+• Sinh viên đã có nhóm sẽ có lợi thế khi đăng ký nguyện vọng thực hiện đề tài tốt 
+nghiệp. 
+
+2.1.2 B2 - ĐĂNG KÝ ĐỀ TÀI TỐT NGHIỆP TRỰC TUYẾN 
+Sau khi sinh viên đăng ký học phần tốt nghiệp, Khoa và Bộ môn sẽ tổng hợp và cung 
+cấp danh sách đề tài phù hợp, sau đó đăng tải lên Hệ thống quản lý sinh viên.  
+Sinh viên đã có đề tài và giảng viên hướng dẫn vào hệ thống kiểm tra thông tin. 
+Sinh viên chưa có đề tài và giảng viên hướng dẫn thực hiện bước đăng ký đề tài tốt 
+nghiệp bằng cách lựa chọn 02 nguyện vọng đề tài trên danh sách các đề tài cho phép 
+đăng ký trên hệ thống. Sau thời gian đăng ký, giảng viên hướng dẫn đề tài sẽ duyệt 
+hồ sơ sinh viên, lên lịch phỏng vấn các hồ sơ phù hợp và quyết định giao/ không giao 
+đề tài cho nhóm sinh viên đăng ký. 
+
+Thông tin cần chuẩn bị: 
+- Họ tên, MSSV, email liên lạc của sinh viên 
+- Ngành và chuyên ngành của sinh viên 
+- Điểm trung bình học tập của sinh viên 
+- Loại học phần sinh viên đăng ký thực hiện: Khóa luận tốt nghiệp, Thực tập tốt 
+nghiệp, Thực tập dự án tốt nghiệp 
+- Lựa chọn 02 đề tài sinh viên quan tâm tương ứng loại học phần đã chọn 
+- Hồ sơ sinh viên: scan bảng điểm chính thức mới nhất do Phòng đào tạo cấp (có 
+mộc Trường), CV của sinh viên 
+- Thông tin nhóm: 
+	• Sinh viên chưa có nhóm
+	• Nhóm chỉ 01 thành viên (đối với Khóa luận tốt nghiệp và Thực tập tốt nghiệp) 
+	• Sinh viên nếu đã có nhóm cần điền thông tin Mã nhóm thực hiện đề tài theo 
+	quy tắc: chuỗi ghép MSSV của tất cả thành viên trong nhóm xếp theo thứ tự 
+	tăng dần, liên kết bằng ký tự “-” không khoảng trắng. 
+	Ví dụ: 22120151, 22120101, 22120131
+	→ Mã nhóm: 22120101-22120131-22120151   
+Lưu ý:  
+• Sinh viên đã thực hiện B1 - đăng ký học phần tốt nghiệp trước đó mới được phép 
+đăng ký đề tài tốt nghiệp. 
+• Sau quá trình đăng ký và phỏng vấn nhận đề tài, nếu sinh viên chưa được giao đề 
+tài và chưa có nhóm (căn cứ phản hồi từ sinh viên cho Bộ phận giáo vụ), Khoa 
+và Bộ môn có thể ghép nhóm mặc định theo tiêu chí được đưa ra: chuyên ngành, 
+điểm trung bình học tập, số tín chỉ tích lũy… và giới thiệu giảng viên – đề tài cho 
+nhóm sinh viên.
+ 
+2.1.3. B3 - NỘP ĐƠN ĐĂNG KÝ THỰC HIỆN ĐỀ TÀI TỐT NGHIỆP 
+- Thời gian, địa điểm và cách thức theo thông báo của giáo vụ trên website Khoa về 
+việc nộp đơn đăng ký thực hiện đề tài tốt nghiệp. 
+- Mẫu đơn D34, có đầy đủ thông tin về danh sách sinh viên thực hiện, tên tiếng Việt, 
+tên tiếng Anh của đề tài, (các) giảng viên hướng dẫn cùng chữ ký tay (bút mực xanh) 
+của các thành viên và giảng viên hướng dẫn.  
+- Nếu đề tài là đề tài doanh nghiệp, phải có thêm chữ ký tay (bút mực xanh) của đại 
+diện doanh nghiệp và dấu mộc của công ty; cùng đơn đăng ký về việc sử dụng mã 
+nguồn có xác nhận từ doanh nghiệp. 
+- Sinh viên có chuyên ngành khác với chuyên ngành của hội đồng đánh giá đăng ký 
+bảo vệ phải có đơn xin thực hiện đề tài khác chuyên ngành, đơn có chữ ký tay (bút 
+mực xanh) của giảng viên hướng dẫn và sinh viên. 
+- Bộ phận giáo vụ sau khi thu và tổng hợp danh sách đăng ký sẽ công bố sinh viên – 
+đề tài được duyệt thực hiện cũng như Đăng ký học phần cho sinh viên theo quy định 
+của Khoa.
+
+Lưu ý:  
+• Bộ phận giáo vụ chỉ thu đơn đăng ký trong 01 ngày 
+• Sinh viên khi nộp đơn phải đảm bảo đã thực hiện B1 - Đăng ký học phần tốt 
+nghiệp) và THỎA các điều kiện theo quy định khi đăng ký thực hiện đề tài tốt 
+nghiệp, nếu có vi phạm sẽ không được công nhận Đăng ký học phần. 
+• Sinh viên đã được giao đề tài, đủ điều kiện Đăng ký học phần nhưng không nộp 
+đơn đăng ký thực hiện đề tài chính thức phải có lý do chính đáng, nếu không sẽ 
+bị hạn chế quyền đăng ký và lựa chọn đề tài ở đợt sau. 

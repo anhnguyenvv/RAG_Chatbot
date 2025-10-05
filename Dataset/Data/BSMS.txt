@@ -1,0 +1,138 @@
+Chương trình: Liên thông môn học Đại học - Thạc sỹ
+
+1. Danh sách học phần Chương trình liên thông môn học Đại học - Thạc sỹ (BSMS)
+STT 1
+Tên học phần (ĐH): Cơ sở dữ liệu
+Mã học phần (ĐH): CSC10006
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Các hệ cơ sở dữ liệu nâng cao
+Mã học phần (ThS): MTH002
+Số tín chỉ (ThS): 4
+
+STT 2
+Tên học phần (ĐH): Cơ sở trí tuệ nhân tạo
+Mã học phần (ĐH): CSC14003
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Trí tuệ nhân tạo nâng cao
+Mã học phần (ThS): MTH058
+Số tín chỉ (ThS): 4
+
+STT 3
+Tên học phần (ĐH): Trực quan hóa dữ liệu
+Mã học phần (ĐH): CSC10108
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Trực quan hóa dữ liệu
+Mã học phần (ThS): MTH072
+Số tín chỉ (ThS): 4
+
+STT 4
+Tên học phần (ĐH): Phân tích thiết kế hệ thống thông tin
+Mã học phần (ĐH): CSC12004
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phân tích thiết kế hệ thống thông tin nâng cao
+Mã học phần (ThS): MTH092
+Số tín chỉ (ThS): 4
+
+STT 5
+Tên học phần (ĐH): Hệ thống thông tin phục vụ trí tuệ kinh doanh
+Mã học phần (ĐH): CSC12107
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Ứng dụng trí tuệ kinh doanh nâng cao
+Mã học phần (ThS): MTH091
+Số tín chỉ (ThS): 4
+
+STT 6
+Tên học phần (ĐH): Hệ thống thông tin doanh nghiệp
+Mã học phần (ĐH): CSC12109
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Kinh tế thông tin doanh nghiệp
+Mã học phần (ThS): MTH100
+Số tín chỉ (ThS): 4
+
+STT 7
+Tên học phần (ĐH): Phân tích dữ liệu ứng dụng
+Mã học phần (ĐH): CSC12110
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Các mô hình phân tích dữ liệu
+Mã học phần (ThS): MTH071
+Số tín chỉ (ThS): 4
+
+STT 8
+Tên học phần (ĐH): Nhập môn học máy
+Mã học phần (ĐH): CSC14005
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Học máy nâng cao
+Mã học phần (ThS): MTH080
+Số tín chỉ (ThS): 4
+
+STT 9
+Tên học phần (ĐH): Phương pháp nghiên cứu khoa học
+Mã học phần (ĐH): CSC14008
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phương pháp nghiên cứu khoa học
+Mã học phần (ThS): MNC
+Số tín chỉ (ThS): 4
+
+STT 10
+Tên học phần (ĐH): Nhập môn dữ liệu lớn
+Mã học phần (ĐH): CSC14118
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Khai thác dữ liệu lớn
+Mã học phần (ThS): MTH055
+Số tín chỉ (ThS): 4
+
+STT 12
+Tên học phần (ĐH): Nhập môn xử lý ngôn ngữ tự nhiên
+Mã học phần (ĐH): CSC15006
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Xử lý ngôn ngữ tự nhiên nâng cao
+Mã học phần (ThS): MTH097
+Số tín chỉ (ThS): 4
+
+STT 13
+Tên học phần (ĐH): Blockchain và ứng dụng
+Mã học phần (ĐH): CSC15010
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Công nghệ chuỗi khối
+Mã học phần (ThS): MTH093
+Số tín chỉ (ThS): 4
+
+STT 14
+Tên học phần (ĐH): Phân tích mạng xã hội
+Mã học phần (ĐH): CSC15102
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phân tích mạng xã hội nâng cao
+Mã học phần (ThS): MTH095
+Số tín chỉ (ThS): 4
+
+STT 15
+Tên học phần (ĐH): Khai thác dữ liệu văn bản và ứng dụng
+Mã học phần (ĐH): CSC15105
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phân tích dữ liệu bảo toàn tính riêng tư nâng cao
+Mã học phần (ThS): MTH094
+Số tín chỉ (ThS): 4
+
+STT 16
+Tên học phần (ĐH): Phân tích dữ liệu bảo toàn tính riêng tư
+Mã học phần (ĐH): CSC15107
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phân tích dữ liệu bảo toàn tính riêng tư nâng cao
+Mã học phần (ThS): MTH094
+Số tín chỉ (ThS): 4
+
+STT 17
+Tên học phần (ĐH): Phương pháp toán trong phân tích dữ liệu thị giác
+Mã học phần (ĐH): CSC16002
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Phương pháp toán nâng cao trong học dữ liệu thị giác
+Mã học phần (ThS): MTH097
+Số tín chỉ (ThS): 4
+
+STT 18
+Tên học phần (ĐH): Thị giác máy tính
+Mã học phần (ĐH): CSC16004
+Số tín chỉ (ĐH): 4
+Tên học phần (ThS): Thị giác máy tính nâng cao
+Mã học phần (ThS): MTH085
+Số tín chỉ (ThS): 4

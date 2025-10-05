@@ -1,0 +1,1719 @@
+Ngành Khoa học máy tính
+Chương trình: Đại học Chính quy
+Khóa tuyển: 2023
+(Ban hành kèm theo Quyết định số 1712/QĐ - KHTN ngày 07/9/2023 
+của Hiệu trưởng Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM) 
+
+Ngành Khoa học máy tính
+1. Thông tin chung về chương trình đào tạo Ngành Khoa học máy tính:
+1.1. Tên ngành:
+- Tiếng Việt: Khoa học máy tính
+- Tiếng Anh: Computer Science
+1.2. Mã ngành đào tạo: 7480101 
+1.3. Trình độ đào tạo: Đại học 
+1.4. Tên chương trình: Cử nhân Khoa học máy tính
+1.5. Loại hình đào tạo: Chính quy  
+1.6. Thời gian đào tạo: 4 năm 
+1.7. Tên văn bằng sau khi tốt nghiệp: 
+- Tiếng Việt: Cử nhân Khoa học máy tính
+- Tiếng Anh: Bachelor of Science in Computer Science
+1.8. Ngôn ngữ giảng dạy: tiếng Việt 
+1.9. Nơi đào tạo: 
+Cơ sở 1: 227 Nguyễn Văn Cừ, P4, Q5, Tp. HCM  
+Cơ sở 2: Phường Linh Trung, Thành phố Thủ Đức, Tp. HCM 
+
+2. Mục tiêu đào tạo Ngành Khoa học máy tính 
+2.1. Mục tiêu chung: 
+Mục tiêu của chương trình là nhằm đào tạo ra các sinh viên tốt nghiệp: 
+- Có kiến thức kỹ thuật vững chắc; hiểu được trách nhiệm và đạo đức nghề nghiệp để áp dụng các công nghệ, kỹ thuật mới nhất của ngành Khoa học máy tính (CNTT) vào việc giải quyết các vấn đề thực tế; có thể áp dụng các phương pháp khoa học trong việc thực hiện nghiên cứu trong lĩnh vực CNTT.  
+- Được trang bị những kỹ năng cá nhân, kỹ năng nhóm, kỹ năng giao tiếp và kỹ năng phân tích để nhận biết và giải quyết các vấn đề thực tế một cách có hệ thống, có logic và sáng 
+tạo.
+- Được trang bị đầy đủ kiến thức và kỹ năng để có thể hình thành vấn đề, phân tích, thiết kế, giải quyết vấn đề và vận hành hệ thống CNTT. 
+2.2. Mục tiêu cụ thể
+PO1: Nhận biết được trách nhiệm, đạo đức nghề nghiệp, và hiện trạng kinh tế, môi trường 
+và xã hội. 
+PO2: Có đầy đủ các kỹ năng cá nhân, kỹ năng nhóm, kỹ năng giao tiếp và kỹ năng phân 
+tích.
+РОЗ: Có khả năng học và tự học suốt đời; có khả năng kế thừa và phát triển kiến thức, kỹ năng chuyên môn. 
+PO4: Có khả năng áp dụng các kiến thức và kỹ năng chuyên môn trong quá trình giải quyết các vấn đề thực tế.
+PO5: Có khả năng hình thành ý tưởng, phân tích, thiết kế, giải quyết và vận hành các hệ thống CNTT. 
+PO6: Có khả năng sử dụng các công cụ, phương pháp, quy trình, kỹ thuật,... trong quá trình giải quyết các bài toán CNTT. 
+2.3. Chuẩn đầu ra (CĐR) của chương trình đào tạo Ngành Khoa học máy tính 
+ELO 1. Kiến thức 
+ELO 1. 1. Kiến thức nền tảng về Khoa học 
+ELO 1. 1. 1 Khối kiến thức về Toán 
+ELO 1. 1. 2 Khối kiến thức về Vật lý 
+ELO 1. 1. 3 Khối kiến thức về Điện – Điện tử
+ELO 1. Kiến thức 
+ELO 1. 2. Kiến thức nền tảng của lĩnh vực CNTT 
+ELO 1. 2. 1 Khối kiến thức về lập trình 
+ELO 1. 2. 2 Kiến thức tổng quát về lĩnh vực CNTT
+ELO 1. 3. Kiến thức kỹ thuật nâng cao, các công cụ và phương pháp trong ngành CNTT 
+ELO 1. 3. 1 Khối kiến thức cấu trúc dữ liệu và giải thuật 
+ELO 1. 3. 2 Khối kiến thức về hệ điều hành máy tính 
+ELO 1. 3. 3 Khối kiến thức kiến trúc máy tính 
+ELO 1. Kiến thức 
+ELO 1. 3. Kiến thức kỹ thuật nâng cao, các công cụ và phương pháp trong ngành CNTT 
+ELO 1. 3. 4 Khối kiến thức mạng máy tính 
+ELO 1. 3. 5 Khối kiến thức cơ sở dữ liệu 
+ELO 1. 3. 6 Khối kiến thức về an ninh, bảo mật và tính riêng tư 
+ELO 1. 3. 7 Các công cụ, phương pháp và công nghệ hỗ trợ trong ngành CNTT 
+ELO 1. 4. Các kiến thức nâng cao của Khoa học máy tính 
+ELO 1. 4. 1 Kiến thức về dữ liệu và khai thác dữ liệu 
+ELO 1. 4. 2 Kiến thức về Khoa học máy tính 
+ELO 1. 4. 3 Kiến thức về các loại ứng dụng Khoa học máy tính 
+ELO 2. Kỹ năng mềm 
+ELO 2. 1. Kỹ năng và tính cách cá nhân 
+ELO 2. 1. 1 Độc lập 
+ELO 2. 1. 2 Tự tin trong môi trường nghề nghiệp 
+ELO 2. 1. 3 Sẵn sàng ra quyết định 
+ELO 2. Kỹ năng mềm 
+ELO 2. 1. Kỹ năng và tính cách cá nhân 
+ELO 2. 1. 4 Cách nghĩ sáng tạo 
+ELO 2. 1. 5 Cách nghĩ mang tính phản biện 
+ELO 2. 1. 6 Thích nghi vào môi trường mới 
+ELO 2. 1. Kỹ năng và tính cách cá nhân 
+ELO 2. 1. 7 Quản lý tài nguyên cá nhân (thời gian, tiền bạc...) 
+ELO 2. 1. 8 Học và tự học suốt đời 
+ELO 2. 1. 9 Quản trị dự án 
+ELO 2. 2. Kỹ năng nhóm 
+ELO 2. 2. 1 Thành lập nhóm 
+ELO 2. 2. 2 Hoạt động trong nhóm 
+ELO 2. 2. 3 Lãnh đạo nhóm 
+ELO 2. 2. 4 Phát triển nhóm
+ELO 2. 3. Kỹ năng giao tiếp 
+ELO 2. 3. 1 Kỹ năng giao tiếp nghe, nói, đọc, viết 
+ELO 2. 3. 2 Kỹ năng trình bày 
+ELO 2. 3. 3 Kỹ năng đàm phán 
+ELO 2. 3. 4 Kỹ năng phát triển các mối quan hệ xã hội
+ELO 2. Kỹ năng mềm 
+ELO 2. 4. Kỹ năng ngoại ngữ 
+ELO 2. 4. 1 Kỹ năng nói tiếng Anh 
+ELO 2. 4. 2 Kỹ năng nghe tiếng Anh
+ELO 2. 4. Kỹ năng ngoại ngữ 
+ELO 2. 4. 3 Kỹ năng đọc tiếng Anh 
+ELO 2. 4. 4 Kỹ năng viết tiếng Anh 
+ELO 2. 4. 5 Sử dụng các thuật ngữ chuyên ngành 
+ELO 2. 5. Kỹ năng lãnh đạo 
+ELO 2. 5. 1 Thái độ lãnh đạo 
+ELO 2. 5. 2 Nhận biết các vấn đề, sự cố và nghịch lý 
+ELO 2. 5. 3 Đề xuất và sáng tạo trong việc giải quyết các vấn đề, sự cố 
+ELO 2. 5. 4 Xây dựng và dẫn dắt một tổ chức 
+ELO 2. 5. 5 Lên kế hoạch và dẫn dắt dự án đến thành công 
+ELO 2. Kỹ năng mềm 
+ELO 2. 6. Kỹ năng khởi nghiệp 
+ELO 2. 6. 1 Thành lập công ty, tổ chức công ty và quản trị 
+ELO 2. 6. 2 Viết kế hoạch kinh doanh 
+ELO 2. 6. 3 Tài chính công ty 
+ELO 2. 6. 4 Hình thành ý tưởng sản phẩm, dịch vụ dựa trên công nghệ 
+ELO 2. 6. 5 Sáng tạo trong sản phẩm/ dịch vụ, quảng bá
+ELO 3. Ngữ cảnh, trách nhiệm và đạo đức 
+ELO 3. 1. Ngữ cảnh bên ngoài, xã hội, kinh tế và môi trường 
+ELO 3. 1. 1 Các vấn đề và giá trị của xã hội, kinh tế và môi trường đương đại 
+ELO 3. 1. 2 Vai trò và trách nhiệm 
+ELO 3. 1. 3 Ngữ cảnh văn hóa, lịch sử 
+ELO 3. 1. 4 Luật lệ và quy định của xã hội 
+ELO 3. Ngữ cảnh, trách nhiệm và đạo đức 
+ELO 3. 2. Ngữ cảnh công ty và doanh nghiệp 
+ELO 3. 2. 1 Ngữ cảnh và văn hóa của công ty, tổ chức 
+ELO 3. 2. 2 Các bên liên quan, mục tiêu và chiến lược của công ty/ doanh nghiệp 
+ELO 3. 2. 3 Luật lệ và quy định của công ty/ doanh nghiệp 
+ELO 3. 3. Đạo đức, trách nhiệm và các giá trị cá nhân cốt lõi 
+ELO 3. 3. 1 Các chuẩn mực và nguyên tắc đạo đức 
+ELO 3. 3. 2 Trách nhiệm và cách hành xử chuyên nghiệp 
+ELO 3. 3. 3 Sự cam kết 
+ELO 3. 3. 4 Trung thực, uy tín và trung thành 
+ELO 4. Phương pháp khoa học và nghiên cứu 
+ELO 4. 1. Suy luận có phân tích và giải quyết vấn đề 
+ELO 4. 1. 1 Xác định và hình thành vấn đề 
+ELO 4. 1. 2 Mô hình hóa và phân tích 
+ELO 4. 1. 3 Suy luận và giải quyết 
+ELO 4. 1. 4 Đánh giá giải pháp và đề xuất 
+ELO 4. 2. Thực nghiệm, điều tra và khám phá tri thức 
+ELO 4. 2. 1 Hình thành giả thuyết 
+ELO 4. 2. 2 Khảo sát trên tài liệu 
+ELO 4. 2. 3 Khảo sát trên thực tế 
+ELO 4. 2. 4 Kiểm chứng và bảo vệ giả thuyết 
+ELO 4. 3. Suy nghĩ tầm mức hệ thống 
+ELO 4. 3. 1 Suy nghĩ toàn cục 
+ELO 4. 3. 2 Sự tương tác giữa các thành phần trong hệ thống 
+ELO 4. 3. 3 Xác định độ ưu tiên và quan trọng 
+ELO 4. 3. 4 Đánh giá hệ thống 
+ELO 5. Hình thành ý tưởng, thiết kế và hiện thực hóa hệ thống CNTT 
+ELO 5. 1. Hình thành ý tưởng/ bài toán/ dự án 
+ELO 5. 1. 1 Xác định mục tiêu của bài toán/ dự án và thu thập yêu cầu 
+ELO 5. 1. 2 Phân tích và nghiên cứu tính khả thi của bài toán/ dự án 
+ELO 5. 1. 3 Đặc tả mục tiêu, yêu cầu của bài toán/ dự án 
+ELO 5, 2. Thiết kế hệ thống CNTT (giải pháp, sản phẩm, ...) 
+ELO 5. 2. 1 Tiến trình và phương pháp thiết kế 
+ELO 5. 2. 2 Thiết kế kiến trúc và các thành phần của hệ thống CNTT (chức năng, cơ sở dữ liệu,...) 
+ELO 5. 2. 3 Thiết kế đa ngành, đa mục tiêu 
+ELO 5. Hình thành ý tưởng, thiết kế và hiện thực hóa hệ thống CNTT 
+ELO 5. 3. Hiện thực hóa (implementation) 
+ELO 5. 3. 1 Các tiến trình và phương pháp hiện thực hóa 
+ELO 5. 3. 2 Hiện thực hóa hệ thống dựa trên thiết kế 
+ELO 5. 3. 3 Tích hợp các thành phần trong hệ thống  
+ELO 6. Kiểm chứng, vận hành, bảo trì và phát triển hệ thống CNTT 
+ELO 6. 1. Kiểm chứng 
+ELO 6. 1. 1 Tiến trình và phương pháp kiểm chứng 
+ELO 6. 1. 2 Kiểm chứng các yêu cầu 
+ELO 6. 1. 3 Kiểm chứng các thành phần hay toàn bộ hệ thống 
+ELO 6. Kiểm chứng, vận hành, bảo trì và phát triển hệ thống CNTT 
+ELO 6. 2. Vận hành và bảo trì
+ELO 6. 2. 1 Huấn luyện và vận hành 
+ELO 6. 2. 2 Quản lý việc vận hành 
+ELO 6. 2. 3 Bảo trì hệ thống 
+ELO 6. 3. Cải tiến và kết thúc 
+ELO 6. 3. 1 Cải tiến hệ thống 
+ELO 6. 3. 2 Kết thúc và hủy bỏ hệ thống 
+2.4. Cơ hội nghề nghiệp Ngành Khoa học máy tính/ công việc người học có thể đảm nhận 
+Sinh viên sau khi tốt nghiệp có thể có các cơ hội nghề nghiệp sau: 
+- Các vị trí thuộc nhóm Phát triển hệ thống phần mềm: Phân tích phần mềm, Thiết kế phần mềm, Lập trình phần mềm, Phát triển phẩn mềm, Kiểm thử phần mềm, Triển khai và vận hành hệ thống, Quản lý dự án, Tư vấn giải pháp, v.v... 
+- Các vị trí thuộc nhóm Khoa học máy tính: Thiết kế và Quản trị cơ sở dữ liệu, Quản trị hệ thống CNTT cho doanh nghiệp, Tư vấn hệ thống CNTT, Quản trị thông tin, Quản trị an ninh/bảo mật, Phân tích dữ liệu, Kỹ sư dữ liệu, Tư vấn kiến trúc dữ liệu, Giám đốc 
+thông tin, v.v... 
+- Các vị trí thuộc nhóm Mạng máy tính và viễn thông: Lập trình viên mạng máy tính, Kỹ sư bảo mật máy tính, Kỹ sư phát triển – vận hành hệ thống CNTT cho doanh nghiệp, Quản trị mạng, Quản trị hệ thống CNTT, An ninh và bảo mật hệ thống mạng, v.v...
+- Các vị trí thuộc nhóm Nghiên cứu và triển khai giải pháp tại các viện, trường đại học, phòng thí nghiệm, các công ty phần mềm: Máy học, Khai thác dữ liệu, Xử lý ngôn ngữ, 
+V.V... 
+- Các vị trí thuộc nhóm Trí tuệ nhân tạo: Thiết kế và xây dựng các thuật toán học máy, học sâu; Thiết kế và xây dựng các ứng dụng xử lý ngôn ngữ tự nhiên (hiểu ngôn ngữ, tóm tắt văn bản, hệ thống hỏi và đáp, nhận dạng tiếng nói,...), thị giác máy tính,.. 
+- Các vị trí thuộc nhóm Giảng dạy: Trợ giảng, Giáo viên, Giảng viên các cấp phổ thông, trung tâm đào tạo, cao đẳng, đại học, V.V... 
+- Các vị trí khác: tư vấn, huấn luyện về các hệ thống, giải pháp CNTT, v.v... 
+
+3. Khối lượng kiến thức toàn khóa Ngành Khoa học máy tính: 138 tín chỉ (Không kể môn Giáo dục Quốc phòng - An ninh, Giáo dục thể chất và ngoại ngữ) 
+
+4. Đối tượng tuyển sinh Ngành Khoa học máy tính 
+Theo Quy chế tuyển sinh của Bộ Giáo dục và đào tạo và Đại học Quốc gia Thành phố Hồ Chí Minh. 
+
+5. Quy trình đào tạo và điều kiện tốt nghiệp Ngành Khoa học máy tính 
+5.1. Quy trình đào tạo Ngành Khoa học máy tính 
+Căn cứ Quy chế đào tạo trình độ đại học ban hành kèm theo Quyết định số 1175/QĐ-KHTN 
+ngày 24 tháng 9 năm 2021 của Hiệu trưởng Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. 
+5.2. Điều kiện tốt nghiệp Ngành Khoa học máy tính 
+Sinh viên phải đồng thời thỏa các điều kiện sau đây: 
+- Tích lũy đủ số tín chỉ của khối kiến thức giáo dục đại cương và giáo dục chuyên nghiệp như đã mô tả ở mục 6. Cấu trúc chương trình đào tạo và mục 7. Nội dung chương trình đào tạo của Chương trình đào tạo này;
+- Thỏa các điều kiện tại Điều 17 của Quy chế đào tạo trình độ đại học ban hành kèm theo Quyết định số 1175/QĐ-KHTN ngày 24 tháng 9 năm 2021 của Hiệu trưởng Trường Đại học Khoa học Tự nhiên, ĐHQG-HCM. 
+
+6. Cấu trúc chương trình đào tạo Ngành Khoa học máy tính 
+Tổng số tín chỉ tích lũy Ngành Khoa học máy tính: 138 tín chỉ
+6.1. Giáo dục đại cương Ngành Khoa học máy tính (Không kể Ngoại ngữ, Giáo dục thể chất và Giáo dục Quốc phòng - An ninh)
+Tổng cộng 56 tín chỉ bao gồm:
+- Bắt buộc: 42
+- Tự chọn: 14
+- Tự chọn tự do: 0
+6.2. Giáo dục chuyên nghiệp Ngành Khoa học máy tính 
+Tổng cộng 82 tín chỉ
+6.2.1. Cơ sở ngành
+Tổng cộng 38 tín chỉ bao gồm:
+- Bắt buộc: 38
+- Tự chọn: 0
+- Tự chọn tự do: 0
+6.2.2. Ngành/Chuyên ngành Ngành Khoa học máy tính 
+Tổng cộng 34 tín chỉ bao gồm:
+- Bắt buộc: 16
+- Tự chọn: 8
+- Tự chọn tự do: 10
+6.2.3. Tốt nghiệp Ngành Khoa học máy tính 
+Tổng cộng 10 tín chỉ bao gồm:
+- Bắt buộc: 0
+- Tự chọn: 10
+- Tự chọn tự do: 0
+
+7. Nội dung chương trình đào tạo Ngành Khoa học máy tính 
+7.1. Kiến thức giáo dục đại cương 
+Tổng số tín chỉ tích lũy: 56 tín chỉ (không kể Ngoại ngữ, Giáo dục thể chất và Giáo dục quốc phòng – an ninh)
+7.1.1. Lý luận chính trị - Pháp luật  
+Tổng số tín chỉ tích lũy Lý luận chính trị - Pháp luật: 14 tín chỉ
+- Tên học phần: Triết học Mác – Lênin  
+- Mã học phần: BAA00101  
+- Số tín chỉ: 3 
+- Loại học phần: Bắt buộc 
+
+- Tên học phần: Kinh tế chính trị Mác – Lênin  
+- Mã học phần: BAA00102  
+- Số tín chỉ: 2    
+- Loại học phần: Bắt buộc  
+
+- Tên học phần: Chủ nghĩa xã hội khoa học  
+- Mã học phần: BAA00103  
+- Số tín chỉ: 2    
+- Loại học phần: Bắt buộc 
+ 
+- Tên học phần: Lịch sử Đảng Cộng sản Việt Nam  
+- Mã học phần: BAA00104  
+- Số tín chỉ: 2  
+- Loại học phần: Bắt buộc  
+
+- Tên học phần: Tư tưởng Hồ Chí Minh  
+- Mã học phần: BAA00103  
+- Số tín chỉ: 2  
+- Loại học phần: Bắt buộc  
+
+- Tên học phần: Pháp luật đại cương  
+- Mã học phần: BAA00004  
+- Số tín chỉ: 3  
+- Loại học phần: Bắt buộc 
+
+7.1.2. Khoa học xã hội – Kinh tế – Kỹ năng  
+Tổng số tín chỉ tích lũy Khoa học xã hội – Kinh tế – Kỹ năng: 2 tín chỉ
+Chọn 1 học phần:  
+- Tên học phần: Kinh tế đại cương  
+- Mã học phần: BAA00005  
+- Số tín chỉ: 2  
+- Loại học phần: Tự chọn  
+
+- Tên học phần: Tâm lý đại cương  
+- Mã học phần: BAA00006  
+- Số tín chỉ: 2   
+- Loại học phần: Tự chọn  
+
+- Tên học phần: Phương pháp luận sáng tạo  
+- Mã học phần: BAA00007  
+- Số tín chỉ: 2 
+- Loại học phần: Tự chọn
+
+7.1.3. Toán – Khoa học tự nhiên – Công nghệ – Môi trường
+Tổng cộng số tín chỉ Toán – Khoa học tự nhiên – Công nghệ – Môi trường: 36
+- Tên học phần: Vi tích phân 1B
+- Mã học phần: MTH00003
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thực hành Vi tích phân 1B
+- Mã học phần: MTH00081
+- Số tín chỉ: 1
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Vi tích phân 2B
+- Mã học phần: MTH00004
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thực hành Vi tích phân 2B
+- Mã học phần: MTH00082
+- Số tín chỉ: 1
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Đại số tuyến tính
+- Mã học phần: MTH00007
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thực hành Đại số tuyến tính
+- Mã học phần: MTH00083
+- Số tín chỉ: 1
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Xác suất thống kê
+- Mã học phần: MTH00008
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thực hành Xác suất thống kê
+- Mã học phần: MTH00085
+- Số tín chỉ: 1
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Toán rời rạc
+- Mã học phần: MTH00041
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thực hành Toán rời rạc
+- Mã học phần: MTH00086
+- Số tín chỉ: 1
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Toán học tổ hợp
+- Mã học phần: MTH00050
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Toán ứng dụng và thống kê
+- Mã học phần: MTH00051
+- Số tín chỉ: 4
+- Loại học phần: Tự chọn
+
+- Tên học phần: Phương pháp tính
+- Mã học phần: MTH00052
+- Số tín chỉ: 4
+- Loại học phần: Tự chọn
+
+- Tên học phần: Lý thuyết số
+- Mã học phần: MTH00053
+- Số tín chỉ: 4
+- Loại học phần: Tự chọn
+
+- Tên học phần: Hóa đại cương 1
+- Mã học phần: CHE00001
+- Số tín chỉ: 3
+- Loại học phần: Tự chọn
+
+- Tên học phần: Hóa đại cương 2
+- Mã học phần: CHE00002
+- Số tín chỉ: 3
+- Loại học phần: Tự chọn
+
+- Tên học phần: Sinh đại cương 1
+- Mã học phần: BIO00001
+- Số tín chỉ: 3
+- Loại học phần: Tự chọn
+
+- Tên học phần: Sinh đại cương 2
+- Mã học phần: BIO00002
+- Số tín chỉ: 3
+- Loại học phần: Tự chọn
+
+- Tên học phần: Vật lý đại cương 1 (Cơ - Nhiệt)
+- Mã học phần: PHY00001
+- Số tín chỉ: 3
+- Loại học phần: Tự chọn
+
+- Tên học phần: Khoa học Trái đất
+- Mã học phần: GEO00002
+- Số tín chỉ: 2
+- Loại học phần: Tự chọn
+
+7.1.4 Tin học
+- Tên học phần: Nhập môn Khoa học máy tính
+- Mã học phần: CSC00004
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+7.1.5 Ngoại ngữ (không tính vào điểm trung bình và tín chỉ tích lũy)
+Ghi chú: SV đạt chuẩn ngoại ngữ đầu ra theo quy định hiện hành thì không đăng ký học các học phần Anh văn
+- Tên học phần: Anh văn 1
+- Mã học phần: ADD00031
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Anh văn 2
+- Mã học phần: ADD00032
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Anh văn 3
+- Mã học phần: ADD00033
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Anh văn 4
+- Mã học phần: ADD00034
+- Số tín chỉ: 3
+- Loại học phần: Bắt buộc
+
+7.1.6 Giáo dục thể chất (không tính vào điểm trung bình và tín chỉ tích lũy)
+- Tên học phần: Thể dục 1
+- Mã học phần: BAA00021
+- Số tín chỉ: 2
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Thể dục 2
+- Mã học phần: BAA00022
+- Số tín chỉ: 2
+- Loại học phần: Bắt buộc
+
+7.1.7 Giáo dục quốc phòng - an ninh (không tính vào điểm trung bình và tín chỉ tích lũy)
+- Tên học phần: Giáo dục quốc phòng – An ninh
+- Mã học phần: BAA00030
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+7.2. Kiến thức giáo dục chuyên nghiệp Ngành Khoa học máy tính
+Khối kiến thức này bao gồm: kiến thức cơ sở ngành, kiến thúc ngành và kiến thức tốt nghiệp
+7.2.1. Kiến thức cơ sở ngành Ngành Khoa học máy tính
+- Tên học phần: Nhập môn lập trình
+- Mã học phần: CSC10001
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Kỹ thuật lập trình
+- Mã học phần: CSC10002
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Phương pháp lập trình hướng đối tượng
+- Mã học phần: CSC10003
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Cấu trúc dữ liệu và giải thuật
+- Mã học phần: CSC10004
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Cơ sở dữ liệu
+- Mã học phần: CSC10006
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Hệ điều hành
+- Mã học phần: CSC10007
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Mạng máy tính
+- Mã học phần: CSC10008
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Hệ thống máy tính
+- Mã học phần: CSC10009
+- Số tín chỉ: 2
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Nhập môn công nghệ phần mềm
+- Mã học phần: CSC13002
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+- Tên học phần: Cơ sở trí tuệ nhân tạo
+- Mã học phần: CSC14003
+- Số tín chỉ: 4
+- Loại học phần: Bắt buộc
+
+7.2.2. Kiến thức ngành/ chuyên ngành Ngành Khoa học máy tính: gồm các kiến thức bắt buộc, tự chọn và tự chọn tự do (tổng cộng 34 tín chỉ) như sau:
+Ngành Khoa học máy tính có 05 chuyên ngành. Sinh viên có thể chọn học theo 01 trong 05
+chuyên ngành sau đây:
+- Chuyên ngành Khoa học máy tính
+- Chuyên ngành Công nghệ tri thức
+- Chuyên ngành Thị giác máy tính
+- Chuyên ngành An toàn thông tin
+- Chuyên ngành Khoa học dữ liệu
+Phần kiến thức này gồm các kiến thức bắt buộc, tự chọn và tự chọn tự do (tổng cộng 34 tín chỉ); được thay đổi tùy theo chuyên ngành đào tạo khác nhau,
+
+7.2.2.1. Chuyên ngành Khoa học máy tính
+7.2.2.1.1. Kiến thức bắt buộc chuyên ngành Khoa học máy tính
+Sinh viên tích lũy ít nhất 4 học phần, sao cho tối thiểu 16 tín chỉ
+Tên học phần: Automata và ngôn ngữ hình thức
+Mã học phần: CSC14001
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Các hệ cơ sở tri thức
+Mã học phần: CSC14002
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Khai thác dữ liệu và ứng dụng
+Mã học phần: CSC14004
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn học máy
+Mã học phần: CSC14005
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhận dạng
+Mã học phần: CSC14006
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Ẩn dữ liệu và chia sẻ thông tin
+Mã học phần: CSC14101
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn thiết kế và phân tích giải thuật
+Mã học phần: CSC14111
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Lập trình song song
+Mã học phần: CSC14120
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.1.2. Kiến thức tự chọn chuyên ngành Khoa học máy tính
+Sinh viên tích lũy ít nhất 2 học phần, sao cho tối thiểu 8 tín chỉ
+Tên học phần: Kiến tập nghề nghiệp
+Mã học phần: CSC10102
+Số tín chỉ: 2
+Loại học phần: Tự chọn
+
+Tên học phần: Khởi nghiệp
+Mã học phần: CSC10103
+Số tín chỉ: 3
+Loại học phần: Tự chọn
+
+Tên học phần: Quy hoạch tuyến tính
+Mã học phần: CSC10104
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Trực quan hóa dữ liệu
+Mã học phần: CSC10108
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phương pháp nghiên cứu khoa học
+Mã học phần: CSC14008
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Khoa học về web
+Mã học phần: CSC14105
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Sinh trắc học
+Mã học phần: CSC14112
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Trình biên dịch
+Mã học phần: CSC14113
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn lập trình kết nối vạn vật
+Mã học phần: CSC14117
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn dữ liệu lớn
+Mã học phần: CSC14118
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn khoa học dữ liệu
+Mã học phần: CSC14119
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Xử lý ảnh số và video số
+Mã học phần: CSC16005
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phân tích dữ liệu thông minh
+Mã học phần: CSC17001
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.1.3. Kiến thức tự chọn tự do chuyên ngành Khoa học máy tính
+Nếu tổng số tín chỉ của những học phần bắt buộc và tự chọn ngành/ chuyên ngành chưa đủ 34 tín chỉ thì sinh viên tiếp tục tích lũy đủ ít nhất 34 tín chỉ cho phần kiến thức ngành của khối kiến thức giáo dục chuyên nghiệp, bằng cách chọn trong danh sách các học phần thuộc các mục sau đây: 
+— mục 7,2.2.x.1, và mục 7.2.2.x.2, (với l <= x <= 5) 
+— mục 7.2.3. (bên dưới);
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đảo tạo đại học chính quy ngành Hệ thống thông tin, khóa tuyển 2023;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đảo tạo đại học chính quy ngành Kỹ thuật phần mềm, khóa tuyển 2023;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đảo tạo đại học chính quy ngành Công nghệ thông tin
+— mục 7.2.2.1.1. và mục 7.2.2.1.2. của chương trình đảo tạo đại học chính quy ngành Trí tuệ nhân tạo, khóa tuyển 2023.
+
+7.2.2.2. Chuyên ngành Công nghệ tri thức
+7.2.2.2.1. Kiến thức bắt buộc chuyên ngành Công nghệ tri thức
+Sinh viên tích lũy ít nhất 4 học phần, sao cho tối thiểu 16 tín chỉ
+Tên học phần: Nhập môn phân tích độ phức tạp thuật toán
+Mã học phần: CSC14007
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: An ninh máy tính
+Mã học phần: CSC15001
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Bảo mật cơ sở dữ liệu
+Mã học phần: CSC15002
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Mã hóa ứng dụng
+Mã học phần: CSC15003
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Học thống kê
+Mã học phần: CSC15004
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Nhập môn mã hóa - mật mã
+Mã học phần: CSC15005
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Nhập môn xử lý ngôn ngữ tự nhiên
+Mã học phần: CSC15006
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Thống kê máy tính và ứng dụng
+Mã học phần: CSC15007
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Xử lý tín hiệu số
+Mã học phần: CSC15009
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Nhập môn ngôn ngữ học thống kê và ứng dụng
+Mã học phần: CSC15011
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Ứng dụng xử lý ngôn ngữ tự nhiên trong doanh nghiệp
+Mã học phần: CSC15012
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+7.2.2.2.2. Kiến thức tự chọn chuyên ngành Công nghệ tri thức
+Sinh viên tích lũy ít nhất 2 học phần, sao cho tối thiểu 8 tín chỉ
+Tên học phần: Kiến tập nghề nghiệp
+Mã học phần: CSC10102
+Số tín chỉ: 2
+Loại học phần: Tự chọn
+
+Tên học phần: Khởi nghiệp
+Mã học phần: CSC10103
+Số tín chỉ: 3
+Loại học phần: Tự chọn
+
+Tên học phần: Quy hoạch tuyến tính
+Mã học phần: CSC10104
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Kỹ năng mềm
+Mã học phần: CSC10121
+Số tín chỉ: 3
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn tư duy thuật toán
+Mã học phần: CSC10105
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Thuật toán tổ hợp và ứng dụng
+Mã học phần: CSC10106
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Thực tập thực tế
+Mã học phần: CSC10107
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Ẩn dữ liệu và chia sẻ thông tin
+Mã học phần: CSC14101
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Lập trình song song
+Mã học phần: CSC14120
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Blockchain và ứng dụng
+Mã học phần: CSC15101
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phân tích mạng xã hội
+Mã học phần: CSC15102
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phân tích dữ liệu bảo toàn tính riêng tư
+Mã học phần: CSC15107
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Pháp chứng cho dữ liệu số
+Mã học phần: CSC15108
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn tính toán lượng tử
+Mã học phần: CSC15109
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn lập trình điều khiển thiết bị thông minh
+Mã học phần: CSC16110
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.2.3. Kiến thức tự chọn tự do chuyên ngành Công nghệ tri thức
+Nếu tổng số tín chỉ của những học phần bắt buộc và tự chọn ngành/ chuyên ngành chưa đủ 34 tín chỉ thì sinh viên tiếp tục tích lũy đủ ít nhất 34 tín chỉ cho phần kiến thức ngành của khối kiến thức giáo dục chuyên nghiệp, bằng cách chọn trong danh sách các học phần thuộc các mục sau đây: 
+— mục 7.2.2.x.1. và mục 7.2.2.x.2. (với 1 <= x <= 5);
+— mục 7.2.3.;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Hệ thống thông tin, khóa tuyển 2023;
+— mục 7.2.2,1. và mục 7,2.2.2. của chương trình đào tạo đại học chính quy ngành Kỹ thuật phần mềm, khóa tuyển 2023;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Trí tuệ nhân tạo, khóa tuyển 2023;
+— mục 7.2.2.1.1. và mục 7.2.2.1.2. của chương trình đảo tạo đại học chính quy ngành Công nghệ thông tin, khóa tuyên 2023.
+
+7.2.2.3. Chuyên ngành Thị giác máy tính
+7.2.2.3.1. Kiến thức bắt buộc chuyên ngành Thị giác máy tính
+Sinh viên tích lũy ít nhất 4 học phần, sao cho tối thiểu 16 tín chỉ
+Tên học phần: Đồ họa máy tính
+Mã học phần: CSC16001
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phương pháp toán trong phân tích dữ liệu thị giác
+Mã học phần: CSC16002
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phân tích thống kê dữ liệu nhiều biến
+Mã học phần: CSC16003
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Thị giác máy tính
+Mã học phần: CSC16004
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Xử lý ảnh số và video số
+Mã học phần: CSC16005
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.3.2. Kiến thức tự chọn chuyên ngành Thị giác máy tính
+Sinh viên tích lũy ít nhất 2 học phần, sao cho tối thiểu 8 tín chỉ
+Tên học phần: Đồ họa ứng dụng
+Mã học phần: CSC16101
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Kỹ thuật lập trình xử lý ảnh số và video số
+Mã học phần: CSC16102
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Truy vấn thông tin thị giác
+Mã học phần: CSC16105
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn lập trình điều khiển thiết bị thông minh
+Mã học phần: CSC16106
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Ứng dụng thị giác máy tính
+Mã học phần: CSC16107
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Ứng dụng xử lý ảnh số và video số
+Mã học phần: CSC16109
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Thị giác máy tính ba chiều
+Mã học phần: CSC16113
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Học sâu trong Thị giác máy tính
+Mã học phần: CSC16114
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.3.3. Kiến thức tự chọn tự do chuyên ngành Thị giác máy tính
+Nếu tổng số tín chỉ của những học phần bắt buộc và tự chọn ngành/ chuyên ngành chưa đủ 34 tín chỉ thì sinh viên tiếp tục tích lũy đủ ít nhất 34 tín chỉ cho phần kiến thức ngành của khối kiến thức giáo dục chuyên nghiệp, bằng cách chọn trong danh sách các học phần thuộc các mục sau đây: 
+— mục 7.2.2.x.1. và mục 7.2.2.x.2. (với l <= x <= 5);
+— mục 7.2.3.;
+— mục 7.2.2.1. và mục 7.2.2.2, của chương trình đào tạo đại học chính quy ngành Hệ thống thông tin, khóa tuyên 2023;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Kỹ thuật phần mềm, khóa tuyển 2023;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Trí tuệ nhân tạo, khóa tuyên 2023;
+— mục 7.2.2.1.1. và mục 7.2.2.1.2. của chương trình dào tạo đại học chính quy ngành Công nghệ thông tin, khóa tuyển 2023.
+
+2.2.4 Chuyên ngành An toàn thông tin
+7.2.2.4.1. Kiến thức bắt buộc chuyên ngành An toàn thông tin
+Sinh viên tích lũy ít nhất 4 học phần, sao cho tối thiểu 16 tín chỉ
+Tên học phần: An ninh máy tính
+Mã học phần: CSC15001
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Bảo mật cơ sở dữ liệu
+Mã học phần: CSC15002
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Mã hóa ứng dụng
+Mã học phần: CSC15003
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Nhập môn mã hóa – mật mã
+Mã học phần: CSC15005
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+Tên học phần: Blockchain và ứng dụng
+Mã học phần: CSC15010
+Số tín chỉ: 4
+Loại học phần: Bắt buộc
+
+7.2.2.4.2. Kiến thức tự chọn chuyên ngành An toàn thông tin
+Sinh viên tích lũy ít nhất 2 học phần, sao cho tối thiểu 8 tín chỉ
+Tên học phần: Quy hoạch tuyến tính
+Mã học phần: CSC10104
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Thực tập thực tế
+Mã học phần: CSC10107
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Mạng máy tính nâng cao
+Mã học phần: CSC11004
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: An toàn và bảo mật dữ liệu trong hệ thống thông tin
+Mã học phần: CSC12001
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn học máy
+Mã học phần: CSC14005
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn phân tích độ phức tạp thuật toán
+Mã học phần: CSC14007
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn lập trình kết nối vạn vật
+Mã học phần: CSC14117
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Lập trình song song
+Mã học phần: CSC14120
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Học thống kê
+Mã học phần: CSC15004
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Phân tích dữ liệu bảo toàn tính riêng tư
+Mã học phần: CSC15107
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+Tên học phần: Nhập môn lập trình điều khiển thiết bị thông minh
+Mã học phần: CSC16106
+Số tín chỉ: 4
+Loại học phần: Tự chọn
+
+7.2.2.4.3, Kiến thức tự chọn tự do chuyên ngành An toàn thông tin
+Nếu tổng số tín chỉ của những học phần bắt buộc và tự chọn ngành/ chuyên ngành chưa đủ 34 tín chỉ thì sinh viên tiếp tục tích lũy đủ ít nhất 34 tín chỉ cho phần kiến thức ngành của khối kiến thức giáo dục chuyên nghiệp, bằng cách chọn trong danh sách các học phần thuộc các mục sau đây: 
+mục 7.2.2.x.1. và mục 7.2.2.x.2. (với 1 <= x <= 5);
+mục 7.2.3.;
+mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Hệ thống thông tin, khóa tuyên 2023;
+mục 7.2.2.1. và mục 7.2.2.2. của chương trình đảo tạo đại học chính quy ngành Kỹ thuật phân mềm, khóa tuyển 2023;
+mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Trí tuệ nhân tạo, khóa tuyên 2023;
+mục 7.2.2.1.1. và mục 7.2.2.1.2. của chương trình đào tạo đại học chính quy ngành Công nghệ thông tin, khóa tuyến 2023. 
+
+7.2.2.5 Chuyên ngành Khoa học dữ liệu
+7.2.2.5.1. Kiến thức bắt buộc chuyên ngành Khoa học dữ liệu
+Sinh viên tích lũy ít nhất 4 học phần, sao cho tối thiểu 16 tín chỉ
+Tên học phần: Trực quan hóa dữ liệu  
+Mã học phần: CSC10108  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn
+Tên học phần: Khai thác dữ liệu và ứng dụng  
+Mã học phần: CSC14004  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Nhập môn học máy  
+Mã học phần: CSC14005  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Nhập môn khoa học dữ liệu  
+Mã học phần: CSC14119  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Phân tích dữ liệu thông minh  
+Mã học phần: CSC17001  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Tên học phần: Lập trình cho khoa học dữ liệu  
+Mã học phần: CSC17104  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn   
+
+7.2.2.5.2. Kiến thức tự chọn chuyên ngành Khoa học dữ liệu
+Sinh viên tích lũy ít nhất 2 học phần, sao cho tối thiểu 8 tín chỉ
+Tên học phần: Nhập môn lập trình kết nối vạn vật  
+Mã học phần: CSC14117  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Nhập môn dữ liệu lớn  
+Mã học phần: CSC14118  
+Số tín chỉ: 4  
+Loại học phần: TC  
+
+Tên học phần: Lập trình song song  
+Mã học phần: CSC14120  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Học thống kê  
+Mã học phần: CSC15004  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Thống kê máy tính và ứng dụng  
+Mã học phần: CSC15007  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Phân tích mạng xã hội  
+Mã học phần: CSC15102  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Tên học phần: Học sâu cho khoa học dữ liệu  
+Mã học phần: CSC17102  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Khai thác dữ liệu đồ thị  
+Mã học phần: CSC17103  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+Tên học phần: Xử lý phân tích dữ liệu trực tuyến  
+Mã học phần: CSC17106  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn 
+
+7.2.2.5.3. Kiến thức tự chọn tự do chuyên ngành Khoa học dữ liệu
+Nếu tổng số tín chỉ của những học phần bắt buộc và tự chọn ngành/ chuyên ngành chưa đủ 34 tín chỉ thì sinh viên tiếp tục tích lũy đủ ít nhất 34 tín chỉ cho phần kiến thức ngành của khối kiến thức giáo dục chuyên nghiệp, bằng cách chọn trong danh sách các học phần thuộc các mục sau đây: 
+— mục 7.2.3.;
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Hệ thống thông tin, khóa tuyển 2023;
+- mục 7.2.2.x.1. và mục 7.2.2.x.2. (với 1 <= x <= 5);
+— mục 7.2.2.1. và mục 7.2.2.2. của chương trình đảo tạo đại học chính quy ngành Kỹ thuật phần mêm, khóa tuyển 2023;
+— mục 7.2.2.1, và mục 7.2.2.2. của chương trình đào tạo đại học chính quy ngành Trí tuệ nhân tạo, khóa tuyển 2023:
+— mục 7.2.2.1.1. và mục 7.2.2.1.2. của chương trình đào tạo đại học chính quy ngành Công nghệ thông tin, khóa tuyển 2023. 
+
+7.2.3. Kiến thức tốt nghiệp Ngành Khoa học máy tính
+7.2.3.1. Kiến thức tốt nghiệp Chuyên ngành Khoa học máy tính
+Sinh viên tích lũy tối thiêu 10 tín chỉ, chọn 01 trong 03 phương án sau đây:
+Phương án 1:
+- Tên học phần: Khóa luận tốt nghiệp
+- Mã học phần: CSC10251
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 2:
+- Tên học phần: Thực tập tốt nghiệp
+- Mã học phần: CSC10252
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 3:
+- Tên học phần: Thực tập dự án tốt nghiệp
+- Mã học phần: CSC10204
+- Số tín chỉ: 6
+- Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Ứng dụng dữ liệu lớn  
+Mã học phần: CSC14114  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Khoa học dữ liệu ứng dụng  
+Mã học phần: CSC14115  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Lập trình song song ứng dụng  
+Mã học phần: CSC14116  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn
+
+7.2.3.2. Kiến thức tốt nghiệp Chuyên ngành Công nghệ tri thức
+Phương án 1:
+- Tên học phần: Khóa luận tốt nghiệp
+- Mã học phần: CSC10251
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 2:
+- Tên học phần: Thực tập tốt nghiệp
+- Mã học phần: CSC10252
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 3:
+- Tên học phần: Thực tập dự án tốt nghiệp
+- Mã học phần: CSC10204
+- Số tín chỉ: 6
+- Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Đồ án mã hóa ứng dụng và an ninh thông tin  
+Mã học phần: CSC15201  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Đồ án tốt nghiệp hướng ứng dụng xử lý ngôn ngữ tự nhiên  
+Mã học phần: CSC15202  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: An toàn và phục hồi dữ liệu  
+Mã học phần: CSC15104  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Khai thác dữ liệu văn bản và ứng dụng  
+Mã học phần: CSC15105  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Seminar Công nghệ tri thức  
+Mã học phần: CSC15106  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+7.2.3.3. Kiến thức tốt nghiệp Chuyên ngành Thị giác máy tính
+Sinh viên tích lũy tối thiểu 10 tín chỉ, chọn 01 trong 03 phương án sau đây:
+Phương án 1:
+- Tên học phần: Khóa luận tốt nghiệp
+- Mã học phần: CSC10251
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 2:
+- Tên học phần: Thực tập tốt nghiệp
+- Mã học phần: CSC10252
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 3:
+- Tên học phần: Thực tập dự án tốt nghiệp
+- Mã học phần: CSC10204
+- Số tín chỉ: 6
+- Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Chuyên đề đồ họa máy tính  
+Mã học phần: CSC16110  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn: 
+Tên học phần: Chuyên đề thị giác máy tính  
+Mã học phần: CSC16111  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Chuyên đề ảnh số và video số  
+Mã học phần: CSC16112  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+7.2.3.4. Kiến thức tốt nghiệp Chuyên ngành An toàn thông tín
+Sinh viên tích lũy tối thiểu 10 tín chỉ, chọn 01 trong 03 phương án sau đây:
+Phương án 1:
+- Tên học phần: Khóa luận tốt nghiệp
+- Mã học phần: CSC10251
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 2:
+- Tên học phần: Thực tập tốt nghiệp
+- Mã học phần: CSC10252
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 3:
+- Tên học phần: Thực tập dự án tốt nghiệp
+- Mã học phần: CSC10204
+- Số tín chỉ: 6
+- Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Đồ án mã hóa ứng dụng và an ninh thông tin  
+Mã học phần: CSC15201  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: An toàn và phục hồi dữ liệu  
+Mã học phần: CSC15104  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+7.2.3.5. Kiến thức tốt nghiệp Chuyên ngành Khoa học dữ liệu
+Sinh viên tích lũy tối thiêu 10 tín chỉ, chọn 01 trong 03 phương án sau đây:
+Phương án 1:
+- Tên học phần: Khóa luận tốt nghiệp
+- Mã học phần: CSC10251
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 2:
+- Tên học phần: Thực tập tốt nghiệp
+- Mã học phần: CSC10252
+- Số tín chỉ: 10
+- Loại học phần: Tự chọn
+
+Phương án 3:
+- Tên học phần: Thực tập dự án tốt nghiệp
+- Mã học phần: CSC10204
+- Số tín chỉ: 6
+- Loại học phần: Tự chọn
+
+Học phần tự chọn:
+Tên học phần: Ứng dụng phân tích dữ liệu thông minh  
+Mã học phần: CSC14114  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Khoa học dữ liệu ứng dụng  
+Mã học phần: CSC14115  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+Học phần tự chọn:
+Tên học phần: Lập trình song song ứng dụng  
+Mã học phần: CSC14116  
+Số tín chỉ: 4  
+Loại học phần: Tự chọn  
+
+8. Dự kiến kế hoạch giảng dạy Ngành Khoa học máy tính
+8.1. Dự kiến kế hoạch giảng dạy Chuyên ngành Khoa học máy tính
+8.1.1. Các môn học Học kỳ 1 năm 1 Chuyên ngành Khoa học máy tính
+BAA00030 Giáo dục quốc phòng – An ninh 
+BAA00021 Thể dục 1
+ADD00031 Anh văn 1
+MTH00003 Vi tích phân 1B 
+MTH00081 Thực hành Vi tích phân 1B 
+MTH00041 Toán rời rạc
+MTH00086 Thực hành Toán rời rạc 
+CSC00004 Nhập môn công nghệ thông tin 
+CSC10001 Nhập môn lập trình
+
+8.1.2. Các môn học Học kỳ 2 năm 1 Chuyên ngành Khoa học máy tính
+BAA00022 Thể dục 2 
+ADD00032 Anh văn 2 
+BAA00004 Pháp luật đại cương 
+CHE00001 Hóa đại cương 1 
+CHE00081 Thực hành Hóa đại cương 1 
+BIO00001 Sinh đại cương 1 
+BIO00081 Thực tập Sinh đại cương 1 
+PHY00001 Vật lý đại cương 1 (Cơ - Nhiệt) 
+PHY00081 Thực hành Vật lý đại cương 
+MTH00004 Vi tích phân 2B 
+MTH00082 Thực hành Vi tích phân 2B  
+MTH00030 Đại số tuyến tính 
+MTH00083 Thực hành Đại số tuyến tính 
+CSC10002 Kỹ thuật lập trình 
+
+8.1.3. Các môn học Học kỳ 1 năm 2 Chuyên ngành Khoa học máy tính 
+ADD00033 Anh văn 3 
+CHE00002 Hóa đại cương 2 
+CHE00082 Thực hành Hóa đại cương 2 
+BIO00002 Sinh đại cương 2 
+BIO00082 Thực tập Sinh đại cương 2 
+PHY00002 Vật lý đại cương 2 (Điện từ – Quang) 
+MTH00040 Xác suất thống kê 
+MTH00085 Thực hành Xác suất thống kê
+MTH00050 Toán học tổ hợp 
+CSC10004 Cấu trúc dữ liệu và giải thuật 
+CSC10008 Mạng máy tính 
+
+8.1.4. Các môn học Học kỳ 2 năm 2 Chuyên ngành Khoa học máy tính   
+ADD00034 Anh văn 4 
+BAA00101 Triết học Mác – Lênin 
+BAA00005 Kinh tế đại cương 
+BAA00006 Tâm lý đại cương 
+BAA00007 Phương pháp luận sáng tạo 
+MTH00051 Toán ứng dụng và thống kê
+MTH00052 Phương pháp tính 
+MTH00053 Lý thuyết số 
+CSC10003 Phương pháp lập trình hướng đối tượng 
+CSC10006 Cơ sở dữ liệu 
+CSC10009 Hệ thống máy tính
+CSC10121 Kỹ năng mềm (Học kỳ hè năm 2)
+
+8.1.5. Các môn học Học kỳ 1 năm 3 Chuyên ngành Khoa học máy tính
+BAA00102 Kinh tế chính trị Mác – Lênin 
+GEO00002 Khoa học Trái đất 
+ENV00001 Môi trường đại cương 
+ENV00003 Con người và môi trường 
+CSC10007 Hệ điều hành 
+CSC14004 Khai thác dữ liệu và ứng dụng
+CSC14111 Nhập môn thiết kế và phân tích giải thuật
+CSC16005 Xử lý ảnh số và video số
+CSC14003 Cơ sở trí tuệ nhân tạo
+
+8.1.6. Các môn học Học kỳ 2 năm 3 Chuyên ngành Khoa học máy tính
+CSC13002 Nhập môn công nghệ phần mềm
+BAA00103 Chủ nghĩa xã hội khoa học
+CSC10102 Kiến tập nghề nghiệp 
+CSC10104 Quy hoạch tuyến tính 
+CSC14005 Nhập môn học máy
+CSC14006 Nhận dạng
+CSC14008 Phương pháp nghiên cứu khoa học
+CSC10108 Trực quan hóa dữ liệu 
+CSC14118 Nhập môn dữ liệu lớn
+CSC14001 Automata và ngôn ngữ hình thức
+CSC10103 Khởi nghiệp (Học kỳ hè năm 3)
+
+8.1.7. Các môn học Học kỳ 1 năm 4 Chuyên ngành Khoa học máy tính
+BAA00104 Lịch sử Đảng Cộng sản Việt Nam
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC14002 Các hệ cơ sở tri thức 
+CSC14112 Sinh trắc học
+CSC14114 Ứng dụng dữ liệu lớn 
+CSC14113 Trình biên dịch
+CSC14117 Nhập môn lập trình kết nối vạn vật
+CSC14119 Nhập môn khoa học dữ liệu 
+CSC14120 Lập trình song song
+
+8.1.8. Các môn học Học kỳ 2 năm 4 Chuyên ngành Khoa học máy tính
+BAA00003 Tư tưởng Hồ Chí Minh 
+CSC10108 Trực quan hóa dữ liệu 
+CSC12102 Chuyên đề chọn lọc trong Hệ thống thông tin 
+CSC17101 Hệ thống tư vấn 
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC14101 Ẩn dữ liệu và chia sẻ thông tin
+CSC14105 Khoa học về web
+CSC17001 Phân tích dữ liệu thông minh
+CSC14115 Khoa học dữ liệu ứng dụng
+CSC14116 Lập trình song song ứng dụng
+
+8.2. Dự kiến kế hoạch giảng dạy Chuyên ngành Công nghệ tri thức
+8.2.1. Các môn học Học kỳ 1 năm 1 Chuyên ngành Công nghệ tri thức
+BAA00030 Giáo dục quốc phòng – An ninh 
+BAA00021 Thể dục 1
+ADD00031 Anh văn 1
+MTH00003 Vi tích phân 1B 
+MTH00081 Thực hành Vi tích phân 1B 
+MTH00041 Toán rời rạc
+MTH00086 Thực hành Toán rời rạc 
+CSC00004 Nhập môn công nghệ thông tin 
+CSC10001 Nhập môn lập trình
+
+8.2.2. Các môn học Học kỳ 2 năm 1 Chuyên ngành Công nghệ tri thức
+BAA00022 Thể dục 2 
+ADD00032 Anh văn 2 
+BAA00004 Pháp luật đại cương 
+CHE00001 Hóa đại cương 1 
+CHE00081 Thực hành Hóa đại cương 1 
+BIO00001 Sinh đại cương 1 
+BIO00081 Thực tập Sinh đại cương 1 
+PHY00001 Vật lý đại cương 1 (Cơ - Nhiệt) 
+PHY00081 Thực hành Vật lý đại cương 
+MTH00004 Vi tích phân 2B 
+MTH00082 Thực hành Vi tích phân 2B  
+MTH00030 Đại số tuyến tính 
+MTH00083 Thực hành Đại số tuyến tính 
+CSC10002 Kỹ thuật lập trình 
+
+8.2.3. Các môn học Học kỳ 1 năm 2 Chuyên ngành Công nghệ tri thức
+ADD00033 Anh văn 3 
+CHE00002 Hóa đại cương 2 
+CHE00082 Thực hành Hóa đại cương 2 
+BIO00002 Sinh đại cương 2
+BIO00082 Thực tập Sinh đại cương 2 
+PHY00002 Vật lý đại cương 2 (Điện từ – Quang) 
+MTH00040 Xác suất thống kê 
+MTH00085 Thực hành Xác suất thống kê 
+MTH00050 Toán học tô hợp 
+CSC10004 Cấu trúc dữ liệu và giải thuật 
+CSC10008 Mạng máy tính 
+
+8.2.4. Các môn học Học kỳ 2 năm 2 Chuyên ngành Công nghệ tri thức
+ADD00034 Anh văn 4 
+BAA00101 Triết học Mác – Lênin 
+BAA00005 Kinh tế đại cương 
+BAA00006 Tâm lý đại cương 
+BAA00007 Phương pháp luận sáng tạo 
+MTH00051 Toán ứng dụng và thống kê 
+MTH00052 Phương pháp tính 
+MTH00053 Lý thuyết số 
+CSC10003 Phương pháp lập trình hướng đối tượng 
+CSC10006 Cơ sở dữ liệu 
+CSC10009 Hệ thống máy tính
+CSC10121 Kỹ năng mềm (Học kỳ hè năm 2)
+
+8.2.5. Các môn học Học kỳ 1 năm 3 Chuyên ngành Công nghệ tri thức
+BAA00102 Kinh tế chính trị Mác – Lênin 
+GEO00002 Khoa học Trái đất 
+ENV00001 Môi trường đại cương 
+ENV00003 Con người và môi trường
+CSC10007 Hệ điều hành 
+CSC14003 Cơ sở trí tuệ nhân tạo 
+CSC14007 Nhập môn phân tích độ phức tạp thuật toán
+CSC15005 Nhập môn mã hóa – mật mã
+CSC15006 Nhập môn xử lý ngôn ngữ tự nhiên
+CSC15109 Nhập môn tính toán lượng từ
+
+8.2.6. Các môn học Học kỳ 2 năm 3 Chuyên ngành Công nghệ tri thức
+CSC13002 Nhập môn công nghệ phần mềm
+BAA00103 Chủ nghĩa xã hội khoa học
+CSC10102 Kiến tập nghề nghiệp 
+CSC10104 Quy hoạch tuyến tính 
+CSC10106 Thuật toán tổ hợp ứng dụng
+CSC10107 Thực tập thực tế
+CSC15002 Bảo mật cơ sở dữ liệu
+CSC15003 Mã hóa ứng dụng 
+CSC15004 Học thống kê
+CSC15007 Thống kê máy tính và ứng dụng
+CSC15012 Ứng dụng xử lý ngôn ngữ tự nhiên trong doanh nghiệp
+CSC15107 Phân tích dữ liệu bảo toàn tinh riêng tư
+CSC15108 Pháp chứng cho dữ liệu số
+CSC15105 Khai thác dữ liệu văn bản và ứng dụng
+CSC10103 Khởi nghiệp (Học kỳ hè năm 3)
+
+8.2.7. Các môn học Học kỳ 1 năm 4 Chuyên ngành Công nghệ tri thức
+BAA00104 Lịch sử Đảng Cộng sản Việt Nam
+CSC15001 An ninh máy tính
+CSC15009 Xử lý tín hiệu số
+CSC15011 Nhập môn ngôn ngữ học thống kê và ứng dụng
+CSC15010 Blockchain và ứng dụng
+CSC15102 Phân tích mạng xã hội
+CSC14120 Lập trình song song
+CSC16106 Nhập môn lập trình điều khiển thiết bị thông minh
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC14002 Các hệ cơ sở tri thức 
+CSC15104 An toàn và phục hồi dữ liệu
+CSC15106 Seminar công nghệ tri thức
+
+8.2.8. Các môn học Học kỳ 2 năm 4 Chuyên ngành Công nghệ tri thức
+BAA00003 Tư tưởng Hồ Chí Minh 
+CSC14101 Ẩn dữ liệu và chia sẻ thông tin 
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC15201 Đồ án mã hóa ứng dụng và an ninh thông tin
+CSC15202 Đồ án tốt nghiệp hướng ứng dụng xử lý ngôn ngữ tự nhiên
+CSC15106 Seminar công nghệ tri thức
+
+8.3. Dự kiến kế hoạch giảng dạy Chuyên ngành Thị giác máy tính
+8.3.1. Các môn học Học kỳ 1 năm 1 Chuyên ngành Thị giác máy tính
+BAA00030 Giáo dục quốc phòng – An ninh 
+BAA00021 Thể dục 1
+ADD00031 Anh văn 1
+MTH00003 Vi tích phân 1B 
+MTH00081 Thực hành Vi tích phân 1B 
+MTH00041 Toán rời rạc
+MTH00086 Thực hành Toán rời rạc 
+CSC00004 Nhập môn công nghệ thông tin 
+CSC10001 Nhập môn lập trình
+
+8.3.2. Các môn học Học kỳ 2 năm 1 Chuyên ngành Thị giác máy tính
+BAA00022 Thể dục 2 
+ADD00032 Anh văn 2 
+BAA00004 Pháp luật đại cương 
+CHE00001 Hóa đại cương 1 
+CHE00081 Thực hành Hóa đại cương 1 
+BIO00001 Sinh đại cương 1 
+BIO00081 Thực tập Sinh đại cương 1 
+PHY00001 Vật lý đại cương 1 (Cơ - Nhiệt) 
+PHY00081 Thực hành Vật lý đại cương 
+MTH00004 Vi tích phân 2B 
+MTH00082 Thực hành Vi tích phân 2B  
+MTH00030 Đại số tuyến tính 
+MTH00083 Thực hành Đại số tuyến tính 
+CSC10002 Kỹ thuật lập trình 
+
+8.3.3. Các môn học Học kỳ 1 năm 2 Chuyên ngành Thị giác máy tính
+ADD00033 Anh văn 3 
+CHE00002 Hóa đại cương 2 
+CHE00082 Thực hành Hóa đại cương 2 
+BIO00002 Sinh đại cương 2 
+BIO00082 Thực tập Sinh đại cương 2 
+PHY00002 Vật lý đại cương 2 (Điện từ – Quang) 
+MTH00040 Xác suất thống kê 
+MTH00085 Thực hành Xác suất thống kê 
+MTH00050 Toán học tô hợp 
+CSC10004 Cấu trúc dữ liệu và giải thuật 
+CSC10008 Mạng máy tính 
+
+8.3.4. Các môn học Học kỳ 2 năm 2 Chuyên ngành Thị giác máy tính
+ADD00034 Anh văn 4 
+BAA00101 Triết học Mác – Lênin 
+BAA00005 Kinh tế đại cương 
+BAA00006 Tâm lý đại cương 
+BAA00007 Phương pháp luận sáng tạo 
+MTH00051 Toán ứng dụng và thống kê 
+MTH00052 Phương pháp tính 
+MTH00053 Lý thuyết số 
+CSC10003 Phương pháp lập trình hướng đối tượng 
+CSC10006 Cơ sở dữ liệu 
+CSC10009 Hệ thống máy tính
+CSC10121 Kỹ năng mềm (Học kỳ hè năm 2)
+
+8.3.5. Các môn học Học kỳ 1 năm 3 Chuyên ngành Thị giác máy tính
+BAA00102 Kinh tế chính trị Mác – Lênin 
+GEO00002 Khoa học Trái đất 
+ENV00001 Môi trường đại cương 
+ENV00003 Con người và môi trường
+CSC10007 Hệ điều hành 
+CSC14003 Cơ sở trí tuệ nhân tạo 
+CSC16001 Đồ họa máy tính
+CSC16005 Xử lý ảnh số và video số
+
+8.3.6. Các môn học Học kỳ 2 năm 3 Chuyên ngành Thị giác máy tính 
+CSC13002 Nhập môn công nghệ phần mềm
+BAA00103 Chủ nghĩa xã hội khoa học
+CSC16003 Phân tích thống kê dữ liệu nhiều biến
+CSC16004 Thị giác máy tính
+CSC16101 Đồ họa ứng dụng
+CSC16109 Ứng dụng xử lý ảnh số và video só
+
+8.3.7. Các môn học Học kỳ 1 năm 4 Chuyên ngành Thị giác máy tính 
+BAA00104 Lịch sử Đảng Cộng sản Việt Nam
+CSC16002 Phương pháp toán trong phân tích dữ liệu thị giác
+CSC16102 Kỹ thuật lập trình xử lý ảnh số và video số
+CSC16106 Nhập môn lập trình điều khiển thiết bị thông minh
+CSC16107 Ứng dụng thị giác máy tính
+CSC16114 Học sâu trong thị giác máy tính
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+
+8.3.8. Các môn học Học kỳ 2 năm 4 Chuyên ngành Thị giác máy tính 
+BAA00003 Tư tưởng Hồ Chí Minh 
+CSC16105 Truy vấn thông tin thị giác 
+CSC16113 Thị giác máy tính ba chiều
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC16110 Chuyên đề Đồ họa máy tính
+CSC16111 Chuyên đề Thị giác máy tinh
+CSC16112 Chuyên đề Xử lý ảnh số và video số
+
+8.4. Dự kiến kế hoạch giảng dạy Chuyên ngành An toàn thông tin
+8.4.1. Các môn học Học kỳ 1 năm 1 Chuyên ngành An toàn thông tin
+BAA00030 Giáo dục quốc phòng – An ninh 
+BAA00021 Thể dục 1
+ADD00031 Anh văn 1
+MTH00003 Vi tích phân 1B 
+MTH00081 Thực hành Vi tích phân 1B 
+MTH00041 Toán rời rạc
+MTH00086 Thực hành Toán rời rạc 
+CSC00004 Nhập môn công nghệ thông tin 
+CSC10001 Nhập môn lập trình
+
+8.4.2. Các môn học Học kỳ 2 năm 1 Chuyên ngành An toàn thông tin
+BAA00022 Thể dục 2 
+ADD00032 Anh văn 2 
+BAA00004 Pháp luật đại cương 
+CHE00001 Hóa đại cương 1 
+CHE00081 Thực hành Hóa đại cương 1 
+BIO00001 Sinh đại cương 1 
+BIO00081 Thực tập Sinh đại cương 1 
+PHY00001 Vật lý đại cương 1 (Cơ - Nhiệt) 
+PHY00081 Thực hành Vật lý đại cương 
+MTH00004 Vi tích phân 2B 
+MTH00082 Thực hành Vi tích phân 2B  
+MTH00030 Đại số tuyến tính 
+MTH00083 Thực hành Đại số tuyến tính 
+CSC10002 Kỹ thuật lập trình 
+
+8.4.3. Các môn học Học kỳ 1 năm 2 Chuyên ngành An toàn thông tin
+ADD00033 Anh văn 3 
+CHE00002 Hóa đại cương 2 
+CHE00082 Thực hành Hóa đại cương 2 
+BIO00002 Sinh đại cương 2 
+BIO00082 Thực tập Sinh đại cương 2 
+PHY00002 Vật lý đại cương 2 (Điện từ – Quang) 
+MTH00040 Xác suất thống kê 
+MTH00085 Thực hành Xác suất thống kê 
+MTH00050 Toán học tô hợp 
+CSC10004 Cấu trúc dữ liệu và giải thuật 
+CSC10008 Mạng máy tính 
+
+8.4.4. Các môn học Học kỳ 2 năm 2 Chuyên ngành An toàn thông tin
+ADD00034 Anh văn 4 
+BAA00101 Triết học Mác – Lênin 
+BAA00005 Kinh tế đại cương 
+BAA00006 Tâm lý đại cương 
+BAA00007 Phương pháp luận sáng tạo 
+MTH00051 Toán ứng dụng và thống kê 
+MTH00052 Phương pháp tính 
+MTH00053 Lý thuyết số 
+CSC10003 Phương pháp lập trình hướng đối tượng 
+CSC10006 Cơ sở dữ liệu 
+CSC10009 Hệ thống máy tính
+CSC10121 Kỹ năng mềm (Học kỳ hè năm 2)
+
+8.4.5. Các môn học Học kỳ 1 năm 3 Chuyên ngành An toàn thông tin
+BAA00102 Kinh tế chính trị Mác – Lênin 
+GEO00002 Khoa học Trái đất 
+ENV00001 Môi trường đại cương 
+ENV00003 Con người và môi trường 
+CSC10007 Hệ điều hành 
+CSC14003 Cơ sở trí tuệ nhân tạo 
+CSC15005 Nhập môn mã hóa – mật mã
+CSC11004 Mạng máy tính nâng cao
+CSC14007 Nhập môn phân tích độ phức tạp thuật toán
+
+8.4.6. Các môn học Học kỳ 2 năm 3 Chuyên ngành An toàn thông tin
+CSC13002 Nhập môn công nghệ phần mềm
+BAA00103 Chủ nghĩa xã hội khoa học
+CSC10104 Quy hoạch tuyến tính
+CSC10107 Thực tập thực tế
+CSC15002 Bảo mật cơ sở dữ liệu
+CSC15003 Mã hóa ứng dụng
+CSC12001 An toàn và bảo mật dữ liệu trong hệ thống thông tin
+CSC14005 Nhập môn học máy
+CSC15004 Học thống kê
+CSC15107 Phân tích dữ liệu bảo toàn tính riêng tư
+
+8.4.7. Các môn học Học kỳ 1 năm 4 Chuyên ngành An toàn thông tin
+BAA00104 Lịch sử Đảng Cộng sản Việt Nam
+CSC15001 An ninh máy tính
+CSC15010 Blockchain và ứng dụng
+CSC14117 Nhập môn lập trình kết nối vạn vật
+CSC14120 Lập trình song song
+CSC16106 Nhập môn lập trình điều khiển thiết bị thông minh
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC15104 An toàn và phục hồi dữ liệu
+
+8.4.8. Các môn học Học kỳ 2 năm 4 Chuyên ngành An toàn thông tin
+BAA00003 Tư tưởng Hồ Chí Minh 
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC15201 Đồ án mã hóa ứng dụng và an ninh thông tin
+
+8.5. Dự kiến kế hoạch giảng dạy Chuyên ngành Khoa học dữ liệu
+8.5.1. Các môn học Học kỳ 1 năm 1 Chuyên ngành Khoa học dữ liệu
+BAA00030 Giáo dục quốc phòng – An ninh 
+BAA00021 Thể dục 1
+ADD00031 Anh văn 1
+MTH00003 Vi tích phân 1B 
+MTH00081 Thực hành Vi tích phân 1B 
+MTH00041 Toán rời rạc
+MTH00086 Thực hành Toán rời rạc 
+CSC00004 Nhập môn công nghệ thông tin 
+CSC10001 Nhập môn lập trình
+
+8.5.2. Các môn học Học kỳ 2 năm 1 Chuyên ngành Khoa học dữ liệu
+BAA00022 Thể dục 2 
+ADD00032 Anh văn 2 
+BAA00004 Pháp luật đại cương 
+CHE00001 Hóa đại cương 1 
+CHE00081 Thực hành Hóa đại cương 1 
+BIO00001 Sinh đại cương 1 
+BIO00081 Thực tập Sinh đại cương 1 
+PHY00001 Vật lý đại cương 1 (Cơ - Nhiệt) 
+PHY00081 Thực hành Vật lý đại cương 
+MTH00004 Vi tích phân 2B 
+MTH00082 Thực hành Vi tích phân 2B  
+MTH00030 Đại số tuyến tính 
+MTH00083 Thực hành Đại số tuyến tính 
+CSC10002 Kỹ thuật lập trình 
+
+8.5.3. Các môn học Học kỳ 1 năm 2 Chuyên ngành Khoa học dữ liệu
+ADD00033 Anh văn 3 
+CHE00002 Hóa đại cương 2 
+CHE00082 Thực hành Hóa đại cương 2 
+BIO00002 Sinh đại cương 2 
+BIO00082 Thực tập Sinh đại cương 2 
+PHY00002 Vật lý đại cương 2 (Điện từ – Quang) 
+MTH00040 Xác suất thống kê 
+MTH00085 Thực hành Xác suất thống kê 
+MTH00050 Toán học tô hợp 
+CSC10004 Cấu trúc dữ liệu và giải thuật 
+CSC10008 Mạng máy tính 
+
+8.5.4. Các môn học Học kỳ 2 năm 2 Chuyên ngành Khoa học dữ liệu 
+ADD00034 Anh văn 4 
+BAA00101 Triết học Mác – Lênin 
+BAA00005 Kinh tế đại cương 
+BAA00006 Tâm lý đại cương 
+BAA00007 Phương pháp luận sáng tạo 
+MTH00051 Toán ứng dụng và thống kê 
+MTH00052 Phương pháp tính 
+MTH00053 Lý thuyết số
+CSC10003 Phương pháp lập trình hướng đối tượng 
+CSC10006 Cơ sở dữ liệu 
+CSC10009 Hệ thống máy tính
+CSC10121 Kỹ năng mềm (Học kỳ hè năm 2)
+
+8.5.5. Các môn học Học kỳ 1 năm 3 Chuyên ngành Khoa học dữ liệu 
+BAA00102 Kinh tế chính trị Mác – Lênin 
+GEO00002 Khoa học Trái đất 
+ENV00001 Môi trường đại cương 
+ENV00003 Con người và môi trường
+CSC10007 Hệ điều hành 
+CSC14003 Cơ sở trí tuệ nhân tạo 
+CSC14119 Nhập môn kKhoa học dữ liệu
+CSC17104 Lập trình cho kKhoa học dữ liệu
+
+8.5.6. Các môn học Học kỳ 2 năm 3 Chuyên ngành Khoa học dữ liệu
+CSC13002 Nhập môn công nghệ phần mềm
+BAA00103 Chủ nghĩa xã hội khoa học
+CSC10108 Trực quan hóa dữ liệu
+CSC14005 Nhập môn học máy 
+CSC15007 Thống kê máy tính và ứng dụng
+CSC17001 Phân tích dữ liệu thông minh 
+CSC14004 Khai thác dữ liệu và ứng dụng
+CSC14118 Nhập môn dữ liệu lớn
+CSC15004 Học thống kê
+
+8.5.7. Các môn học Học kỳ 1 năm 4 Chuyên ngành Khoa học dữ liệu
+BAA00104 Lịch sử Đảng Cộng sản Việt Nam
+CSC14117 Nhập môn lập trình kết nổi vạn vật
+CSC14120 Lập trình song song
+CSC15102 Phân tích mạng xã hội
+CSC17102 Học sâu cho Khoa học dữ liệu 
+CSC17103 Khai thác dữ liệu đồ thị 
+CSC17106 Xử lý phân tích dữ liệu trực tuyến
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC17107 Ứng dụng phân tích dữ liệu thông minh
+
+8.5.8. Các môn học Học kỳ 2 năm 4 Chuyên ngành Khoa học dữ liệu
+BAA00003 Tư tưởng Hồ Chí Minh 
+CSC10251 Khóa luận tốt nghiệp 
+CSC10252 Thực tập tốt nghiệp 
+CSC10204 Thực tập dự án tốt nghiệp 
+CSC14115 Khoa học dữ liệu ứng dụng
+CSC14116 Lập trình song song ứng dụng
+
+9. Khả năng liên thông với các chương trình đào tạo khác
+Sinh viên có thể liên thông với chương trình đào tạo trình độ đại học của các ngành sau đây: 
+Ngành Công nghệ thông tin 
+Ngành Kỹ thuật phần mềm 
+Ngành Khoa học máy tính 
+Ngành Trí tuệ nhân tạo
+Ngoài ra, sinh viên cũng có thể liên thông với chương trình đào tạo trình độ thạc sỹ của các ngành sau đây: 
+Ngành Hệ thống thông tin 
+Ngành Khoa học máy tính 
+Ngành Trí tuệ nhân tạo 
+Sinh viên khi tham gia vào chương trình liên thông môn học Đại học – Thạc sỹ nói trên sẽ được tùy ý lựa chọn học tối đa 04 học phần cùng với bậc đào tạo Thạc sỹ và được xét chuyển điểm tương đương cho bậc đại học.
