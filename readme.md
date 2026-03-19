@@ -11,3 +11,5 @@ Front-end:
 + Bước 2: Trong file 'front-end\src\components\ChatBot.jsx' tìm đường dẫn có dạng 'https://xxxx-xxx-xxx.ngrok-free.app/rag/' xem có khớp với đường dẫn đã được cài đặt trong server back-end không. Nếu đường dẫn không trùng với back-end thì cập nhật lại đường dẫn.
 + Bước 3: Chạy lệnh “npm install” để cài đặt toàn bộ package vào máy.
 + Bước 4: Sau khi chạy sẽ hiển thị địa chỉ 'http://localhost:5173/', truy cập đường dẫn để mở giao diện hỏi đáp và sử dụng các tính năng của hệ thống.
+
+DEMO: https://www.youtube.com/watch?v=EotYfkb3Oh4&feature=youtu.be
