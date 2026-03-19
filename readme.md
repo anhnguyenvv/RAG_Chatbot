@@ -12,4 +12,4 @@ Front-end:
 + Bước 3: Chạy lệnh “npm install” để cài đặt toàn bộ package vào máy.
 + Bước 4: Sau khi chạy sẽ hiển thị địa chỉ 'http://localhost:5173/', truy cập đường dẫn để mở giao diện hỏi đáp và sử dụng các tính năng của hệ thống.
 
-DEMO: https://www.youtube.com/watch?v=EotYfkb3Oh4&feature=youtu.be
+DEMO: [Link](https://www.youtube.com/watch?v=EotYfkb3Oh4&feature=youtu.be)
