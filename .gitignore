@@ -16,7 +16,7 @@ env/
 .mypy_cache/
 .ipynb_checkpoints/
 
-# Environment files
+# Environment files (local only; do not commit secrets)
 .env
 .env.*
 !.env.example

@@ -84,16 +84,16 @@ function ChatBot(props) {
   const handleReferenceClick = (sources, sourceType) => {
     SetReference({
       title:
-        sourceType == "wiki"
+        sourceType === "wiki"
           ? sources.metadata.title
-          : sources.metadata.page==undefined? "Chương trình đào tạo Khóa 2023" : "Trang " + sources.metadata.page + " (FITHCMUSFITHCMUS)",
-      source: sourceType == "wiki" ? "Wikipedia" : "FITHCMUS",
+          : sources.metadata.page === undefined ? "Chương trình đào tạo Khóa 2023" : "Trang " + sources.metadata.page + " (FITHCMUSFITHCMUS)",
+      source: sourceType === "wiki" ? "Wikipedia" : "FITHCMUS",
       url:
-        sourceType == "wiki"
+        sourceType === "wiki"
           ? sources.metadata.source
           : "https://www.fit.hcmus.edu.vn/vn/",
       text:
-        sourceType == "wiki" ? sources.metadata.summary : sources.page_content,
+        sourceType === "wiki" ? sources.metadata.summary : sources.page_content,
     });
   };
   return (
