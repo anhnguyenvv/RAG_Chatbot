@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
+import { appConfig } from "../config/env";
 
 function IssuePage() {
   const [feedback, setFeedback] = useState("");
@@ -12,6 +13,15 @@ function IssuePage() {
       return;
     }
 
+    if (
+      !appConfig.emailServiceId ||
+      !appConfig.emailTemplateId ||
+      !appConfig.emailPublicKey
+    ) {
+      alert("Thiếu cấu hình EmailJS. Vui lòng kiểm tra file .env.");
+      return;
+    }
+
     let templateParams = {
       from_name: userEmail, // Email của người gửi
       message: feedback, // Nội dung phản hồi
@@ -20,10 +30,10 @@ function IssuePage() {
 
     emailjs
       .send(
-        "service_3pur135", // Thay bằng Service ID của bạn
-        "template_pxhe9ab", // Thay bằng Template ID của bạn
+        appConfig.emailServiceId,
+        appConfig.emailTemplateId,
         templateParams,
-        "2wVBISFW8_j42sOUf" // Thay bằng Public Key của bạn
+        appConfig.emailPublicKey
       )
       .then(
         function (response) {
