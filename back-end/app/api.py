@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from .config import load_configs
 from .history_store import ChatHistoryStore
@@ -26,6 +27,8 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    # Expose Prometheus metrics at /metrics for monitoring stack.
+    Instrumentator().instrument(app).expose(app)
 
     @app.get("/")
     def read_root():

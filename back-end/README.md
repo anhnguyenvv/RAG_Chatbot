@@ -19,21 +19,51 @@ Back-end da duoc tach khoi notebook thanh ung dung FastAPI module hoa.
 pip install -r requirements.txt
 ```
 
-2. Tao `.env` tu `.env.example`.
+1. Tao `.env` tu `.env.example`.
 
-3. Chay API:
+1. Chay API:
 
 ```bash
 python main.py
 ```
 
-4. Test nhanh:
+1. Test nhanh:
 
 - `GET /`
 - `GET /rag/qdrant?q=...`
 - `GET /rag/wiki?q=...`
 - `GET /history?limit=50`
 - `GET /history/{entry_id}`
+- `GET /metrics` (Prometheus metrics)
+
+## Monitoring stack (Prometheus + Grafana)
+
+1. Chay backend truoc (mac dinh `http://127.0.0.1:8000`).
+
+1. Cai dependency moi:
+
+```bash
+pip install -r requirements.txt
+```
+
+1. Tu thu muc goc du an, chay monitoring stack:
+
+```bash
+docker compose -f monitoring/docker-compose.monitoring.yml up -d
+```
+
+1. Truy cap:
+
+- Prometheus: `http://localhost:9090`
+- Grafana: `http://localhost:3000` (user/pass mac dinh: `admin` / `admin`)
+
+1. Dashboard co san trong Grafana:
+
+- Folder: `RAG Monitoring`
+- Dashboard: `RAG Backend Overview`
+
+Luu y: file `monitoring/prometheus/prometheus.yml` dang scrape target `host.docker.internal:8000`.
+Neu backend chay o host/port khac, hay sua lai target cho phu hop.
 
 ## Chat history database
 

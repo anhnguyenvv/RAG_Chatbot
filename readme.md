@@ -18,3 +18,13 @@ Front-end:
 + Bước 6: Chạy lệnh “npm run dev”, sau đó truy cập địa chỉ 'http://localhost:5173/' để sử dụng hệ thống.
 
 DEMO: [Link](https://www.youtube.com/watch?v=EotYfkb3Oh4&feature=youtu.be)
+
+
+
+Monitoring stack (Prometheus + Grafana):
+
++ Chay backend truoc tai cong `8000` de endpoint `/metrics` san sang.
++ Tu thu muc goc du an, chay: `docker compose -f monitoring/docker-compose.monitoring.yml up -d`.
++ Prometheus: `http://localhost:9090`.
++ Grafana: `http://localhost:3000` (admin/admin).
++ Dashboard duoc provision san: folder `RAG Monitoring`, dashboard `RAG Backend Overview`.
