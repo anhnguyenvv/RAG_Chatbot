@@ -24,6 +24,23 @@ def parse_args():
     parser.add_argument("--chunk-size", type=int, default=None)
     parser.add_argument("--chunk-overlap", type=int, default=None)
     parser.add_argument(
+        "--enable-web-crawl",
+        action="store_true",
+        help="Enable crawling website pages and merge them with local data",
+    )
+    parser.add_argument(
+        "--web-start-urls",
+        default=None,
+        help="Comma-separated seed URLs for crawler, e.g. https://it.hcmus.edu.vn,https://it.hcmus.edu.vn/tin-tuc",
+    )
+    parser.add_argument(
+        "--web-allowed-domains",
+        default=None,
+        help="Comma-separated allowed domains for crawler, e.g. it.hcmus.edu.vn",
+    )
+    parser.add_argument("--web-max-pages", type=int, default=None, help="Maximum pages to crawl")
+    parser.add_argument("--web-timeout-seconds", type=int, default=None, help="HTTP timeout per page")
+    parser.add_argument(
         "--query",
         default="Các môn học Học kỳ 2 năm 3 ngành hệ thống thông tin",
         help="Smoke test query after indexing",
@@ -72,8 +89,18 @@ def main():
         config.chunk_size = args.chunk_size
     if args.chunk_overlap:
         config.chunk_overlap = args.chunk_overlap
+    if args.enable_web_crawl:
+        config.enable_web_crawl = True
+    if args.web_start_urls:
+        config.web_start_urls = [url.strip() for url in args.web_start_urls.split(",") if url.strip()]
+    if args.web_allowed_domains:
+        config.web_allowed_domains = [d.strip() for d in args.web_allowed_domains.split(",") if d.strip()]
+    if args.web_max_pages:
+        config.web_max_pages = args.web_max_pages
+    if args.web_timeout_seconds:
+        config.web_timeout_seconds = args.web_timeout_seconds
 
-    if not Path(config.source_dir).exists():
+    if not Path(config.source_dir).exists() and not config.enable_web_crawl:
         raise FileNotFoundError(f"Source dir does not exist: {config.source_dir}")
 
     result = build_vector_index(config)

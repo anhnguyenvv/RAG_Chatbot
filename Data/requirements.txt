@@ -7,3 +7,5 @@ langchain-text-splitters==0.2.4
 sentence-transformers==3.0.1
 qdrant-client==1.11.2
 python-dotenv==1.0.1
+requests==2.32.3
+beautifulsoup4==4.12.3
