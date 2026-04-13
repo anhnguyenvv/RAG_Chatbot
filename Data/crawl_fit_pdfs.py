@@ -363,6 +363,35 @@ def download_pdf(url: str, dest: Path) -> bool:
         return False
 
 
+# Ký tự có dấu tiếng Việt (Unicode, dải \u1ea0-\u1ef9 là toàn bộ chữ Việt có dấu)
+_VIET_ACCENTED = re.compile(
+    "[\u00e0\u00e1\u00e2\u00e3\u00e8\u00e9\u00ea\u00ec\u00ed\u00f2\u00f3\u00f4\u00f5\u00f9\u00fa\u00fd"
+    "\u0103\u0111\u01b0\u01a1\u1ea0-\u1ef9]",
+    re.UNICODE,
+)
+
+
+def _is_vietnamese_text(text: str, min_ratio: float = 0.015) -> bool:
+    """
+    Kiểm tra text có chứa dấu tiếng Việt Unicode không.
+
+    PDF dùng font encoding cũ (VNI/TCVN3/ABC) sẽ trả về text ASCII nhưng
+    mất hoàn toàn dấu thanh. Nếu tỷ lệ ký tự có dấu < min_ratio thì coi
+    là bị garbled encoding → cần OCR.
+
+    Returns:
+        True  → text hợp lệ, có dấu tiếng Việt
+        False → nghi ngờ garbled encoding / không phải UTF-8 Việt
+    """
+    if not text or len(text) < 20:
+        return False
+    accented = len(_VIET_ACCENTED.findall(text))
+    alpha = sum(1 for c in text if c.isalpha())
+    if alpha == 0:
+        return False
+    return (accented / alpha) >= min_ratio
+
+
 def _load_llm_ocr():
     """Lazy import llm_ocr_pdf từ cùng thư mục."""
     try:
@@ -384,25 +413,13 @@ def extract_text_from_pdf(
     enable_ocr: bool = True,
     ocr_model: str = "qwen",
 ) -> str:
-    """
-    Trích xuất text từ PDF.
 
-    Chiến lược:
-      1. PyMuPDF text layer (nhanh, chính xác với PDF có text)
-      2. Nếu phần lớn là scan và enable_ocr=True:
-         - ocr_model='qwen'        → PaddleOCR layout + Qwen2.5-VL (khuyến nghị)
-         - ocr_model='paddle-only' → PaddleOCR thuần túy (không cần GPU)
-         - ocr_model='gemini'      → Gemini Vision API
-         - ocr_model='gpt4o'       → GPT-4o Vision API
-         - ocr_model='tesseract'   → pytesseract (fallback cũ)
-    """
     try:
         import fitz
     except ImportError:
         print("  [ERROR] PyMuPDF not installed. Run: pip install pymupdf")
         return ""
 
-    # --- Scan detection: đọc nhanh text layer ---
     try:
         doc = fitz.open(str(pdf_path))
         total_pages = len(doc)
@@ -427,20 +444,16 @@ def extract_text_from_pdf(
 
     # --- Nếu phần lớn là scan → dùng OCR pipeline ---
     if enable_ocr and scan_ratio > 0.3:
-        if ocr_model != "tesseract":
-            llm_ocr = _load_llm_ocr()
-            if llm_ocr:
-                print(f"  [OCR] Dùng pipeline: {ocr_model}")
-                try:
-                    return llm_ocr.extract_with_llm_fallback(
-                        pdf_path, model=ocr_model, verbose=True
-                    )
-                except Exception as e:
-                    print(f"  [WARN] OCR pipeline lỗi: {e} — fallback tesseract")
+        llm_ocr = _load_llm_ocr()
+        if llm_ocr:
+            print(f"  [OCR] Dùng pipeline: {ocr_model}")
+            try:
+                return llm_ocr.extract_with_llm_fallback(
+                    pdf_path, model=ocr_model, verbose=True
+                )
+            except Exception as e:
+                print(f"  [WARN] OCR pipeline lỗi: {e} — fallback tesseract")
 
-        # Fallback: pytesseract từng trang
-        print("  [OCR] Fallback: pytesseract")
-        return _ocr_with_tesseract(pdf_path, text_pages)
 
     # --- PDF có text layer → ghép lại ---
     parts = []
@@ -451,38 +464,6 @@ def extract_text_from_pdf(
             parts.append(f"[Trang {i + 1}: ảnh scan]")
     return "\n\n".join(parts)
 
-
-def _ocr_with_tesseract(pdf_path: Path, text_pages: list) -> str:
-    """Fallback OCR bằng pytesseract cho từng trang scan."""
-    try:
-        import fitz
-        import pytesseract
-        from PIL import Image
-        import io as _io
-    except ImportError:
-        print("  [WARN] Thiếu pytesseract/Pillow — bỏ qua OCR")
-        return "\n\n".join(t or "[scan]" for t in text_pages)
-
-    result_parts = []
-    doc = fitz.open(str(pdf_path))
-
-    for page_num, existing_text in enumerate(text_pages):
-        if existing_text:
-            result_parts.append(existing_text)
-            continue
-
-        page = doc[page_num]
-        mat = fitz.Matrix(300 / 72, 300 / 72)
-        pix = page.get_pixmap(matrix=mat)
-        img = Image.open(_io.BytesIO(pix.tobytes("png")))
-        try:
-            ocr_text = pytesseract.image_to_string(img, lang="vie+eng")
-            result_parts.append(ocr_text.strip() or f"[Trang {page_num + 1}: trống]")
-        except Exception:
-            result_parts.append(f"[Trang {page_num + 1}: OCR thất bại]")
-
-    doc.close()
-    return "\n\n".join(result_parts)
 
 
 # ---------------------------------------------------------------------------
