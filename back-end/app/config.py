@@ -28,6 +28,9 @@ class BackendConfig:
     max_context_tokens: int = 2800
     critic_enabled: bool = True
     official_site_allowlist: str = "fit.hcmus.edu.vn"
+    agent_max_iterations: int = 5
+    memory_max_recent_turns: int = 3
+    memory_session_ttl: int = 1800
 
 
 def _to_bool(value: str, default: bool) -> bool:
@@ -77,6 +80,9 @@ def load_configs():
         max_context_tokens=int(os.getenv("MAX_CONTEXT_TOKENS", "2800")),
         critic_enabled=_to_bool(os.getenv("CRITIC_ENABLED", "true"), True),
         official_site_allowlist=os.getenv("OFFICIAL_SITE_ALLOWLIST", "fit.hcmus.edu.vn"),
+        agent_max_iterations=int(os.getenv("AGENT_MAX_ITERATIONS", "5")),
+        memory_max_recent_turns=int(os.getenv("MEMORY_MAX_RECENT_TURNS", "3")),
+        memory_session_ttl=int(os.getenv("MEMORY_SESSION_TTL", "1800")),
     )
 
     _add_data_path()

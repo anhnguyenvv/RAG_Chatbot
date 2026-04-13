@@ -37,8 +37,15 @@ back-end/data/
 build/
 dist/
 .cache/
+Data/pdf_data
+Data/.tmp_pdfs
 
 # Node (workspace-level safety)
 node_modules/
 front-end/node_modules/
 front-end/dist/
+.gitnexus
+.claude
+claude.md
+AGENTS.md
+.github/copilot-instructions.md

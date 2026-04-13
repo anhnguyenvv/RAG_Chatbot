@@ -8,14 +8,13 @@ from .config import load_configs
 from .history_store import ChatHistoryStore
 from .llm_service import LLMServe
 
-VALID_SOURCES = ["qdrant", "wiki", "fit_web", "auto"]
+VALID_SOURCES = ["qdrant", "fit_web", "auto"]
 VALID_MODES = ["classic", "agentic"]
 
 
 def create_app() -> FastAPI:
     backend_config, pipeline_config = load_configs()
 
-    # Validate qdrant config only for qdrant source usage.
     rag_service = LLMServe(backend_config=backend_config, pipeline_config=pipeline_config)
     history_store = ChatHistoryStore(db_path=backend_config.chat_history_db_path)
 
@@ -27,7 +26,6 @@ def create_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    # Expose Prometheus metrics at /metrics for monitoring stack.
     Instrumentator().instrument(app).expose(app)
 
     @app.get("/")
@@ -36,6 +34,8 @@ def create_app() -> FastAPI:
             "message": "API RAG is running",
             "collection": pipeline_config.collection_name,
             "embedding_model": pipeline_config.embedding_model_name,
+            "modes": VALID_MODES,
+            "sources": VALID_SOURCES,
         }
 
     @app.get("/rag/{source}")
@@ -88,7 +88,8 @@ def create_app() -> FastAPI:
                 "fallback_reason",
                 "timings",
                 "request_id",
-                "state",
+                "thought_process",
+                "message_count",
             ]
             for field in optional_fields:
                 if field in output:
@@ -109,5 +110,17 @@ def create_app() -> FastAPI:
         if entry is None:
             raise HTTPException(status_code=404, detail="History entry not found")
         return JSONResponse(content=jsonable_encoder(entry))
+
+    @app.get("/sessions")
+    def list_sessions():
+        sessions = rag_service.memory_store.list_sessions()
+        return JSONResponse(content=jsonable_encoder(sessions))
+
+    @app.delete("/sessions/{session_id}")
+    def clear_session(session_id: str):
+        cleared = rag_service.memory_store.clear_session(session_id)
+        if not cleared:
+            raise HTTPException(status_code=404, detail="Session not found")
+        return JSONResponse(content={"message": f"Session '{session_id}' cleared"})
 
     return app

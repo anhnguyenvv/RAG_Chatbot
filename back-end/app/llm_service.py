@@ -4,16 +4,16 @@ import math
 import re
 from typing import Any
 
-from langchain.embeddings import HuggingFaceInferenceAPIEmbeddings
+from langchain_huggingface import HuggingFaceEndpointEmbeddings
 from langchain_core.documents import Document
-from langchain.prompts import PromptTemplate
-from langchain.retrievers import WikipediaRetriever
+from langchain_core.prompts import PromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_qdrant import QdrantVectorStore
-from langchain.llms import VLLM
 from qdrant_client import QdrantClient
 
-from .agentic import AgenticPipeline
+from .memory import SessionMemoryStore
+from .react_agent import ReactRAGAgent
+from .tools import create_fit_website_tool, create_qdrant_search_tool
 
 
 class LLMServe:
@@ -24,36 +24,22 @@ class LLMServe:
         self.embeddings = self._load_embeddings()
         self.llm = self._load_llm(self.backend_config.generate_model_name)
         self.prompt = self._load_prompt_template()
-        self.agentic_pipeline = AgenticPipeline(
-            dense_retrieve_fn=self._retrieve_dense_documents,
-            sparse_retrieve_fn=self._retrieve_sparse_documents,
-            web_retrieve_fn=self._retrieve_web_documents,
-            rerank_fn=self._rerank_documents,
-            generate_fn=self._generate_answer_from_context,
-            source_payload_fn=self._build_sources_payload,
-            dense_top_k=self.backend_config.retrieval_dense_top_k,
-            sparse_top_k=self.backend_config.retrieval_sparse_top_k,
-            web_top_k=self.backend_config.retrieval_web_top_k,
-            rerank_top_k=self.backend_config.rerank_top_k,
-            max_context_tokens=self.backend_config.max_context_tokens,
-            router_confidence_threshold=self.backend_config.router_confidence_threshold,
-            critic_enabled=self.backend_config.critic_enabled,
+
+        self.memory_store = SessionMemoryStore(
+            max_recent_turns=self.backend_config.memory_max_recent_turns,
+            max_token_limit=self.backend_config.max_context_tokens,
+            session_ttl_seconds=self.backend_config.memory_session_ttl,
         )
 
+        self.react_agent = self._build_react_agent()
+
     def _load_embeddings(self):
-        return HuggingFaceInferenceAPIEmbeddings(
-            model_name=self.pipeline_config.embedding_model_name,
-            api_key=self.pipeline_config.huggingface_api_key,
+        return HuggingFaceEndpointEmbeddings(
+            model=self.pipeline_config.embedding_model_name,
+            huggingfacehub_api_token=self.pipeline_config.huggingface_api_key,
         )
 
     def _load_retriever(self, source: str):
-        if source == "wiki":
-            return WikipediaRetriever(
-                lang="vi",
-                doc_content_chars_max=800,
-                top_k_results=self.backend_config.retrieval_top_k,
-            )
-
         if source in {"fit_web", "auto"}:
             source = "qdrant"
 
@@ -75,17 +61,25 @@ class LLMServe:
 
     def _load_llm(self, model_name: str, max_new_tokens: int = 384):
         if model_name == "gemini":
-            return ChatGoogleGenerativeAI(model="gemini-1.5-flash")
+            return ChatGoogleGenerativeAI(model="gemini-2.0-flash")
 
-        return VLLM(
-            model=model_name,
-            trust_remote_code=True,
-            max_new_tokens=max_new_tokens,
-            top_k=10,
-            top_p=0.95,
-            temperature=0.4,
-            dtype="half",
-        )
+        try:
+            from langchain_community.llms import VLLM
+
+            return VLLM(
+                model=model_name,
+                trust_remote_code=True,
+                max_new_tokens=max_new_tokens,
+                top_k=10,
+                top_p=0.95,
+                temperature=0.4,
+                dtype="half",
+            )
+        except ImportError:
+            raise ValueError(
+                f"VLLM model '{model_name}' requested but langchain-community is not installed. "
+                "Install with: pip install langchain-community"
+            )
 
     def _load_prompt_template(self):
         query_template = """
@@ -111,6 +105,25 @@ class LLMServe:
         """
         return PromptTemplate(template=query_template, input_variables=["context", "question"])
 
+    def _build_react_agent(self) -> ReactRAGAgent:
+        tools = [
+            create_qdrant_search_tool(
+                retriever_fn=self._retrieve_documents,
+                rerank_fn=self._rerank_documents,
+                rerank_top_k=self.backend_config.rerank_top_k,
+            ),
+            create_fit_website_tool(
+                official_site_allowlist=self.backend_config.official_site_allowlist,
+            ),
+        ]
+
+        return ReactRAGAgent(
+            llm=self.llm,
+            tools=tools,
+            memory_store=self.memory_store,
+            max_iterations=self.backend_config.agent_max_iterations,
+        )
+
     def _get_retriever(self, source: str):
         cached = self.retriever_cache.get(source)
         if cached is not None:
@@ -126,14 +139,6 @@ class LLMServe:
             return retriever.invoke(query)
         return retriever.get_relevant_documents(query)
 
-    def _retrieve_dense_documents(self, source: str, query: str, top_k: int) -> list[Any]:
-        previous_top_k = self.backend_config.retrieval_top_k
-        self.backend_config.retrieval_top_k = top_k
-        try:
-            return list(self._retrieve_documents(source=source, query=query))
-        finally:
-            self.backend_config.retrieval_top_k = previous_top_k
-
     @staticmethod
     def _token_overlap_score(query: str, content: str) -> float:
         q_tokens = {t for t in re.split(r"\W+", query.lower()) if len(t) > 1}
@@ -141,77 +146,6 @@ class LLMServe:
             return 0.0
         c_tokens = set(re.split(r"\W+", content.lower()))
         return len(q_tokens.intersection(c_tokens)) / max(1, len(q_tokens))
-
-    def _retrieve_sparse_documents(self, source: str, query: str, top_k: int) -> list[Any]:
-        # Sparse retrieval skeleton: lexical scoring over a wider dense pool.
-        candidate_k = max(top_k * 3, self.backend_config.retrieval_dense_top_k)
-        candidates = self._retrieve_dense_documents(source=source, query=query, top_k=candidate_k)
-        if not candidates:
-            return []
-
-        scored = []
-        for doc in candidates:
-            content = getattr(doc, "page_content", "")
-            score = self._token_overlap_score(query=query, content=content)
-            scored.append((doc, score))
-        scored.sort(key=lambda item: item[1], reverse=True)
-        return [doc for doc, score in scored[:top_k] if score > 0.0]
-
-    def _retrieve_web_documents(self, query: str, top_k: int) -> list[Any]:
-        allowlist = [host.strip() for host in self.backend_config.official_site_allowlist.split(",") if host.strip()]
-        if not allowlist:
-            return []
-
-        try:
-            import httpx
-        except Exception:
-            return []
-
-        documents: list[Any] = []
-        timeout_seconds = 8.0
-        for host in allowlist[:1]:
-            url = f"https://{host}"
-            try:
-                response = httpx.get(url, timeout=timeout_seconds)
-                response.raise_for_status()
-                html = response.text
-            except Exception:
-                continue
-
-            text = ""
-            try:
-                import trafilatura
-
-                extracted = trafilatura.extract(html)
-                if extracted:
-                    text = extracted
-            except Exception:
-                text = ""
-
-            if not text:
-                try:
-                    from bs4 import BeautifulSoup
-
-                    soup = BeautifulSoup(html, "html.parser")
-                    text = " ".join(soup.get_text(" ").split())
-                except Exception:
-                    text = ""
-
-            if not text:
-                continue
-
-            clipped = text[:4000]
-            score = self._token_overlap_score(query=query, content=clipped)
-            metadata = {
-                "source": url,
-                "url": url,
-                "source_type": "official_web",
-                "score": score,
-            }
-            documents.append(Document(page_content=clipped, metadata=metadata))
-
-        documents.sort(key=lambda d: float((d.metadata or {}).get("score", 0.0)), reverse=True)
-        return documents[:top_k]
 
     @staticmethod
     def _cosine_similarity(vec_a: list[float], vec_b: list[float]) -> float:
@@ -298,16 +232,10 @@ class LLMServe:
         requested_mode = (mode or "classic").strip().lower()
 
         if requested_mode == "agentic":
-            if self.backend_config.enable_agentic_pipeline:
-                output = self.agentic_pipeline.run(source=source, query=query, mode=requested_mode, session_id=session_id)
-                if not debug:
-                    output.pop("state", None)
-                    output.pop("timings", None)
-                return output
-
-            classic_output = self._query_classic(source=source, query=query)
-            classic_output["route"] = "classic_fallback"
-            classic_output["fallback_reason"] = "agentic_disabled"
-            return classic_output
+            return self.react_agent.run(
+                query=query,
+                session_id=session_id,
+                debug=debug,
+            )
 
         return self._query_classic(source=source, query=query)
