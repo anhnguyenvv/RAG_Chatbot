@@ -1,4 +1,4 @@
-"""Unit tests for app.history_store module."""
+"""Unit tests for app.storage.history module."""
 
 from __future__ import annotations
 
@@ -51,13 +51,13 @@ class TestChatHistoryStore:
         store = history_store_cls(db_path=tmp_db_path)
         entry_id = store.add_entry(
             source="qdrant",
-            query="Điều kiện tốt nghiệp ngành CNTT?",
-            answer="Sinh viên cần hoàn thành 130 tín chỉ và đạt GPA >= 2.0",
-            source_documents=[{"nganh": "CNTT", "loai": "quy chế"}],
+            query="Dieu kien tot nghiep nganh CNTT?",
+            answer="Sinh vien can hoan thanh 130 tin chi va dat GPA >= 2.0",
+            source_documents=[{"nganh": "CNTT", "loai": "quy che"}],
         )
         entry = store.get_entry(entry_id)
-        assert "tốt nghiệp" in entry["query"]
-        assert "130 tín chỉ" in entry["answer"]
+        assert "tot nghiep" in entry["query"]
+        assert "130 tin chi" in entry["answer"]
 
     def test_creates_db_directory(self, history_store_cls, tmp_path):
         nested_path = tmp_path / "subdir" / "deep" / "history.db"

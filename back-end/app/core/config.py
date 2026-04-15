@@ -31,6 +31,8 @@ class BackendConfig:
     agent_max_iterations: int = 5
     memory_max_recent_turns: int = 3
     memory_session_ttl: int = 1800
+    mongodb_uri: str = "mongodb://localhost:27017"
+    mongodb_db_name: str = "rag_chatbot"
 
 
 def _to_bool(value: str, default: bool) -> bool:
@@ -46,7 +48,7 @@ def _to_bool(value: str, default: bool) -> bool:
 
 
 def _add_data_path() -> None:
-    repo_root = Path(__file__).resolve().parents[2]
+    repo_root = Path(__file__).resolve().parents[3]
     data_dir = repo_root / "Data"
     if str(data_dir) not in sys.path:
         sys.path.insert(0, str(data_dir))
@@ -55,7 +57,7 @@ def _add_data_path() -> None:
 def load_configs():
     load_dotenv()
 
-    backend_dir = Path(__file__).resolve().parents[1]
+    backend_dir = Path(__file__).resolve().parents[2]
     raw_db_path = os.getenv("CHAT_HISTORY_DB_PATH", "./data/chat_history.db")
     db_path = Path(raw_db_path)
     if not db_path.is_absolute():
@@ -83,6 +85,8 @@ def load_configs():
         agent_max_iterations=int(os.getenv("AGENT_MAX_ITERATIONS", "5")),
         memory_max_recent_turns=int(os.getenv("MEMORY_MAX_RECENT_TURNS", "3")),
         memory_session_ttl=int(os.getenv("MEMORY_SESSION_TTL", "1800")),
+        mongodb_uri=os.getenv("MONGODB_URI", "mongodb://localhost:27017"),
+        mongodb_db_name=os.getenv("MONGODB_DB_NAME", "rag_chatbot"),
     )
 
     _add_data_path()

@@ -1,12 +1,18 @@
+"""FastAPI application and route definitions."""
+
+import logging
+
 from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from prometheus_fastapi_instrumentator import Instrumentator
 
-from .config import load_configs
-from .history_store import ChatHistoryStore
-from .llm_service import LLMServe
+from app.core.config import load_configs
+from app.core.dependencies import build_rag_service
+from app.storage.history import ChatHistoryStore
+
+logger = logging.getLogger(__name__)
 
 VALID_SOURCES = ["qdrant", "fit_web", "auto"]
 VALID_MODES = ["classic", "agentic"]
@@ -14,8 +20,15 @@ VALID_MODES = ["classic", "agentic"]
 
 def create_app() -> FastAPI:
     backend_config, pipeline_config = load_configs()
+    logger.info(
+        "Initializing RAG Backend API",
+        extra={
+            "collection": pipeline_config.collection_name,
+            "model": backend_config.generate_model_name,
+        },
+    )
 
-    rag_service = LLMServe(backend_config=backend_config, pipeline_config=pipeline_config)
+    rag_service = build_rag_service(backend_config, pipeline_config)
     history_store = ChatHistoryStore(db_path=backend_config.chat_history_db_path)
 
     app = FastAPI(title="RAG Backend API")
@@ -56,6 +69,11 @@ def create_app() -> FastAPI:
         if not q:
             raise HTTPException(status_code=400, detail="Query parameter 'q' is required")
 
+        logger.info(
+            "RAG query received",
+            extra={"source": source, "mode": normalized_mode, "session_id": session_id, "query_len": len(q)},
+        )
+
         try:
             output = rag_service.query(
                 source=source,
@@ -95,8 +113,13 @@ def create_app() -> FastAPI:
                 if field in output:
                     response_payload[field] = output[field]
 
+            logger.info(
+                "RAG query completed",
+                extra={"source": source, "mode": normalized_mode, "result_len": len(output["result"]), "num_sources": len(sources)},
+            )
             return JSONResponse(content=jsonable_encoder(response_payload))
         except Exception as exc:
+            logger.exception("RAG query failed", extra={"source": source, "query": q[:100]})
             raise HTTPException(status_code=500, detail=f"An error occurred: {exc}") from exc
 
     @app.get("/history")
@@ -121,6 +144,7 @@ def create_app() -> FastAPI:
         cleared = rag_service.memory_store.clear_session(session_id)
         if not cleared:
             raise HTTPException(status_code=404, detail="Session not found")
+        logger.info("Session cleared", extra={"session_id": session_id})
         return JSONResponse(content={"message": f"Session '{session_id}' cleared"})
 
     return app

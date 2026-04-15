@@ -1,6 +1,6 @@
 import uvicorn
 
-from app import create_app
+from app.api.routes import create_app
 
 app = create_app()
 

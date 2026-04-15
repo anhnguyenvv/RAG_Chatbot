@@ -1,8 +1,13 @@
+"""SQLite-backed chat history persistence."""
+
 import json
+import logging
 import sqlite3
 from pathlib import Path
 from threading import Lock
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 class ChatHistoryStore:
@@ -11,6 +16,7 @@ class ChatHistoryStore:
         self._lock = Lock()
         Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
         self._init_schema()
+        logger.info("ChatHistoryStore initialized: %s", self.db_path)
 
     def _connect(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self.db_path, check_same_thread=False)

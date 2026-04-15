@@ -1,5 +1,12 @@
 # RAG Chatbot - FIT HCMUS
 
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1.x-1C3C3C?logo=langchain&logoColor=white)
+![Qdrant](https://img.shields.io/badge/Qdrant-Vector%20DB-DC244C)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 Chatbot tư vấn học vụ cho sinh viên Khoa Công Nghệ Thông Tin (FIT), trường Đại học Khoa Học Tự Nhiên - ĐHQG TP.HCM. Sử dụng kiến trúc RAG (Retrieval-Augmented Generation) với ReAct Agent, Memory, và Vector Database.
 
 ## System Design
@@ -265,3 +272,58 @@ python -m pytest tests/ -v    # 79 tests
 ## Demo
 
 [YouTube Demo](https://www.youtube.com/watch?v=EotYfkb3Oh4&feature=youtu.be)
+
+---
+
+## Contributing
+
+1. Fork repo
+2. Tao branch moi (`git checkout -b feature/ten-feature`)
+3. Commit thay doi (`git commit -m "feat: mo ta thay doi"`)
+4. Push branch (`git push origin feature/ten-feature`)
+5. Tao Pull Request
+
+Vui long dam bao chay tests truoc khi tao PR:
+```bash
+cd back-end && python -m pytest tests/ -v
+```
+
+## Tai lieu tham khao (References)
+
+### Papers
+
+| Paper | Tac gia | Mo ta |
+|-------|---------|-------|
+| [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401) | Lewis et al., 2020 | Kien truc RAG goc — ket hop retrieval voi generation |
+| [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629) | Yao et al., 2022 | ReAct Agent — vong lap Think-Act-Observe |
+| [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084) | Reimers & Gurevych, 2019 | Sentence embeddings cho semantic search |
+
+### Documentation
+
+| Cong nghe | Tai lieu |
+|-----------|---------|
+| LangChain | [python.langchain.com/docs](https://python.langchain.com/docs/introduction/) |
+| LangGraph | [langchain-ai.github.io/langgraph](https://langchain-ai.github.io/langgraph/) |
+| FastAPI | [fastapi.tiangolo.com](https://fastapi.tiangolo.com/) |
+| Qdrant | [qdrant.tech/documentation](https://qdrant.tech/documentation/) |
+| Google Gemini API | [ai.google.dev/docs](https://ai.google.dev/docs) |
+| Sentence-Transformers | [sbert.net](https://www.sbert.net/) |
+| React | [react.dev](https://react.dev/) |
+| Vite | [vite.dev/guide](https://vite.dev/guide/) |
+| TailwindCSS | [tailwindcss.com/docs](https://tailwindcss.com/docs/) |
+| DaisyUI | [daisyui.com](https://daisyui.com/) |
+| Prometheus | [prometheus.io/docs](https://prometheus.io/docs/) |
+| Grafana | [grafana.com/docs](https://grafana.com/docs/) |
+
+## Acknowledgments
+
+- **Khoa Cong nghe Thong tin (FIT)** — Truong Dai hoc Khoa Hoc Tu Nhien, DHQG TP.HCM
+- Cac du lieu huan luyen duoc thu thap tu [fit.hcmus.edu.vn](https://www.fit.hcmus.edu.vn/)
+
+## License
+
+Du an nay duoc phat hanh theo [MIT License](LICENSE).
+
+```
+MIT License - Copyright (c) 2023 phatjk
+```

@@ -2,31 +2,12 @@
 
 from __future__ import annotations
 
-import importlib.util
-import sys
-from pathlib import Path
 from typing import Any
 
 import pytest
 
-BACKEND_DIR = Path(__file__).resolve().parents[1]
-APP_DIR = BACKEND_DIR / "app"
-
-
-def import_module_from_file(name: str, filepath: Path):
-    """Import a module directly from file path, bypassing package __init__."""
-    if name in sys.modules:
-        return sys.modules[name]
-    spec = importlib.util.spec_from_file_location(name, str(filepath))
-    mod = importlib.util.module_from_spec(spec)
-    sys.modules[name] = mod
-    spec.loader.exec_module(mod)
-    return mod
-
-
-# Pre-import modules that only need stdlib + python-dotenv
-_config_mod = import_module_from_file("_app_config", APP_DIR / "config.py")
-_history_mod = import_module_from_file("_app_history_store", APP_DIR / "history_store.py")
+from app.core.config import BackendConfig, _to_bool
+from app.storage.history import ChatHistoryStore
 
 
 # ---------------------------------------------------------------------------
@@ -35,7 +16,7 @@ _history_mod = import_module_from_file("_app_history_store", APP_DIR / "history_
 
 @pytest.fixture
 def backend_config():
-    return _config_mod.BackendConfig(
+    return BackendConfig(
         generate_model_name="gemini",
         google_api_key="test-google-key",
         retrieval_top_k=5,
@@ -56,17 +37,17 @@ def tmp_db_path(tmp_path):
 
 @pytest.fixture
 def history_store_cls():
-    return _history_mod.ChatHistoryStore
+    return ChatHistoryStore
 
 
 @pytest.fixture
 def config_cls():
-    return _config_mod.BackendConfig
+    return BackendConfig
 
 
 @pytest.fixture
 def to_bool_fn():
-    return _config_mod._to_bool
+    return _to_bool
 
 
 # ---------------------------------------------------------------------------
@@ -88,23 +69,34 @@ class FakeDocument:
 def fake_docs():
     return [
         FakeDocument(
-            page_content="Chương trình đào tạo ngành CNTT gồm 130 tín chỉ.",
-            metadata={"source": "ctdt_cntt.txt", "nganh": "CNTT", "loai_van_ban": "chương trình đào tạo"},
+            page_content="Chuong trinh dao tao nganh CNTT gom 130 tin chi.",
+            metadata={"source": "ctdt_cntt.txt", "nganh": "CNTT", "loai_van_ban": "chuong trinh dao tao"},
         ),
         FakeDocument(
-            page_content="Điều kiện tốt nghiệp: hoàn thành tất cả học phần và đạt GPA >= 2.0.",
-            metadata={"source": "quy_che.txt", "nganh": "CNTT", "loai_van_ban": "quy chế"},
+            page_content="Dieu kien tot nghiep: hoan thanh tat ca hoc phan va dat GPA >= 2.0.",
+            metadata={"source": "quy_che.txt", "nganh": "CNTT", "loai_van_ban": "quy che"},
         ),
         FakeDocument(
-            page_content="Sinh viên cần đạt chuẩn ngoại ngữ TOEIC 450.",
-            metadata={"source": "ngoai_ngu.txt", "nganh": "", "loai_van_ban": "quy chế"},
+            page_content="Sinh vien can dat chuan ngoai ngu TOEIC 450.",
+            metadata={"source": "ngoai_ngu.txt", "nganh": "", "loai_van_ban": "quy che"},
         ),
     ]
 
 
 @pytest.fixture
 def mock_retriever_fn(fake_docs):
-    def retriever(source: str, query: str):
+    def retriever(source: str, query: str, metadata_filter: dict | None = None):
+        if metadata_filter:
+            # Simple filtering for tests: filter by nganh if provided
+            filtered = [
+                doc for doc in fake_docs
+                if all(
+                    doc.metadata.get(k, "") == v
+                    for k, v in metadata_filter.items()
+                    if v
+                )
+            ]
+            return filtered if filtered else fake_docs  # fallback to all
         return fake_docs
     return retriever
 

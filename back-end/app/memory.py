@@ -1,8 +1,3 @@
-"""Session-based conversation memory with buffer + summary hybrid strategy.
-
-Uses LangGraph's MemorySaver for automatic checkpointing per thread_id.
-Additionally implements message trimming with summarization for long conversations.
-"""
 
 from __future__ import annotations
 
@@ -129,7 +124,7 @@ class SessionMemoryStore:
         """Build a prompt for the LLM to summarize older conversation turns."""
         conversation_text = ""
         for msg in older_messages:
-            role = "Người dùng" if isinstance(msg, HumanMessage) else "Trợ lý"
+            role = "user" if isinstance(msg, HumanMessage) else "assistant"
             conversation_text += f"{role}: {msg.content}\n"
 
         if existing_summary:
@@ -137,7 +132,7 @@ class SessionMemoryStore:
                 f"Dưới đây là tóm tắt cuộc hội thoại trước đó:\n{existing_summary}\n\n"
                 f"Và đây là phần hội thoại mới cần tóm tắt thêm:\n{conversation_text}\n\n"
                 "Hãy tóm tắt ngắn gọn toàn bộ cuộc hội thoại trên bằng tiếng Việt, "
-                "giữ lại các thông tin quan trọng (ngành học, môn học, điều kiện được hỏi)."
+                "giữ lại các thông tin quan trọng (ngành học, môn học, niên khóa, chương trình đào tạo, điều kiện được hỏi)."
             )
 
         return (

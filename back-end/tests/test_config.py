@@ -1,4 +1,4 @@
-"""Unit tests for app.config module."""
+"""Unit tests for app.core.config module."""
 
 from __future__ import annotations
 

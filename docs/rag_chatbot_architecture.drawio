@@ -1,0 +1,326 @@
+<mxfile host="app.diagrams.net" agent="Claude Code">
+  <diagram name="RAG Chatbot FIT HCMUS Architecture" id="rag-architecture">
+    <mxGraphModel dx="1001" dy="569" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="2200" pageHeight="1800" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user1" parent="1" style="shape=mxgraph.basic.smiley;fillColor=#E6E6E6;strokeColor=#666666;whiteSpace=wrap;html=1;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 13px;&quot;&gt;Student / User&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="80" x="340" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="frontendLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;💻&amp;nbsp;FRONTEND (React + Vite + TailwindCSS)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="560" x="82" y="106" as="geometry" />
+        </mxCell>
+        <mxCell id="apiLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;⚡&amp;nbsp;BACKEND API (FastAPI + Uvicorn)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="560" x="100" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="mainpy" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82b366;" value="&lt;font face=&quot;Tahoma&quot;&gt;main.py&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Entry point&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="90" x="120" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="routes" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82b366;" value="&lt;font face=&quot;Tahoma&quot;&gt;routes.py&lt;br&gt;&lt;font size=&quot;1&quot;&gt;GET /rag/{source}?q=...&amp;amp;mode=...&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="210" x="230" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="instrumentator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82b366;" value="&lt;font face=&quot;Tahoma&quot;&gt;Prometheus&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Instrumentator&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="110" x="460" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="endpoints" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#82b366;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot;&gt;GET /history | GET /sessions | DELETE /sessions/{id}&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="340" x="230" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="serviceLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;🔄&amp;nbsp;SERVICE LAYER&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="560" x="100" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="ragservice" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;RAGService.query()&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Thin orchestrator&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="42" width="160" x="160" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="moderouter" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;Mode Router&lt;br&gt;&lt;font size=&quot;1&quot;&gt;classic | agentic&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="65" width="130" x="400" y="478" as="geometry" />
+        </mxCell>
+        <mxCell id="classicLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc99;strokeColor=#d79b00;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 16px;&quot;&gt;📚&amp;nbsp;CLASSIC RAG PIPELINE&lt;/font&gt;" vertex="1">
+          <mxGeometry height="380" width="420" x="30" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="retriever" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d79b00;" value="&lt;font face=&quot;Tahoma&quot;&gt;RetrieverManager&lt;br&gt;&lt;font size=&quot;1&quot;&gt;retrieve(source, query, metadata_filter)&lt;br&gt;Qdrant similarity_search (top_k=20)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="360" x="60" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="reranker" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d79b00;" value="&lt;font face=&quot;Tahoma&quot;&gt;Reranker&lt;br&gt;&lt;font size=&quot;1&quot;&gt;rerank(query, docs, top_k=5)&lt;br&gt;cosine_similarity + token_overlap_score&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="360" x="60" y="715" as="geometry" />
+        </mxCell>
+        <mxCell id="generator" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d79b00;" value="&lt;font face=&quot;Tahoma&quot;&gt;Generator&lt;br&gt;&lt;font size=&quot;1&quot;&gt;format_context() → generate_answer(llm, prompt, context)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="360" x="60" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="prompttemplate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d79b00;" value="&lt;font face=&quot;Tahoma&quot;&gt;CLASSIC_RAG_TEMPLATE&lt;br&gt;&lt;font size=&quot;1&quot;&gt;System prompt (Vietnamese)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="170" x="60" y="858" as="geometry" />
+        </mxCell>
+        <mxCell id="buildsources" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d79b00;" value="&lt;font face=&quot;Tahoma&quot;&gt;build_sources_payload()&lt;br&gt;&lt;font size=&quot;1&quot;&gt;+ rerank_score&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="170" x="250" y="858" as="geometry" />
+        </mxCell>
+        <mxCell id="agenticLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 16px;&quot;&gt;🤖&amp;nbsp;AGENTIC PIPELINE (LangGraph ReAct)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="380" width="510" x="470" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="reactagent" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;ReactRAGAgent&lt;br&gt;&lt;font size=&quot;1&quot;&gt;create_react_agent + MemorySaver checkpointer&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="45" width="450" x="500" y="638" as="geometry" />
+        </mxCell>
+        <mxCell id="getcontext" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;get_context()&lt;br&gt;&lt;font size=&quot;1&quot;&gt;from MongoDB&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="210" x="500" y="698" as="geometry" />
+        </mxCell>
+        <mxCell id="injectsys" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;Inject SystemMessage&lt;br&gt;&lt;font size=&quot;1&quot;&gt;nganh, khoa, he_dao_tao&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="220" x="730" y="698" as="geometry" />
+        </mxCell>
+        <mxCell id="toolsbox" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#9673a6;verticalAlign=top;spacingTop=2;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;Agent Tools&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="450" x="500" y="752" as="geometry" />
+        </mxCell>
+        <mxCell id="qdranttool" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;🔍 qdrant_search&lt;br&gt;(query, nganh, khoa, he_dao_tao)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="510" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="webtool" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;🌐 fit_website_search&lt;br&gt;(query)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="200" x="730" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="persistmsgs" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;Persist Messages&lt;br&gt;&lt;font size=&quot;1&quot;&gt;add_messages() to MongoDB&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="210" x="500" y="822" as="geometry" />
+        </mxCell>
+        <mxCell id="extractctx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;Extract Context&lt;br&gt;&lt;font size=&quot;1&quot;&gt;regex: nganh, khoa, he_dao_tao&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="220" x="730" y="822" as="geometry" />
+        </mxCell>
+        <mxCell id="summarize" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot;&gt;Summarization&lt;br&gt;&lt;font size=&quot;1&quot;&gt;LLM summarizes older turns when threshold exceeded&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="450" x="500" y="877" as="geometry" />
+        </mxCell>
+        <mxCell id="contextfilter" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#9673a6;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot;&gt;🔁 context → metadata filter → Qdrant FieldCondition(nganh, he_dao_tao)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="450" x="500" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="storageLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;🗃&amp;nbsp;STORAGE LAYER&lt;/font&gt;" vertex="1">
+          <mxGeometry height="170" width="950" x="30" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="qdrantdb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#FFFFFF;strokeColor=#b85450;" value="&lt;font face=&quot;Tahoma&quot;&gt;📈 Qdrant&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Vector Database&lt;br&gt;&lt;br&gt;&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="230" x="60" y="1055" as="geometry" />
+        </mxCell>
+        <mxCell id="sqlitedb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#FFFFFF;strokeColor=#b85450;" value="&lt;font face=&quot;Tahoma&quot;&gt;📄 SQLite&lt;br&gt;&lt;font size=&quot;1&quot;&gt;chat_history&lt;br&gt;query, answer, source_documents&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="230" x="360" y="1055" as="geometry" />
+        </mxCell>
+        <mxCell id="mongodb" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#FFFFFF;strokeColor=#b85450;" value="&lt;font face=&quot;Tahoma&quot;&gt;🏭 MongoDB&lt;br&gt;&lt;font size=&quot;1&quot;&gt;-memory-chat&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="100" width="260" x="660" y="1055" as="geometry" />
+        </mxCell>
+        <mxCell id="dataLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;fontColor=#333333;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;🔧&amp;nbsp;DATA PIPELINE (Offline)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="150" width="950" x="30" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="crawl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;crawl_fit_pdfs&lt;br&gt;&lt;font size=&quot;1&quot;&gt;35+ pages FIT&lt;br&gt;HCMUS website&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="120" x="50" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="ocr" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;llm_ocr_pdf&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Gemini / GPT-4o&lt;br&gt;OCR fallback&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="120" x="200" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="loadtxt" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;load_txt&lt;br&gt;&lt;font size=&quot;1&quot;&gt;parse metadata&lt;br&gt;headers&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="110" x="350" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="chunk" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;chunk&lt;br&gt;&lt;font size=&quot;1&quot;&gt;recursive / outline&lt;br&gt;600 chars, 200 overlap&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="490" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="embed" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;embed&lt;br&gt;&lt;font size=&quot;1&quot;&gt;HuggingFace mpnet&lt;br&gt;multilingual&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="650" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="upsert" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#666666;" value="&lt;font face=&quot;Tahoma&quot;&gt;upsert&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Qdrant&lt;br&gt;collection&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="110" x="810" y="1270" as="geometry" />
+        </mxCell>
+        <mxCell id="extLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;☁&amp;nbsp;EXTERNAL SERVICES&lt;/font&gt;" vertex="1">
+          <mxGeometry height="560" width="380" x="1060" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="gemini" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;🤖 Google Gemini 2.0-flash&lt;br&gt;&lt;font size=&quot;1&quot;&gt;LLM: max_tokens=384, temp=0.4&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="huggingface" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;🤗 HuggingFace Embeddings&lt;br&gt;&lt;font size=&quot;1&quot;&gt;paraphrase-multilingual-mpnet-base-v2&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="qdrantcloud" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;📈 Qdrant Cloud&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Vector Database (HTTP API)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="mongocloud" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;🏭 MongoDB&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Session Store (TTL auto-cleanup)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="fitwebsite" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;🌐 FIT HCMUS Website&lt;br&gt;&lt;font size=&quot;1&quot;&gt;fit.hcmus.edu.vn (official)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="trafilatura" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#d6b656;" value="&lt;font face=&quot;Tahoma&quot;&gt;📄 Trafilatura / BeautifulSoup&lt;br&gt;&lt;font size=&quot;1&quot;&gt;HTML text extraction&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="monitorLayer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6ffe6;strokeColor=#6aa84f;fontSize=14;fontStyle=1;verticalAlign=top;spacingTop=8;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 18px;&quot;&gt;📊&amp;nbsp;MONITORING&lt;/font&gt;" vertex="1">
+          <mxGeometry height="200" width="380" x="1060" y="710" as="geometry" />
+        </mxCell>
+        <mxCell id="prometheus" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6aa84f;" value="&lt;font face=&quot;Tahoma&quot;&gt;🔥 Prometheus&lt;br&gt;&lt;font size=&quot;1&quot;&gt;/metrics endpoint (scrape 15s)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="grafana" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6aa84f;" value="&lt;font face=&quot;Tahoma&quot;&gt;📈 Grafana Dashboards&lt;br&gt;&lt;font size=&quot;1&quot;&gt;RAG overview, latency, errors&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="320" x="1090" y="835" as="geometry" />
+        </mxCell>
+        <mxCell id="depinject" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6E6E6;strokeColor=#999999;dashed=1;" value="&lt;font face=&quot;Tahoma&quot;&gt;🔌 dependencies.py&lt;br&gt;&lt;font size=&quot;1&quot;&gt;build_rag_service() factory&lt;br&gt;wires all components&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="380" x="1060" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="e_user_fe" edge="1" parent="1" source="user1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0066CC;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="frontendLayer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fe_api" edge="1" parent="1" source="chatapi" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0066CC;" target="routes">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fe_api_label" connectable="0" parent="e_fe_api" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#0066CC&quot;&gt;GET /rag/{source}?q=...&lt;/font&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_api_svc" edge="1" parent="1" source="routes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0066CC;" target="ragservice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_svc_router" edge="1" parent="1" source="ragservice" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#0066CC;" target="moderouter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_router_classic" edge="1" parent="1" source="moderouter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#D79B00;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="classicLayer" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D79B00&quot;&gt;&lt;b&gt;mode=classic&lt;/b&gt;&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_router_agent" edge="1" parent="1" source="moderouter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9673A6;exitX=1;exitY=1;exitDx=0;exitDy=0;" target="agenticLayer" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#9673A6&quot;&gt;&lt;b&gt;mode=agentic&lt;/b&gt;&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ret_rer" edge="1" parent="1" source="retriever" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D79B00;" target="reranker" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D79B00&quot;&gt;top_k=20&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rer_gen" edge="1" parent="1" source="reranker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D79B00;" target="generator" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D79B00&quot;&gt;top_k=5&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agent_ctx" edge="1" parent="1" source="reactagent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="getcontext">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ctx_inject" edge="1" parent="1" source="getcontext" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="injectsys">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agent_tools" edge="1" parent="1" source="injectsys" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="toolsbox">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_tools_persist" edge="1" parent="1" source="toolsbox" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="persistmsgs">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_persist_extract" edge="1" parent="1" source="persistmsgs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="extractctx">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_extract_summ" edge="1" parent="1" source="extractctx" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;" target="summarize">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_qdranttool_ret" edge="1" parent="1" source="qdranttool" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#9673A6;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="retriever" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#9673A6&quot;&gt;shared retriever&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ret_qdrant" edge="1" parent="1" source="retriever" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;" target="qdrantdb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;similarity_search&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_routes_sqlite" edge="1" parent="1" source="endpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="sqlitedb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;ChatHistoryStore&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_getctx_mongo" edge="1" parent="1" source="getcontext" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;" target="mongodb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;get_context()&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_persist_mongo" edge="1" parent="1" source="persistmsgs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;" target="mongodb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;add_messages()&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_extract_mongo" edge="1" parent="1" source="extractctx" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;" target="mongodb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;update_context()&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_summ_mongo" edge="1" parent="1" source="summarize" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;exitX=1;exitY=1;exitDx=0;exitDy=0;" target="mongodb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;update_summary()&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_gen_gemini" edge="1" parent="1" source="generator" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;" target="gemini" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;LLM invoke&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_agent_gemini" edge="1" parent="1" source="reactagent" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;" target="gemini" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;ReAct LLM&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rer_hf" edge="1" parent="1" source="reranker" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;" target="huggingface" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;embed_query / embed_documents&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ret_qdrantcloud" edge="1" parent="1" source="retriever" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;" target="qdrantcloud" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;HTTP API&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_web_fit" edge="1" parent="1" source="webtool" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;" target="fitwebsite" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;HTTP crawl&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_web_traf" edge="1" parent="1" source="webtool" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#D6B656;dashed=1;" target="trafilatura">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_summ_gemini" edge="1" parent="1" source="summarize" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#D6B656;dashed=1;exitX=1;exitY=0;exitDx=0;exitDy=0;" target="gemini" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;summarize&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_crawl_ocr" edge="1" parent="1" source="crawl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#666666;" target="ocr">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ocr_load" edge="1" parent="1" source="ocr" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#666666;" target="loadtxt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_load_chunk" edge="1" parent="1" source="loadtxt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#666666;" target="chunk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_chunk_embed" edge="1" parent="1" source="chunk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#666666;" target="embed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_embed_upsert" edge="1" parent="1" source="embed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#666666;" target="upsert">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_upsert_qdrant" edge="1" parent="1" source="upsert" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#B85450;dashed=1;" target="qdrantdb" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#B85450&quot;&gt;upsert vectors&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_crawl_fit" edge="1" parent="1" source="crawl" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#D6B656;dashed=1;" target="fitwebsite" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;crawl PDFs&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ocr_gemini" edge="1" parent="1" source="ocr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#D6B656;dashed=1;" target="gemini" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;OCR fallback&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_embed_hf" edge="1" parent="1" source="embed" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#D6B656;dashed=1;" target="huggingface" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#D6B656&quot;&gt;mpnet embeddings&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_instr_prom" edge="1" parent="1" source="instrumentator" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#6AA84F;dashed=1;dashPattern=3 3;" target="prometheus" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#6AA84F&quot;&gt;/metrics&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_prom_graf" edge="1" parent="1" source="prometheus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.5;strokeColor=#6AA84F;" target="grafana" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#6AA84F&quot;&gt;scrape&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_ctx_loop" edge="1" parent="1" source="contextfilter" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#9673A6;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="getcontext" value="&lt;font face=&quot;Tahoma&quot; size=&quot;1&quot; color=&quot;#9673A6&quot;&gt;&lt;b&gt;Context Loop:&lt;/b&gt; extract → MongoDB → get_context → metadata filter&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="970" y="943" />
+              <mxPoint x="970" y="718" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#333333;fontSize=12;fontStyle=1;verticalAlign=top;spacingTop=5;align=left;spacingLeft=10;" value="&lt;font face=&quot;Tahoma&quot; style=&quot;font-size: 14px;&quot;&gt;📌 LEGEND&lt;/font&gt;" vertex="1">
+          <mxGeometry height="310" width="380" x="1060" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#0066CC;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;───  Request flow (blue, solid)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="200" x="1080" y="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#D79B00;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;───  Classic pipeline (orange)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="200" x="1080" y="1130" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#9673A6;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;───  Agentic pipeline (purple)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="200" x="1080" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#B85450;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;- - -  Storage connections (red, dashed)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="250" x="1080" y="1190" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#D6B656;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;- - -  External services (gold, dashed)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="250" x="1080" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="leg6" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#666666;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;───  Data pipeline (gray)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="200" x="1080" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="leg7" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#6AA84F;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;...  Monitoring (green, dotted)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="200" x="1080" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="leg8" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;strokeColor=none;fontColor=#9673A6;" value="&lt;font face=&quot;Tahoma&quot; size=&quot;2&quot;&gt;- - -  Context loop (purple, dashed)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="25" width="230" x="1080" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="AMm1P46PwoA1qYbJVjS_-1" connectable="0" parent="1" style="group" value="" vertex="1">
+          <mxGeometry height="55" width="430" x="120" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="chatbot" parent="AMm1P46PwoA1qYbJVjS_-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Tahoma&quot;&gt;ChatBot.jsx&lt;br&gt;&lt;font size=&quot;1&quot;&gt;Chat UI + Sources&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="130" as="geometry" />
+        </mxCell>
+        <mxCell id="navbar" parent="AMm1P46PwoA1qYbJVjS_-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Tahoma&quot;&gt;NavBar + Pages&lt;br&gt;&lt;font size=&quot;1&quot;&gt;FAQ, Issue, Home&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="150" as="geometry" />
+        </mxCell>
+        <mxCell id="chatapi" parent="AMm1P46PwoA1qYbJVjS_-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#6c8ebf;" value="&lt;font face=&quot;Tahoma&quot;&gt;chatApi.js&lt;br&gt;&lt;font size=&quot;1&quot;&gt;askRag(source, q)&lt;/font&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="55" width="130" x="300" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

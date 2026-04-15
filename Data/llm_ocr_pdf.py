@@ -88,13 +88,19 @@ def _get_paddle_ocr():
             "Thiếu PaddleOCR: pip install paddlepaddle paddleocr"
         ) from exc
 
-    _paddle_ocr = PaddleOCR(
-        use_angle_cls=True,
-        lang="vi",
-        use_gpu=True,
-        show_log=False,
-        type="structure",
-    )
+    try:
+        _paddle_ocr = PaddleOCR(
+            use_angle_cls=True,
+            lang="vi",
+            use_gpu=True,
+            show_log=False,
+            type="structure",
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            f"PaddleOCR khởi tạo thất bại (model chưa tải hoặc cài thiếu): {exc}"
+        ) from exc
+
     return _paddle_ocr
 
 

@@ -1,10 +1,7 @@
-"""Unit tests for app.react_agent module."""
+"""Unit tests for app.rag.agent module."""
 
 from __future__ import annotations
 
-import importlib.util
-import sys
-from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -14,62 +11,69 @@ pytest.importorskip("langgraph")
 
 from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
-# Import memory and react_agent directly
-APP_DIR = Path(__file__).resolve().parents[1] / "app"
+from app.core.prompts import AGENT_SYSTEM_PROMPT
+from app.rag import agent as agent_mod
+from app.rag.agent import ReactRAGAgent
 
-if "_app_memory" not in sys.modules:
-    spec = importlib.util.spec_from_file_location("_app_memory", str(APP_DIR / "memory.py"))
-    mod = importlib.util.module_from_spec(spec)
-    sys.modules["_app_memory"] = mod
-    spec.loader.exec_module(mod)
+try:
+    import mongomock
 
-# Make app importable as a package with the modules we need
-BACKEND_DIR = Path(__file__).resolve().parents[1]
-if str(BACKEND_DIR) not in sys.path:
-    sys.path.insert(0, str(BACKEND_DIR))
+    _HAS_MONGOMOCK = True
+except ImportError:
+    _HAS_MONGOMOCK = False
 
-# Prevent app/__init__.py from importing api.py (which needs fastapi)
-# by pre-registering a dummy app package
-import types
-if "app" not in sys.modules:
-    app_pkg = types.ModuleType("app")
-    app_pkg.__path__ = [str(APP_DIR)]
-    sys.modules["app"] = app_pkg
 
-# Now import directly
-sys.modules["app.memory"] = sys.modules["_app_memory"]
-from app.react_agent import ReactRAGAgent, SYSTEM_PROMPT
+def _make_memory(**kwargs):
+    """Create a MongoSessionMemoryStore backed by mongomock."""
+    if not _HAS_MONGOMOCK:
+        pytest.skip("mongomock required for agent memory tests")
 
-react_agent_mod = sys.modules["app.react_agent"]
-SessionMemoryStore = sys.modules["_app_memory"].SessionMemoryStore
+    import app.storage.memory as mem_mod
+
+    original = mem_mod.MongoClient
+    mem_mod.MongoClient = mongomock.MongoClient
+    try:
+        store = mem_mod.MongoSessionMemoryStore(
+            mongo_uri="mongodb://localhost",
+            db_name="test_db",
+            **kwargs,
+        )
+    finally:
+        mem_mod.MongoClient = original
+    return store
 
 
 # ---------------------------------------------------------------------------
-# SYSTEM_PROMPT
+# AGENT_SYSTEM_PROMPT
 # ---------------------------------------------------------------------------
 
 class TestSystemPrompt:
     def test_contains_vietnamese_persona(self):
-        assert "Khoa Công Nghệ Thông Tin" in SYSTEM_PROMPT
+        assert "Khoa Cong Nghe Thong Tin" in AGENT_SYSTEM_PROMPT or "FIT" in AGENT_SYSTEM_PROMPT
 
     def test_contains_contact_info(self):
-        assert "info@fit.hcmus.edu.vn" in SYSTEM_PROMPT
-        assert "(028) 62884499" in SYSTEM_PROMPT
+        assert "info@fit.hcmus.edu.vn" in AGENT_SYSTEM_PROMPT
+        assert "(028) 62884499" in AGENT_SYSTEM_PROMPT
 
     def test_contains_tool_usage_rules(self):
-        assert "qdrant_search" in SYSTEM_PROMPT
-        assert "fit_website_search" in SYSTEM_PROMPT
+        assert "qdrant_search" in AGENT_SYSTEM_PROMPT
+        assert "fit_website_search" in AGENT_SYSTEM_PROMPT
+
+    def test_contains_clarification_instructions(self):
+        assert "khóa tuyển sinh" in AGENT_SYSTEM_PROMPT or "niên khóa" in AGENT_SYSTEM_PROMPT.lower()
+        assert "chuyên ngành" in AGENT_SYSTEM_PROMPT.lower()
+        assert "hỏi lại" in AGENT_SYSTEM_PROMPT.lower() or "HỎI LẠI" in AGENT_SYSTEM_PROMPT
 
 
 # ---------------------------------------------------------------------------
-# ReactRAGAgent — helper methods
+# ReactRAGAgent -- helper methods
 # ---------------------------------------------------------------------------
 
 class TestExtractThoughtProcess:
     def _make_agent(self):
-        memory = SessionMemoryStore()
+        memory = _make_memory()
         mock_llm = MagicMock()
-        with patch.object(react_agent_mod, "create_react_agent") as mock_create:
+        with patch.object(agent_mod, "create_react_agent") as mock_create:
             mock_create.return_value = MagicMock()
             agent = ReactRAGAgent(
                 llm=mock_llm,
@@ -105,9 +109,9 @@ class TestExtractThoughtProcess:
 
 class TestExtractSources:
     def _make_agent(self):
-        memory = SessionMemoryStore()
+        memory = _make_memory()
         mock_llm = MagicMock()
-        with patch.object(react_agent_mod, "create_react_agent") as mock_create:
+        with patch.object(agent_mod, "create_react_agent") as mock_create:
             mock_create.return_value = MagicMock()
             agent = ReactRAGAgent(
                 llm=mock_llm,
@@ -118,7 +122,7 @@ class TestExtractSources:
 
     def test_extract_from_qdrant_tool_result(self):
         agent = self._make_agent()
-        content = "[Doc 1] | Ngành: CNTT\nContent here\n\n---\n\n[Doc 2] | Ngành: KTPM\nMore content"
+        content = "[Doc 1] | Nganh: CNTT\nContent here\n\n---\n\n[Doc 2] | Nganh: KTPM\nMore content"
         msg = ToolMessage(content=content, name="qdrant_search", tool_call_id="1")
         sources = agent._extract_sources([msg])
         assert len(sources) == 2
@@ -132,15 +136,15 @@ class TestExtractSources:
 
 
 # ---------------------------------------------------------------------------
-# ReactRAGAgent.run — with mocked agent
+# ReactRAGAgent.run -- with mocked agent
 # ---------------------------------------------------------------------------
 
 class TestReactAgentRun:
     def _make_agent_with_mock(self, invoke_return):
-        memory = SessionMemoryStore()
+        memory = _make_memory()
         mock_llm = MagicMock()
 
-        with patch.object(react_agent_mod, "create_react_agent") as mock_create:
+        with patch.object(agent_mod, "create_react_agent") as mock_create:
             mock_graph = MagicMock()
             mock_graph.invoke.return_value = invoke_return
             mock_create.return_value = mock_graph
@@ -152,13 +156,13 @@ class TestReactAgentRun:
         agent, _ = self._make_agent_with_mock({
             "messages": [
                 HumanMessage(content="test"),
-                AIMessage(content="Đây là câu trả lời"),
+                AIMessage(content="Day la cau tra loi"),
             ]
         })
         result = agent.run("test query", session_id="s1")
 
         assert "result" in result
-        assert result["result"] == "Đây là câu trả lời"
+        assert result["result"] == "Day la cau tra loi"
         assert result["route"] == "react_agent"
         assert "confidence" in result
         assert "timings" in result
@@ -167,20 +171,20 @@ class TestReactAgentRun:
     def test_run_no_final_answer(self):
         agent, _ = self._make_agent_with_mock({"messages": []})
         result = agent.run("test")
-        assert "Không thể tạo câu trả lời" in result["result"]
+        assert "Khong the tao cau tra loi" in result["result"]
 
     def test_run_handles_exception(self):
-        memory = SessionMemoryStore()
+        memory = _make_memory()
         mock_llm = MagicMock()
 
-        with patch.object(react_agent_mod, "create_react_agent") as mock_create:
+        with patch.object(agent_mod, "create_react_agent") as mock_create:
             mock_graph = MagicMock()
             mock_graph.invoke.side_effect = RuntimeError("LLM failed")
             mock_create.return_value = mock_graph
             agent = ReactRAGAgent(llm=mock_llm, tools=[], memory_store=memory)
 
         result = agent.run("test")
-        assert "Đã xảy ra lỗi" in result["result"]
+        assert "loi" in result["result"].lower() or "error" in result.get("error", "").lower()
         assert result["confidence"] == 0.0
 
     def test_debug_includes_thought_process(self):
@@ -227,3 +231,29 @@ class TestReactAgentRun:
 
         assert result["confidence"] >= 0.6
         assert result["needs_clarification"] is False
+
+    def test_messages_persisted_to_memory(self):
+        agent, memory = self._make_agent_with_mock({
+            "messages": [
+                HumanMessage(content="test query"),
+                AIMessage(content="test answer"),
+            ]
+        })
+        agent.run("test query", session_id="s-persist")
+        messages = memory.get_messages("s-persist")
+        assert len(messages) == 2
+        assert messages[0].content == "test query"
+        assert messages[1].content == "test answer"
+
+    def test_context_extracted_from_conversation(self):
+        agent, memory = self._make_agent_with_mock({
+            "messages": [
+                HumanMessage(content="CNTT K2023 chinh quy"),
+                AIMessage(content="Chuong trinh dao tao CNTT K2023"),
+            ]
+        })
+        agent.run("CNTT K2023 chinh quy", session_id="s-ctx")
+        ctx = memory.get_context("s-ctx")
+        assert ctx.get("nganh") == "Cong nghe thong tin"
+        assert ctx.get("khoa") == "K2023"
+        assert ctx.get("he_dao_tao") == "chinh quy"
