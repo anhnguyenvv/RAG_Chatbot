@@ -72,6 +72,8 @@ graph TB
     Metrics --> Prom
 
     subgraph Pipeline["DATA PIPELINE"]
+        cralw["crawl_fit_pdfs.py<br/><small>FIT PDF crawler</small>"]
+        ocr["llm_ocr_pdf.py<br/><small>OCR - legacy</small>"]
         TXT["Database/*.txt"]
         Loader["loaders.py"]
         Splitter["splitters.py"]
@@ -83,70 +85,50 @@ graph TB
 
 ## Project Structure
 
-```mermaid
-graph LR
-    Root["📂 RAG_Chatbot/"]
-    
-    %% Backend
-    Root --> BE["📂 back-end/"]
-    BE --> BE_main["📄 main.py<br/><i>(Uvicorn entrypoint :8000)</i>"]
-    BE --> BE_req["📄 requirements.txt"]
-    BE --> BE_env["📄 .env.example"]
-    BE --> BE_app["📂 app/"]
-    BE --> BE_tests["📂 tests/<br/><i>(78 test cases)</i>"]
-    
-    BE_app --> BE_api["📂 api/"]
-    BE_api --> BE_routes["📄 routes.py<br/><i>(FastAPI endpoints + rate limiting)</i>"]
-    
-    BE_app --> BE_core["📂 core/"]
-    BE_core --> BE_config["📄 config.py<br/><i>(BackendConfig + PipelineConfig loader)</i>"]
-    BE_core --> BE_prompts["📄 prompts.py<br/><i>(System prompts: Classic + Agent)</i>"]
-    BE_core --> BE_deps["📄 dependencies.py<br/><i>(DI wiring)</i>"]
-    
-    BE_app --> BE_rag["📂 rag/"]
-    BE_rag --> BE_agent["📄 agent.py<br/><i>(ReactRAGAgent & LangGraph ReAct)</i>"]
-    BE_rag --> BE_retriever["📄 retriever.py<br/><i>(RetrieverManager: Qdrant + metadata)</i>"]
-    BE_rag --> BE_reranker["📄 reranker.py<br/><i>(Cosine similarity reranking)</i>"]
-    BE_rag --> BE_generator["📄 generator.py<br/><i>(LLM answer generation)</i>"]
-    BE_rag --> BE_llm["📄 llm.py<br/><i>(LLM & embeddings factory)</i>"]
-    BE_rag --> BE_tools["📄 tools.py<br/><i>(Tools: qdrant_search, fit_website_search)</i>"]
-    
-    BE_app --> BE_svcs["📂 services/"]
-    BE_svcs --> BE_rag_svc["📄 rag_service.py<br/><i>(RAG routing: classic vs agentic)</i>"]
-    
-    BE_app --> BE_storage["📂 storage/"]
-    BE_storage --> BE_history["📄 history.py<br/><i>(ChatHistoryStore - SQLite)</i>"]
-    BE_storage --> BE_memory["📄 memory.py<br/><i>(MongoSessionMemoryStore)</i>"]
-    
-    %% Frontend
-    Root --> FE["📂 front-end/"]
-    FE --> FE_src["📂 src/"]
-    FE_src --> FE_comp["📂 components/"]
-    FE_comp --> FE_compChat["📄 ChatBot.jsx<br/><i>(Main chat UI)</i>"]
-    FE_comp --> FE_compNav["📄 NavBar.jsx"]
-    FE_src --> FE_pages["📂 pages/<br/><i>(HomePage, FAQPage, IssuePage)</i>"]
-    FE_src --> FE_api["📂 services/<br/><i>chatApi.js (askRag)</i>"]
-    FE_src --> FE_config["📂 config/<br/><i>env.js (API base URL)</i>"]
-    FE_src --> FE_const["📂 constants/<br/><i>commonQuestions.js</i>"]
-    FE --> FE_pkg["📄 package.json"]
-    
-    %% Data Pipeline
-    Root --> Data["📂 Data/"]
-    Data --> Data_run["📄 run_pipeline.py<br/><i>(CLI entrypoint)</i>"]
-    Data --> Data_pipe["📂 pipeline/<br/><i>(loaders, splitters, embeddings, vector_store)</i>"]
-    Data --> Data_crawl["📄 crawl_fit_pdfs.py<br/><i>(FIT PDF crawler)</i>"]
-    Data --> Data_ocr["📄 llm_ocr_pdf.py<br/><i>(OCR - legacy)</i>"]
-    
-    %% Other Elements
-    Root --> Eval["📂 eval/<br/><i>(RAGAS evaluation notebooks)</i>"]
-    Root --> Monitoring["📂 monitoring/<br/><i>(Prometheus & Grafana Docker)</i>"]
-    Root --> Docs["📂 docs/<br/><i>(Architecture diagrams .drawio)</i>"]
-
-    classDef folder fill:#f1f5f9,stroke:#64748b,stroke-width:2px,color:#0f172a;
-    classDef file fill:#ffffff,stroke:#cbd5e1,stroke-width:1px,color:#334155;
-    
-    class Root,BE,BE_app,BE_tests,BE_api,BE_core,BE_rag,BE_svcs,BE_storage,FE,FE_src,FE_comp,FE_pages,FE_api,FE_config,FE_const,Data,Data_pipe,Eval,Monitoring,Docs folder;
-    class BE_main,BE_req,BE_env,BE_routes,BE_config,BE_prompts,BE_deps,BE_agent,BE_retriever,BE_reranker,BE_generator,BE_llm,BE_tools,BE_rag_svc,BE_history,BE_memory,FE_compChat,FE_compNav,FE_pkg,Data_run,Data_crawl,Data_ocr file;
+```
+RAG_Chatbot/
+├── AGENTS.md
+├── CLAUDE.md
+├── LICENSE
+├── readme.md
+├── back-end/
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── app/
+│   │   ├── api/routes.py
+│   │   ├── config/
+│   │   │   ├── config.py
+│   │   │   └── prompts.py
+│   │   ├── core/
+│   │   │   ├── dependencies.py
+│   │   │   └── memory_agent.py
+│   │   ├── rag/
+│   │   │   ├── agent.py
+│   │   │   ├── retriever.py
+│   │   │   ├── reranker.py
+│   │   │   ├── generator.py
+│   │   │   ├── llm.py
+│   │   │   └── tools.py
+│   │   ├── services/rag_service.py
+│   │   └── storage/
+│   │       ├── history.py
+│   │       └── memory.py
+│   └── tests/
+├── front-end/
+│   ├── package.json
+│   ├── src/
+│   │   ├── main.jsx
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── services/
+├── Data/
+│   ├── run_pipeline.py
+│   ├── requirements.txt
+│   ├── Database/
+│   └── pipeline/
+├── docs/
+├── eval/
+└── monitoring/
 ```
 
 
