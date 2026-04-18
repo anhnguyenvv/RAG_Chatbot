@@ -12,7 +12,6 @@ MongoDB collection: ``chat_sessions`` with a TTL index on ``expires_at``.
 from __future__ import annotations
 
 import logging
-import time
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -309,27 +308,7 @@ class MongoSessionMemoryStore:
         result.extend(recent)
         return result
 
-    def build_summary_prompt(self, older_messages: list[BaseMessage], existing_summary: str) -> str:
-        """Build a prompt for the LLM to summarize older conversation turns."""
-        conversation_text = ""
-        for msg in older_messages:
-            role = "Nguoi dung" if isinstance(msg, HumanMessage) else "Tro ly"
-            conversation_text += f"{role}: {msg.content}\n"
 
-        if existing_summary:
-            return (
-                f"Duoi day la tom tat cuoc hoi thoai truoc do:\n{existing_summary}\n\n"
-                f"Va day la phan hoi thoai moi can tom tat them:\n{conversation_text}\n\n"
-                "Hay tom tat ngan gon toan bo cuoc hoi thoai tren bang tieng Viet, "
-                "giu lai cac thong tin quan trong (nganh hoc, mon hoc, nien khoa, "
-                "chuong trinh dao tao, dieu kien duoc hoi). "
-                "Dac biet ghi ro nganh, khoa tuyen sinh va he dao tao neu nguoi dung da cung cap."
-            )
-
-        return (
-            "Hay tom tat ngan gon cuoc hoi thoai sau bang tieng Viet, "
-            f"giu lai cac thong tin quan trong:\n{conversation_text}"
-        )
 
     def should_summarize(self, messages: list[BaseMessage]) -> bool:
         """Check if older messages should be summarized."""

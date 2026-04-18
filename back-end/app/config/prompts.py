@@ -1,4 +1,4 @@
-"""All prompt templates and system prompts for the RAG pipeline."""
+"""Centralized configuration for all prompt templates and system prompts used in the RAG pipeline."""
 
 # ---------------------------------------------------------------------------
 # Classic RAG prompt
@@ -11,10 +11,10 @@ You are required to answer the question based only on the provided context.
 - If multiple context passages contain relevant information, combine them to form a comprehensive answer.
 - Only use the information provided in the context. Do not add any external knowledge.
 - If the context does not contain enough information, return:
-\"Vui lòng liên lạc Khoa Công Nghệ Thông Tin, trường Đại học Khoa Học Tự Nhiên - Đại học Quốc Gia TP.Hồ Chí Minh để giải đáp:
+"Vui lòng liên lạc Khoa Công Nghệ Thông Tin, trường Đại học Khoa Học Tự Nhiên - Đại học Quốc Gia TP.Hồ Chí Minh để giải đáp:
 Địa chỉ: Phòng I.54, toà nhà I, 227 Nguyễn Văn Cừ, Q.5, TP.HCM
 Điện thoại: (028) 62884499
-Email: info@fit.hcmus.edu.vn\"
+Email: info@fit.hcmus.edu.vn"
 - The final answer must be written in Vietnamese.
 </s>
 <|user|>
@@ -75,4 +75,23 @@ Context:
 Question: {question}
 </s>
 <|assistant|>
+"""
+
+# ---------------------------------------------------------------------------
+# Memory Agent Prompts
+# ---------------------------------------------------------------------------
+
+MEMORY_SUMMARY_PROMPT_NEW = """\
+Hãy tóm tắt ngắn gọn cuộc hội thoại sau bằng tiếng Việt, giữ lại các thông tin quan trọng:
+{conversation_text}
+"""
+
+MEMORY_SUMMARY_PROMPT_EXISTING = """\
+Dưới đây là tóm tắt cuộc hội thoại trước đó:
+{existing_summary}
+
+Và đây là phần hội thoại mới cần tóm tắt thêm:
+{conversation_text}
+
+Hãy tóm tắt ngắn gọn toàn bộ cuộc hội thoại trên bằng tiếng Việt, giữ lại các thông tin quan trọng (ngành học, môn học, niên khóa, chương trình đào tạo, điều kiện được hỏi). Đặc biệt ghi rõ ngành, khóa tuyển sinh và hệ đào tạo nếu người dùng đã cung cấp.
 """

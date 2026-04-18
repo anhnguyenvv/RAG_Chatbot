@@ -7,7 +7,7 @@ from typing import Any
 
 from langchain_core.prompts import PromptTemplate
 
-from app.core.prompts import CLASSIC_RAG_TEMPLATE
+from app.config.prompts import CLASSIC_RAG_TEMPLATE
 
 logger = logging.getLogger(__name__)
 

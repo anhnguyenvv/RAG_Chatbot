@@ -200,6 +200,8 @@ python run_pipeline.py \
 | `CHUNK_OVERLAP` | ❌ | Mặc định: `200` |
 | `QDRANT_FORCE_RECREATE` | ❌ | `true` để xóa và tạo lại collection |
 
+
+
 ---
 
 ## Cài đặt dependencies OCR

@@ -2,13 +2,16 @@
 
 import logging
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from prometheus_fastapi_instrumentator import Instrumentator
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
 
-from app.core.config import load_configs
+from app.config.config import load_configs
 from app.core.dependencies import build_rag_service
 from app.storage.history import ChatHistoryStore
 
@@ -31,7 +34,13 @@ def create_app() -> FastAPI:
     rag_service = build_rag_service(backend_config, pipeline_config)
     history_store = ChatHistoryStore(db_path=backend_config.chat_history_db_path)
 
+    # --- Rate Limiter ---
+    limiter = Limiter(key_func=get_remote_address)
+
     app = FastAPI(title="RAG Backend API")
+    app.state.limiter = limiter
+    app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -42,7 +51,8 @@ def create_app() -> FastAPI:
     Instrumentator().instrument(app).expose(app)
 
     @app.get("/")
-    def read_root():
+    @limiter.limit(backend_config.rate_limit_default)
+    def read_root(request: Request):
         return {
             "message": "API RAG is running",
             "collection": pipeline_config.collection_name,
@@ -52,7 +62,9 @@ def create_app() -> FastAPI:
         }
 
     @app.get("/rag/{source}")
+    @limiter.limit(backend_config.rate_limit_rag)
     async def rag_query(
+        request: Request,
         source: str,
         q: str | None = None,
         mode: str = "classic",
@@ -123,24 +135,28 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=500, detail=f"An error occurred: {exc}") from exc
 
     @app.get("/history")
-    def get_history(limit: int = 50):
+    @limiter.limit(backend_config.rate_limit_default)
+    def get_history(request: Request, limit: int = 50):
         data = history_store.list_entries(limit=limit)
         return JSONResponse(content=jsonable_encoder(data))
 
     @app.get("/history/{entry_id}")
-    def get_history_item(entry_id: int):
+    @limiter.limit(backend_config.rate_limit_default)
+    def get_history_item(request: Request, entry_id: int):
         entry = history_store.get_entry(entry_id)
         if entry is None:
             raise HTTPException(status_code=404, detail="History entry not found")
         return JSONResponse(content=jsonable_encoder(entry))
 
     @app.get("/sessions")
-    def list_sessions():
+    @limiter.limit(backend_config.rate_limit_default)
+    def list_sessions(request: Request):
         sessions = rag_service.memory_store.list_sessions()
         return JSONResponse(content=jsonable_encoder(sessions))
 
     @app.delete("/sessions/{session_id}")
-    def clear_session(session_id: str):
+    @limiter.limit(backend_config.rate_limit_default)
+    def clear_session(request: Request, session_id: str):
         cleared = rag_service.memory_store.clear_session(session_id)
         if not cleared:
             raise HTTPException(status_code=404, detail="Session not found")

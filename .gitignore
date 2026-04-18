@@ -20,6 +20,7 @@ env/
 .env
 .env.*
 !.env.example
+*.env
 Data/.env
 back-end/.env
 front-end/.env
@@ -32,7 +33,7 @@ front-end/.env
 *.sqlite
 *.sqlite3
 back-end/data/
-
+Data/Database
 # Build / cache
 build/
 dist/

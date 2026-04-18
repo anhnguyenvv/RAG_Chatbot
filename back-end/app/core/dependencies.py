@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from app.core.config import BackendConfig
+from app.config.config import BackendConfig
 from app.rag.agent import ReactRAGAgent
 from app.rag.generator import get_prompt_template
 from app.rag.llm import create_embeddings, create_llm

@@ -33,6 +33,9 @@ class BackendConfig:
     memory_session_ttl: int = 1800
     mongodb_uri: str = "mongodb://localhost:27017"
     mongodb_db_name: str = "rag_chatbot"
+    # Rate limiting
+    rate_limit_rag: str = "10/minute"
+    rate_limit_default: str = "30/minute"
 
 
 def _to_bool(value: str, default: bool) -> bool:
@@ -87,6 +90,8 @@ def load_configs():
         memory_session_ttl=int(os.getenv("MEMORY_SESSION_TTL", "1800")),
         mongodb_uri=os.getenv("MONGODB_URI", "mongodb://localhost:27017"),
         mongodb_db_name=os.getenv("MONGODB_DB_NAME", "rag_chatbot"),
+        rate_limit_rag=os.getenv("RATE_LIMIT_RAG", "10/minute"),
+        rate_limit_default=os.getenv("RATE_LIMIT_DEFAULT", "30/minute"),
     )
 
     _add_data_path()
