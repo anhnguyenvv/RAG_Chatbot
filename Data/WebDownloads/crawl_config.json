@@ -1,0 +1,83 @@
+{
+  "base_url": "https://www.fit.hcmus.edu.vn",
+  "entry_tabid": 97,
+  "request_delay": 1.0,
+  "request_timeout": 30,
+  "user_agent": "RAG-Chatbot-DataPipeline/2.0 (FIT HCMUS Crawler)",
+
+  "ctdt_pages": [
+    { "tabid": 289,  "he_dao_tao": "chinh-quy",         "desc": "Trang tổng CTĐT chính quy" },
+    { "tabid": 290,  "he_dao_tao": "chinh-quy",         "desc": "Trước 2005" },
+    { "tabid": 291,  "he_dao_tao": "chinh-quy",         "desc": "2005-2007" },
+    { "tabid": 830,  "he_dao_tao": "chinh-quy",         "desc": "K2011" },
+    { "tabid": 910,  "he_dao_tao": "chinh-quy",         "desc": "K2012" },
+    { "tabid": 955,  "he_dao_tao": "chinh-quy",         "desc": "K2013" },
+    { "tabid": 957,  "he_dao_tao": "chinh-quy",         "desc": "K2014" },
+    { "tabid": 956,  "he_dao_tao": "chinh-quy",         "desc": "K2015" },
+    { "tabid": 961,  "he_dao_tao": "chinh-quy",         "desc": "K2016" },
+    { "tabid": 1106, "he_dao_tao": "chinh-quy",         "desc": "K2017-2018" },
+    { "tabid": 1129, "he_dao_tao": "chinh-quy",         "desc": "K2019" },
+    { "tabid": 1133, "he_dao_tao": "chinh-quy",         "desc": "K2020" },
+    { "tabid": 1172, "he_dao_tao": "chinh-quy",         "desc": "K2021" },
+    { "tabid": 1283, "he_dao_tao": "chinh-quy",         "desc": "K2022" },
+    { "tabid": 1284, "he_dao_tao": "chinh-quy",         "desc": "K2023" },
+    { "tabid": 1287, "he_dao_tao": "chinh-quy",         "desc": "K2024" },
+    { "tabid": 1310, "he_dao_tao": "chinh-quy",         "desc": "K2025" },
+    { "tabid": 562,  "he_dao_tao": "chinh-quy",         "desc": "Bảng chuyển đổi HP" },
+    { "tabid": 987,  "he_dao_tao": "chinh-quy",         "desc": "Học phần tiên quyết" },
+    { "tabid": 1064, "he_dao_tao": "chinh-quy",         "desc": "Tốt nghiệp - Biểu mẫu" },
+    { "tabid": 1065, "he_dao_tao": "chinh-quy",         "desc": "Tốt nghiệp - Quy trình" },
+    { "tabid": 740,  "he_dao_tao": "hoi-dong-dao-tao",  "desc": "CTĐT HCĐH" },
+    { "tabid": 501,  "he_dao_tao": "cao-dang",          "desc": "CTĐT Cao đẳng" },
+    { "tabid": 960,  "he_dao_tao": "tu-xa",             "desc": "Trang tổng CTĐT từ xa" },
+    { "tabid": 1286, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2023" },
+    { "tabid": 1160, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2022" },
+    { "tabid": 1137, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2021" },
+    { "tabid": 1138, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2020" },
+    { "tabid": 1139, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2016-2019" },
+    { "tabid": 1289, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2010" },
+    { "tabid": 1291, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2011" },
+    { "tabid": 1292, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2012" },
+    { "tabid": 1294, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2013" },
+    { "tabid": 1295, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2014" },
+    { "tabid": 1296, "he_dao_tao": "tu-xa",             "desc": "ĐTTX K2015" },
+    { "tabid": 1301, "he_dao_tao": "tu-xa",             "desc": "ĐTTX Chuyển đổi HP" }
+  ],
+
+  "nganh_patterns": [
+    ["công\\s*nghệ\\s*thông\\s*tin",  "cntt"],
+    ["hệ\\s*thống\\s*thông\\s*tin",   "httt"],
+    ["khoa\\s*học\\s*máy\\s*tính",    "khmt"],
+    ["kỹ\\s*thuật\\s*phần\\s*mềm",    "ktpm"],
+    ["trí\\s*tuệ\\s*nhân\\s*tạo",     "ttnt"],
+    ["cử\\s*nhân\\s*tài\\s*năng",     "cu-nhan-tai-nang"],
+    ["CNTT",                          "cntt"],
+    ["HTTT",                          "httt"],
+    ["KHMT",                          "khmt"],
+    ["KTPM",                          "ktpm"],
+    ["TTNT",                          "ttnt"],
+    ["CNTN",                          "cu-nhan-tai-nang"]
+  ],
+
+  "doc_type_patterns": [
+    ["quyết\\s*định\\s*ban\\s*hành",            "quyet-dinh-ban-hanh"],
+    ["bảng\\s*chuyển\\s*đổi",                    "bang-chuyen-doi-hoc-phan"],
+    ["chuyển\\s*đổi\\s*h[ọo]c\\s*ph[ầa]n",       "bang-chuyen-doi-hoc-phan"],
+    ["chương\\s*trình\\s*đào\\s*tạo",            "chuong-trinh-dao-tao"],
+    ["CTĐT",                                     "chuong-trinh-dao-tao"],
+    ["điều\\s*chỉnh",                            "dieu-chinh"],
+    ["bổ\\s*sung",                               "bo-sung"],
+    ["liên\\s*thông",                            "lien-thong"],
+    ["CV\\s*chuyển\\s*đổi",                      "cong-van-chuyen-doi"],
+    ["DSHP",                                     "danh-sach-hoc-phan"]
+  ],
+
+  "subpage_keywords": [
+    "chương trình",
+    "ctđt",
+    "khóa",
+    "đào tạo",
+    "curriculum",
+    "đttx"
+  ]
+}
