@@ -78,7 +78,7 @@ graph TB
         Loader["loaders.py"]
         Splitter["splitters.py"]
         Embed["embeddings.py"]
-        TXT --> Loader --> Splitter --> Embed --> Qdrant
+        cralw-->ocr-->TXT --> Loader --> Splitter --> Embed --> Qdrant
     end
 ```
 

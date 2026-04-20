@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import base64
 import io
+import json
 import os
 import sys
 import time
@@ -10,6 +11,17 @@ import unicodedata
 import re
 from pathlib import Path
 from typing import Optional
+
+# ---------------------------------------------------------------------------
+# Default I/O dirs (ghép cặp với crawl_fit_pdfs.py)
+# ---------------------------------------------------------------------------
+#
+# Task 1 (crawl_fit_pdfs.py) lưu PDF vào      Database/pdf_raw/{name}.pdf
+# Task 2 (file này)          lưu text vào    Database/pdf_text/{name}.txt
+# Cùng basename — chỉ khác đuôi .pdf / .txt.
+
+DEFAULT_PDF_DIR = Path(__file__).resolve().parent.parent / "Database" / "pdf_raw"
+DEFAULT_TEXT_DIR = Path(__file__).resolve().parent.parent / "Database" / "pdf_text"
 
 # ---------------------------------------------------------------------------
 # Config
@@ -795,12 +807,39 @@ def clean_text(text: str) -> str:
 # Process single PDF
 # ---------------------------------------------------------------------------
 
+def _load_manifest(pdf_dir: Path) -> dict:
+    """Đọc manifest.json do crawl_fit_pdfs.py sinh ra (nếu có)."""
+    manifest_path = pdf_dir / "manifest.json"
+    if not manifest_path.exists():
+        return {}
+    try:
+        return json.loads(manifest_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"  [WARN] Manifest lỗi: {e}")
+        return {}
+
+
+def _build_header(meta: dict) -> str:
+    """Tạo metadata header cho file .txt từ manifest entry."""
+    if not meta:
+        return ""
+    return (
+        f"# Tài liệu: {meta.get('title', '')}\n"
+        f"# Hệ đào tạo: {meta.get('he_dao_tao', '')}\n"
+        f"# Chuyên ngành: {meta.get('nganh', '')}\n"
+        f"# Năm: {meta.get('year', '')}\n"
+        f"# Nguồn: {meta.get('url', '')}\n"
+        f"# ---\n\n"
+    )
+
+
 def process_pdf(
     pdf_path: Path,
     output_path: Path,
     model: str = "qwen",
     force_ocr: bool = False,
     verbose: bool = True,
+    metadata: Optional[dict] = None,
 ) -> bool:
     """Xử lý 1 file PDF → .txt. Trả về True nếu thành công."""
     if output_path.exists():
@@ -826,7 +865,8 @@ def process_pdf(
         return False
 
     cleaned = clean_text(text)
-    output_path.write_text(cleaned, encoding="utf-8")
+    header = _build_header(metadata) if metadata else ""
+    output_path.write_text(header + cleaned, encoding="utf-8")
     print(f"  ✓ Saved {len(cleaned):,} chars → {output_path.name}")
     return True
 
@@ -841,18 +881,20 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    group = parser.add_mutually_exclusive_group(required=True)
+    group = parser.add_mutually_exclusive_group(required=False)
     group.add_argument("--input", type=Path, help="Đường dẫn file PDF đơn lẻ")
-    group.add_argument("--input-dir", type=Path, help="Thư mục chứa nhiều PDF")
+    group.add_argument(
+        "--input-dir", type=Path, default=None,
+        help=f"Thư mục chứa PDF (mặc định: {DEFAULT_PDF_DIR})",
+    )
 
     parser.add_argument(
         "--output", type=Path,
         help="Đường dẫn file .txt output (chỉ dùng với --input)",
     )
     parser.add_argument(
-        "--output-dir", type=Path,
-        default=Path(__file__).resolve().parent / "Database" / "pdf_crawled",
-        help="Thư mục output khi dùng --input-dir (mặc định: Database/pdf_crawled)",
+        "--output-dir", type=Path, default=DEFAULT_TEXT_DIR,
+        help=f"Thư mục output khi dùng --input-dir (mặc định: {DEFAULT_TEXT_DIR})",
     )
     parser.add_argument(
         "--model", choices=["qwen", "paddle-only", "gemini", "gpt4o", "ollama"],
@@ -891,8 +933,8 @@ def main():
         )
         sys.exit(0 if success else 1)
 
-    # Directory mode
-    input_dir: Path = args.input_dir
+    # Directory mode (mặc định nếu không chỉ định --input)
+    input_dir: Path = args.input_dir if args.input_dir else DEFAULT_PDF_DIR
     if not input_dir.exists():
         print(f"[ERROR] Thư mục không tồn tại: {input_dir}")
         sys.exit(1)
@@ -905,10 +947,14 @@ def main():
     output_dir: Path = args.output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    manifest = _load_manifest(input_dir)
+
     print(f"\n{'='*60}")
     print(f"  OCR Pipeline — {len(pdf_files)} file PDF")
-    print(f"  Model : {args.model.upper()}")
-    print(f"  Output: {output_dir}")
+    print(f"  Model   : {args.model.upper()}")
+    print(f"  Input   : {input_dir}")
+    print(f"  Output  : {output_dir}")
+    print(f"  Manifest: {'✓ loaded' if manifest else 'không có (bỏ qua header)'}")
     print(f"{'='*60}")
 
     success_count = 0
@@ -930,6 +976,7 @@ def main():
             model=args.model,
             force_ocr=args.force_ocr,
             verbose=verbose,
+            metadata=manifest.get(pdf_path.name),
         )
         if ok:
             success_count += 1
