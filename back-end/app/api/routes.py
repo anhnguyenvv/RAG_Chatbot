@@ -1,8 +1,9 @@
 """FastAPI application and route definitions."""
 
+import hmac
 import logging
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -162,5 +163,28 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=404, detail="Session not found")
         logger.info("Session cleared", extra={"session_id": session_id})
         return JSONResponse(content={"message": f"Session '{session_id}' cleared"})
+
+    # --- Admin endpoints (gated by ADMIN_API_KEY env var) ---
+    def _require_admin(x_admin_key: str | None) -> None:
+        expected = backend_config.admin_api_key
+        if not expected:
+            # Admin endpoints are disabled when no key is configured.
+            raise HTTPException(status_code=403, detail="Admin endpoints disabled")
+        if not x_admin_key or not hmac.compare_digest(x_admin_key, expected):
+            raise HTTPException(status_code=401, detail="Invalid admin credentials")
+
+    @app.get("/admin/cache/stats")
+    @limiter.limit(backend_config.rate_limit_default)
+    def cache_stats(request: Request, x_admin_key: str | None = Header(default=None)):
+        _require_admin(x_admin_key)
+        return JSONResponse(content=rag_service.retriever_mgr.cache_stats())
+
+    @app.post("/admin/cache/clear")
+    @limiter.limit(backend_config.rate_limit_default)
+    def cache_clear(request: Request, x_admin_key: str | None = Header(default=None)):
+        _require_admin(x_admin_key)
+        evicted = rag_service.retriever_mgr.clear_query_cache()
+        logger.info("Admin cleared retrieval cache", extra={"evicted": evicted})
+        return JSONResponse(content={"evicted": evicted})
 
     return app

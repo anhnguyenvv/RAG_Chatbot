@@ -50,3 +50,7 @@ front-end/dist/
 claude.md
 AGENTS.md
 .github/copilot-instructions.md
+agent-prompts/backend-agent.md
+agent-prompts/frontend-agent.md
+Data/README_OLLAMA_OCR.md
+agent-prompts/tester-agent.md

@@ -18,6 +18,8 @@ from typing import Optional
 GEMINI_MODEL = "gemini-2.0-flash"
 OPENAI_MODEL = "gpt-4o"
 QWEN_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
+OLLAMA_CLOUD_DEFAULT_MODEL = "gemma3:27b"  # multimodal model for OCR via Ollama Cloud
+OLLAMA_CLOUD_DEFAULT_BASE_URL = "https://ollama.com"
 
 # PaddleOCR layout labels
 LABEL_TABLE = "table"
@@ -608,6 +610,99 @@ def ocr_pdf_gpt4o(pdf_path: Path, verbose: bool = True) -> str:
 
 
 # ---------------------------------------------------------------------------
+# Ollama Cloud OCR (OpenAI-compatible API, multimodal model)
+# ---------------------------------------------------------------------------
+
+def ocr_pdf_ollama(pdf_path: Path, verbose: bool = True) -> str:
+    """OCR PDF bằng Ollama Cloud — dùng multimodal model (vd gemma3:27b, llama4:scout).
+
+    Env vars:
+      OLLAMA_CLOUD_API_KEY   (bắt buộc)
+      OLLAMA_CLOUD_BASE_URL  (tuỳ chọn, mặc định https://ollama.com)
+      OLLAMA_CLOUD_OCR_MODEL (tuỳ chọn, mặc định gemma3:27b — phải là model multimodal)
+    """
+    try:
+        import fitz
+    except ImportError:
+        print("[ERROR] Thiếu PyMuPDF: pip install pymupdf")
+        sys.exit(1)
+
+    try:
+        import openai
+    except ImportError:
+        print("[ERROR] Thiếu: pip install openai pillow")
+        sys.exit(1)
+
+    api_key = os.environ.get("OLLAMA_CLOUD_API_KEY")
+    if not api_key:
+        print("[ERROR] Cần OLLAMA_CLOUD_API_KEY trong biến môi trường")
+        sys.exit(1)
+
+    base_url = os.environ.get("OLLAMA_CLOUD_BASE_URL", OLLAMA_CLOUD_DEFAULT_BASE_URL).rstrip("/")
+    model = os.environ.get("OLLAMA_CLOUD_OCR_MODEL", OLLAMA_CLOUD_DEFAULT_MODEL)
+
+    # Ollama Cloud dùng endpoint OpenAI-compatible tại /v1
+    oclient = openai.OpenAI(api_key=api_key, base_url=f"{base_url}/v1")
+
+    doc = fitz.open(str(pdf_path))
+    total_pages = len(doc)
+    all_texts: list[str] = []
+
+    if verbose:
+        print(f"  [Ollama {model}] Xử lý {total_pages} trang (endpoint: {base_url}/v1)...")
+
+    for page_num in range(total_pages):
+        page = doc[page_num]
+
+        if verbose:
+            print(f"  [Ollama] Trang {page_num + 1}/{total_pages}...", end="\r")
+
+        mat = fitz.Matrix(RENDER_DPI / 72, RENDER_DPI / 72)
+        pix = page.get_pixmap(matrix=mat)
+        img_bytes = pix.tobytes("png")
+        b64_img = base64.b64encode(img_bytes).decode()
+
+        for attempt in range(MAX_RETRIES):
+            try:
+                resp = oclient.chat.completions.create(
+                    model=model,
+                    messages=[{
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": f"data:image/png;base64,{b64_img}",
+                                },
+                            },
+                            {"type": "text", "text": OCR_PROMPT_GEMINI},
+                        ],
+                    }],
+                    max_tokens=4096,
+                    temperature=0.0,
+                )
+                page_text = resp.choices[0].message.content or ""
+                all_texts.append(page_text)
+                break
+            except Exception as e:
+                if attempt < MAX_RETRIES - 1:
+                    wait = 2 ** attempt * 2
+                    print(f"\n  [RETRY] Trang {page_num + 1} lỗi: {e} — thử lại sau {wait}s")
+                    time.sleep(wait)
+                else:
+                    print(f"\n  [ERROR] Trang {page_num + 1} thất bại: {e}")
+                    all_texts.append(f"[Trang {page_num + 1}: OCR thất bại]")
+
+        time.sleep(REQUEST_DELAY)
+
+    doc.close()
+    combined = "\n\n".join(all_texts)
+    if verbose:
+        print(f"\n  [Ollama {model}] Tổng: {len(combined):,} ký tự từ {total_pages} trang")
+    return combined
+
+
+# ---------------------------------------------------------------------------
 # Hybrid: text layer → pipeline/fallback
 # ---------------------------------------------------------------------------
 
@@ -674,8 +769,12 @@ def _dispatch_ocr(pdf_path: Path, model: str, verbose: bool) -> str:
         return ocr_pdf_gemini(pdf_path, verbose)
     elif model == "gpt4o":
         return ocr_pdf_gpt4o(pdf_path, verbose)
+    elif model == "ollama":
+        return ocr_pdf_ollama(pdf_path, verbose)
     else:
-        raise ValueError(f"Model không hỗ trợ: {model}. Dùng 'qwen', 'paddle-only', 'gemini', hoặc 'gpt4o'")
+        raise ValueError(
+            f"Model không hỗ trợ: {model}. Dùng 'qwen', 'paddle-only', 'gemini', 'gpt4o', hoặc 'ollama'"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -756,9 +855,11 @@ def main():
         help="Thư mục output khi dùng --input-dir (mặc định: Database/pdf_crawled)",
     )
     parser.add_argument(
-        "--model", choices=["qwen", "paddle-only", "gemini", "gpt4o"],
+        "--model", choices=["qwen", "paddle-only", "gemini", "gpt4o", "ollama"],
         default="qwen",
-        help="OCR model (mặc định: qwen = PaddleOCR + Qwen2.5-VL)",
+        help="OCR model (mặc định: qwen = PaddleOCR + Qwen2.5-VL). "
+             "'ollama' = Ollama Cloud multimodal (set OLLAMA_CLOUD_API_KEY + "
+             "OLLAMA_CLOUD_OCR_MODEL, mặc định gemma3:27b)",
     )
     parser.add_argument(
         "--force-ocr", action="store_true",

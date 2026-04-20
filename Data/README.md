@@ -4,105 +4,11 @@ Mục tiêu: chuẩn hóa pipeline theo module rõ ràng để dễ bảo trì v
 
 ---
 
-## Tổng quan luồng dữ liệu
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        NGUỒN DỮ LIỆU                                   │
-│                                                                         │
-│  ┌─────────────────────────┐   ┌─────────────────────────────────────┐  │
-│  │   Static .txt files     │   │   FIT HCMUS Website (PDF Links)     │  │
-│  │   Database/*.txt        │   │   fit.hcmus.edu.vn/Default.aspx     │  │
-│  │                         │   │   tabid=97 (CTĐT, Quyết định, ...)  │  │
-│  │  • CTĐT 5 ngành K2023   │   └──────────────┬──────────────────────┘  │
-│  │  • Đề cương môn học     │                  │                         │
-│  │  • Điều kiện tốt nghiệp │                  ▼                         │
-│  │  • Quy định đào tạo     │   ┌─────────────────────────────────────┐  │
-│  │  • Quy định ngoại ngữ   │   │     crawl_fit_pdfs.py               │  │
-│  │  • Liên thông ĐH–ThS    │   │                                     │  │
-│  └────────────┬────────────┘   │  1. Crawl 36 trang CTĐT theo tabid  │  │
-│               │                │  2. Thu thập link PDF                │  │
-│               │                │  3. Tải PDF → Data/.tmp_pdfs/        │  │
-│               │                └──────────────┬──────────────────────┘  │
-└───────────────┼──────────────────────────────┼─────────────────────────┘
-                │                              │
-                │                              ▼
-                │              ┌───────────────────────────────────────────┐
-                │              │         OCR PIPELINE (llm_ocr_pdf.py)     │
-                │              │                                           │
-                │              │  BƯỚC 1 — Scan Detection (PyMuPDF)        │
-                │              │    • Đọc text layer từ PDF                │
-                │              │    • Nếu > 30% trang trống → scan PDF    │
-                │              │                                           │
-                │              │  BƯỚC 2A — PaddleOCR (PP-Structure)      │
-                │              │    • Layout analysis: phân biệt bảng/text │
-                │              │    • OCR thô, confidence scoring          │
-                │              │                                           │
-                │              │  BƯỚC 2B — Qwen2.5-VL 7B (local GPU)     │
-                │              │    • Vùng BẢNG → Markdown table OCR       │
-                │              │    • Vùng TEXT → tiếng Việt dấu đầy đủ   │
-                │              │                                           │
-                │              │  Fallback thay thế (nếu không có GPU):   │
-                │              │    • paddle-only  → PaddleOCR thuần      │
-                │              │    • gemini       → Gemini Vision API     │
-                │              │    • gpt4o        → GPT-4o Vision API     │
-                │              │    • tesseract    → pytesseract (cũ)      │
-                │              └──────────────┬────────────────────────────┘
-                │                             │
-                │                             ▼
-                │              ┌───────────────────────────────────────────┐
-                │              │     Database/pdf_crawled/*.txt            │
-                │              │  (PDF scan → text đã OCR, UTF-8)         │
-                │              └──────────────┬────────────────────────────┘
-                │                             │
-                └─────────────────────────────┘
-                                  │
-                                  ▼
-┌─────────────────────────────────────────────────────────────────────────┐
-│                      ETL PIPELINE (run_pipeline.py)                     │
-│                                                                         │
-│  ┌────────────────┐    ┌────────────────┐    ┌────────────────────────┐ │
-│  │ Loaders        │    │ Splitters      │    │ Embeddings             │ │
-│  │ (loaders.py)   │───►│ (splitters.py) │───►│ (embeddings.py)        │ │
-│  │                │    │                │    │                        │ │
-│  │ • Đọc *.txt    │    │ outline mode:  │    │ paraphrase-            │ │
-│  │   từ Database/ │    │  • Split theo  │    │ multilingual-          │ │
-│  │ • Chuẩn hóa    │    │    heading #   │    │ mpnet-base-v2          │ │
-│  │   metadata     │    │  • 1000 chars  │    │ (768-dim)              │ │
-│  │   source field │    │  • 200 overlap │    │                        │ │
-│  │                │    │                │    │ HuggingFace            │ │
-│  │                │    │ recursive mode:│    │ Inference API          │ │
-│  │                │    │  • Recursive   │    │                        │ │
-│  │                │    │    char split  │    │                        │ │
-│  └────────────────┘    └────────────────┘    └──────────┬─────────────┘ │
-│                                                         │               │
-│  ┌────────────────────────────────────────────────────  ▼  ───────────┐ │
-│  │                  Vector Store (vector_store.py)                    │ │
-│  │                                                                    │ │
-│  │   Qdrant Cloud / Local                                             │ │
-│  │   Collection: ITUS_mpnet_1000v1                                    │ │
-│  │   Upsert with metadata: source, he_dao_tao, nganh, nam            │ │
-│  └────────────────────────────────────────────────────────────────────┘ │
-└─────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
 ## Cấu trúc thư mục
 
 ```
 Data/
-├── crawl_fit_pdfs.py        # Crawler: FIT website → tải PDF → OCR → .txt
-├── llm_ocr_pdf.py           # OCR pipeline: PaddleOCR + Qwen2.5-VL / Gemini
-├── run_pipeline.py          # CLI: ETL .txt → Qdrant
-├── .env.example             # Template biến môi trường
-├── .env                     # Biến môi trường (không commit)
-│
-├── pipeline/                # Modules ETL
-│   ├── config.py            # Quản lý env + validate input
-│   ├── loaders.py           # Nạp .txt, chuẩn hóa metadata source
-│   ├── splitters.py         # Chunking: outline / recursive
-│   ├── embeddings.py        # HuggingFace embedding client
+        # HuggingFace embedding client
 │   ├── vector_store.py      # Qdrant upsert + retrieval
 │   └── pipeline.py          # Orchestration: ingest → chunk → embed → index
 │

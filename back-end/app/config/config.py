@@ -36,6 +36,12 @@ class BackendConfig:
     # Rate limiting
     rate_limit_rag: str = "10/minute"
     rate_limit_default: str = "30/minute"
+    # Retrieval KV cache (in-memory TTL)
+    retrieval_cache_enabled: bool = True
+    retrieval_cache_ttl: int = 600
+    retrieval_cache_maxsize: int = 500
+    # Admin endpoints (empty string disables them)
+    admin_api_key: str = ""
 
 
 def _to_bool(value: str, default: bool) -> bool:
@@ -92,6 +98,10 @@ def load_configs():
         mongodb_db_name=os.getenv("MONGODB_DB_NAME", "rag_chatbot"),
         rate_limit_rag=os.getenv("RATE_LIMIT_RAG", "10/minute"),
         rate_limit_default=os.getenv("RATE_LIMIT_DEFAULT", "30/minute"),
+        retrieval_cache_enabled=_to_bool(os.getenv("RETRIEVAL_CACHE_ENABLED", "true"), True),
+        retrieval_cache_ttl=int(os.getenv("RETRIEVAL_CACHE_TTL", "600")),
+        retrieval_cache_maxsize=int(os.getenv("RETRIEVAL_CACHE_MAXSIZE", "500")),
+        admin_api_key=os.getenv("ADMIN_API_KEY", ""),
     )
 
     _add_data_path()

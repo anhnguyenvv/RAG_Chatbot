@@ -6,7 +6,7 @@ from typing import Any
 
 import pytest
 
-from app.core.config import BackendConfig, _to_bool
+from app.config.config import BackendConfig, _to_bool
 from app.storage.history import ChatHistoryStore
 
 
