@@ -15,23 +15,40 @@ Bộ 3 prompt template cho Lead Agent điều phối team coding bằng sub-agen
 ```
 User request
    ↓
-[Lead] Spec + impact analysis
+[Lead] Fill TASK_SPEC_TEMPLATE.md  ← spec rõ hay mù phụ thuộc bước này
+   ↓
+[Lead] Impact analysis (gitnexus_impact) → chia task
    ↓
  ┌─ backend-agent.md ─┐   (song song nếu task độc lập)
  └─ frontend-agent.md ┘
    ↓
-tester-agent.md  (nhận output của cả 2)
+   Agent tự chạy REVIEW_CYCLE Gate 1 (self-review)
    ↓
-[Lead] Verdict → merge hoặc loop lại
+[Lead] REVIEW_CYCLE Gate 2 (peer review)
+   ↓
+tester-agent.md       — REVIEW_CYCLE Gate 3 (test review)
+   ↓
+[Lead] REVIEW_CYCLE Gate 4 (merge decision)
+   ↓
+   PASS → Append AGENT_LOG.md → Done
+   FAIL → Loop lại gate tương ứng, tạo follow-up task
 ```
 
 ## Files
 
+### Agent templates
 | File | Dành cho | Lint tool |
 |---|---|---|
 | `frontend-agent.md` | React/Vite/Tailwind UI | eslint |
 | `backend-agent.md` | FastAPI/LangGraph/Qdrant | ruff |
 | `tester-agent.md` | pytest + smoke + lint check | — |
+
+### Workflow docs
+| File | Vai trò |
+|---|---|
+| `TASK_SPEC_TEMPLATE.md` | **Input** — Lead fill trước khi spawn sub-agent |
+| `REVIEW_CYCLE.md` | **Output** — 4 gate review sau khi agent báo done |
+| `AGENT_LOG.md` | **Audit trail** — features, bugs, blockers team đã xử lý |
 
 ## Nguyên tắc chung cho mọi template
 
@@ -39,5 +56,6 @@ tester-agent.md  (nhận output của cả 2)
 - Mỗi template đã embed anti-patterns từ `CLAUDE.md` — KHÔNG xoá khi customize.
 - Output format cố định để Lead parse dễ và handoff giữa các agent mượt.
 - Quality gate cuối luôn do Tester Agent quyết.
+- **Mọi sub-agent khi đóng task đều phải append 1 entry vào `AGENT_LOG.md`** (Lead chèn giúp nếu agent không tự làm) — format: `YYYY-MM-DD | <agent> | FEAT|FIX|CHORE|BLOCK|PEND | Summary`. Xem legend trong `AGENT_LOG.md`.
 
 *Last updated: 2026-04-21*

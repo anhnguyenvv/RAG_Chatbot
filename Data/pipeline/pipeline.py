@@ -6,7 +6,6 @@ from .embeddings import create_embeddings
 from .loaders import load_txt_documents
 from .splitters import chunk_documents
 from .vector_store import similarity_search, upsert_documents_qdrant
-from .web_crawler import crawl_website_documents
 
 
 logger = logging.getLogger(__name__)
@@ -30,31 +29,15 @@ def build_vector_index(config: PipelineConfig):
     logger.info("Loading raw documents")
     raw_documents = []
 
-    if Path(config.source_dir).exists():
-        local_documents = load_txt_documents(config.source_dir)
-        raw_documents.extend(local_documents)
-        logger.info("Loaded local txt documents", extra={"local_document_count": len(local_documents)})
-    elif config.enable_web_crawl:
-        logger.warning(
-            "Source directory not found, continuing with web crawl only",
-            extra={"source_dir": config.source_dir},
-        )
-    else:
+    if not Path(config.source_dir).exists():
         raise FileNotFoundError(f"Source directory not found: {config.source_dir}")
 
-    if config.enable_web_crawl:
-        logger.info("Crawling website data", extra={"web_max_pages": config.web_max_pages})
-        web_documents = crawl_website_documents(
-            start_urls=config.web_start_urls or [],
-            allowed_domains=config.web_allowed_domains or [],
-            max_pages=config.web_max_pages,
-            timeout_seconds=config.web_timeout_seconds,
-        )
-        raw_documents.extend(web_documents)
-        logger.info("Loaded crawled web documents", extra={"web_document_count": len(web_documents)})
+    local_documents = load_txt_documents(config.source_dir)
+    raw_documents.extend(local_documents)
+    logger.info("Loaded local txt documents", extra={"local_document_count": len(local_documents)})
 
     if not raw_documents:
-        raise ValueError("No documents were loaded from local files or website crawl")
+        raise ValueError("No documents were loaded from local files")
 
     logger.info("Loaded raw documents", extra={"raw_document_count": len(raw_documents)})
 

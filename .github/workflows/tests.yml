@@ -1,0 +1,79 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend-tests:
+    name: Backend unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: back-end
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: back-end/requirements.txt
+
+      - name: Install backend deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov pytest-mock
+
+      - name: Run backend pytest
+        run: python -m pytest tests/ -v --tb=short
+
+  data-tests:
+    name: Data pipeline unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Data
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: Data/requirements.txt
+
+      - name: Install minimal deps for tests
+        # Heavy deps (sentence_transformers, qdrant_client) are stubbed in
+        # tests/conftest.py — install only what the unit tests actually need.
+        run: |
+          python -m pip install --upgrade pip
+          pip install \
+            pytest pytest-mock pytest-cov \
+            langchain-core langchain-community langchain-text-splitters \
+            beautifulsoup4 requests python-dotenv
+
+      - name: Run Data pytest
+        run: python -m pytest tests/ -v --tb=short
+
+  lint:
+    name: Lint (ruff)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Ruff check backend
+        run: ruff check back-end/app --output-format=github
+
+      - name: Ruff check Data
+        run: ruff check Data/pipeline Data/WebDownloads --output-format=github

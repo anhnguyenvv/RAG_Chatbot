@@ -54,3 +54,13 @@ agent-prompts/backend-agent.md
 agent-prompts/frontend-agent.md
 Data/README_OLLAMA_OCR.md
 agent-prompts/tester-agent.md
+deploy-checklist.md
+agent-prompts/AGENT_LOG.md
+agent-prompts/REVIEW_CYCLE.md
+agent-prompts/README.md
+Data/.coverage
+Data/.coverage.claude.pid1266.XED0k8Nx.H7glc5tYduOh
+Data/pytest-cache-files-vk7y8gbv/v/cache/lastfailed
+Data/pytest-cache-files-vk7y8gbv/v/cache/nodeids
+docs/IMPROVEMENT_SPEC.md
+agent-prompts/TASK_SPEC_TEMPLATE.md

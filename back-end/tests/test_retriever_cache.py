@@ -217,3 +217,103 @@ def test_concurrent_retrieve_is_thread_safe():
     assert all(r == ["shared"] for r in results)
     # Only the warm-up call should have hit the retriever.
     assert fake_retriever.invoke.call_count == 1
+
+
+# --- T05: single-flight coalescing --------------------------------------
+
+
+def test_single_flight_coalesces_concurrent_misses():
+    """N concurrent misses for the same key trigger exactly 1 upstream call."""
+    import threading as _th
+
+    manager = _make_manager()
+    fake_retriever = MagicMock()
+
+    start_gate = _th.Event()
+    compute_done = _th.Event()
+    compute_started = _th.Event()
+    call_counter = {"n": 0}
+    counter_lock = _th.Lock()
+
+    def slow_invoke(query):
+        with counter_lock:
+            call_counter["n"] += 1
+        compute_started.set()
+        # Block until main thread has dispatched all waiters.
+        start_gate.wait(timeout=5.0)
+        compute_done.set()
+        return ["doc-coalesced"]
+
+    fake_retriever.invoke.side_effect = slow_invoke
+    manager.get_retriever = MagicMock(return_value=fake_retriever)
+
+    # Kick off 32 concurrent callers for same key. First one wins, others coalesce.
+    with ThreadPoolExecutor(max_workers=32) as pool:
+        futures = [pool.submit(manager.retrieve, "qdrant", "coalesce-me") for _ in range(32)]
+        # Wait for the winner to enter compute, then let all complete.
+        compute_started.wait(timeout=5.0)
+        start_gate.set()
+        results = [f.result(timeout=10.0) for f in futures]
+
+    assert all(r == ["doc-coalesced"] for r in results)
+    # Exactly 1 upstream call despite 32 concurrent callers.
+    assert call_counter["n"] == 1
+    # Inflight map must be drained after winner completes.
+    assert manager._inflight == {}
+
+
+def test_single_flight_different_keys_run_parallel():
+    """Different keys must NOT block each other."""
+    import threading as _th
+
+    manager = _make_manager()
+    fake_retriever = MagicMock()
+    barrier = _th.Barrier(3, timeout=5.0)
+
+    def invoke_with_barrier(query):
+        barrier.wait()  # each distinct query must reach barrier independently
+        return [f"doc-{query}"]
+
+    fake_retriever.invoke.side_effect = invoke_with_barrier
+    manager.get_retriever = MagicMock(return_value=fake_retriever)
+
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = [pool.submit(manager.retrieve, "qdrant", f"key-{i}") for i in range(3)]
+        results = [f.result(timeout=10.0) for f in futures]
+
+    # If single-flight blocked different keys, the barrier would time out.
+    assert sorted(r[0] for r in results) == ["doc-key-0", "doc-key-1", "doc-key-2"]
+    assert fake_retriever.invoke.call_count == 3
+
+
+def test_single_flight_winner_failure_does_not_deadlock_waiters():
+    """If winner's upstream call raises, waiters must still progress (not deadlock)."""
+    import threading as _th
+
+    manager = _make_manager()
+    fake_retriever = MagicMock()
+
+    attempt_lock = _th.Lock()
+    attempts = {"n": 0}
+
+    def maybe_fail(query):
+        with attempt_lock:
+            attempts["n"] += 1
+            n = attempts["n"]
+        if n == 1:
+            raise RuntimeError("boom")
+        return ["doc-recovered"]
+
+    fake_retriever.invoke.side_effect = maybe_fail
+    manager.get_retriever = MagicMock(return_value=fake_retriever)
+
+    # First call: winner fails. Second call: succeeds after fallthrough.
+    with pytest.raises(RuntimeError, match="boom"):
+        manager.retrieve("qdrant", "flaky")
+
+    # Inflight cleaned up even on exception.
+    assert manager._inflight == {}
+
+    # Subsequent call should succeed.
+    result = manager.retrieve("qdrant", "flaky")
+    assert result == ["doc-recovered"]

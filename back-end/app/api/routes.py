@@ -174,13 +174,13 @@ def create_app() -> FastAPI:
             raise HTTPException(status_code=401, detail="Invalid admin credentials")
 
     @app.get("/admin/cache/stats")
-    @limiter.limit(backend_config.rate_limit_default)
+    @limiter.limit(backend_config.rate_limit_admin)
     def cache_stats(request: Request, x_admin_key: str | None = Header(default=None)):
         _require_admin(x_admin_key)
         return JSONResponse(content=rag_service.retriever_mgr.cache_stats())
 
     @app.post("/admin/cache/clear")
-    @limiter.limit(backend_config.rate_limit_default)
+    @limiter.limit(backend_config.rate_limit_admin)
     def cache_clear(request: Request, x_admin_key: str | None = Header(default=None)):
         _require_admin(x_admin_key)
         evicted = rag_service.retriever_mgr.clear_query_cache()

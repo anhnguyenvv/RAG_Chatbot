@@ -86,10 +86,16 @@ _VIET_MAP = str.maketrans({
 
 
 def slugify(text: str) -> str:
-    """Chuyển text tiếng Việt thành slug ASCII."""
+    """Chuyển text tiếng Việt thành slug ASCII.
+
+    - Drop diacritics → ASCII
+    - Underscore/whitespace collapsed into single dash
+    - Non-alphanumeric stripped
+    """
     text = unicodedata.normalize("NFC", text)
     text = text.lower().translate(_VIET_MAP)
-    text = re.sub(r"[^a-z0-9\s-]", "", text)
+    # Preserve underscore so the next step can convert it to dash
+    text = re.sub(r"[^a-z0-9_\s-]", "", text)
     text = re.sub(r"[\s_]+", "-", text.strip())
     text = re.sub(r"-{2,}", "-", text)
     return text.strip("-")
@@ -166,9 +172,18 @@ def fetch_page(url: str) -> BeautifulSoup | None:
 
 
 def is_pdf_link(href: str) -> bool:
-    """Check if a link points to a PDF."""
+    """Check if a link points to a PDF.
+
+    Handles URLs with query strings (`/doc.pdf?forcedownload=true`) by
+    inspecting the parsed path, not the raw href.
+    """
     lower = href.lower()
-    if lower.endswith(".pdf"):
+    # Inspect parsed path so query string doesn't break detection.
+    try:
+        path = urlparse(href).path.lower()
+    except Exception:
+        path = lower
+    if path.endswith(".pdf"):
         return True
     if "linkclick.aspx" in lower and "fileticket" in lower:
         return True
@@ -189,7 +204,16 @@ def extract_pdf_links(soup: BeautifulSoup, page_url: str) -> list[dict]:
             continue
 
         full_url = urljoin(page_url, href)
-        clean_url = re.sub(r"&forcedownload=true", "", full_url, flags=re.IGNORECASE)
+        # Strip forcedownload regardless of position (? or &, first or later).
+        clean_url = re.sub(
+            r"[?&]forcedownload=true",
+            lambda m: "?" if m.group(0).startswith("?") else "",
+            full_url,
+            flags=re.IGNORECASE,
+        )
+        # Collapse leftover trailing "?" or "?&" from the substitution.
+        clean_url = re.sub(r"\?&", "?", clean_url)
+        clean_url = re.sub(r"\?$", "", clean_url)
 
         if clean_url in seen_urls:
             continue

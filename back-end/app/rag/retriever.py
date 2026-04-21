@@ -11,6 +11,11 @@ from cachetools import TTLCache
 
 logger = logging.getLogger(__name__)
 
+# Default single-flight coalescing timeout in seconds — guards against waiter
+# deadlock if the winner hangs indefinitely.
+_COALESCE_WAIT_TIMEOUT = 30.0
+
+
 # Optional Prometheus metrics — degrade gracefully if prometheus_client is missing.
 try:
     from prometheus_client import Counter
@@ -25,9 +30,15 @@ try:
         "Number of retrieval query cache misses.",
         ["source"],
     )
+    _CACHE_COALESCED = Counter(
+        "retriever_cache_coalesced_total",
+        "Number of cache misses coalesced into an in-flight request.",
+        ["source"],
+    )
 except Exception:  # pragma: no cover - metrics are best-effort
     _CACHE_HITS = None
     _CACHE_MISSES = None
+    _CACHE_COALESCED = None
 
 
 class RetrieverManager:
@@ -52,6 +63,9 @@ class RetrieverManager:
             else None
         )
         self._query_cache_lock = threading.Lock()
+        # Single-flight coalescing: keyed by cache_key, value is an Event the
+        # winner sets when compute finishes (success or failure).
+        self._inflight: dict[tuple, threading.Event] = {}
 
     @staticmethod
     def _build_cache_key(
@@ -139,38 +153,77 @@ class RetrieverManager:
         """
         normalized = self._normalize_source(source)
         cache_key = None
-        # TODO: add single-flight coalescing so N concurrent misses for the same
-        # key share one upstream call instead of each hitting Qdrant.
+        is_winner = False
+        waiter_event: threading.Event | None = None
+
         if self._query_cache is not None and query and query.strip():
             cache_key = self._build_cache_key(normalized, query, metadata_filter)
             with self._query_cache_lock:
                 cached = self._query_cache.get(cache_key)
-            if cached is not None:
-                if _CACHE_HITS is not None:
-                    _CACHE_HITS.labels(source=normalized).inc()
-                logger.debug("Cache hit for source=%s docs=%d", normalized, len(cached))
-                # Return a shallow copy so downstream in-place mutations
-                # (sort, pop, etc.) cannot poison the cached entry.
-                return list(cached)
-            if _CACHE_MISSES is not None:
-                _CACHE_MISSES.labels(source=normalized).inc()
+                if cached is not None:
+                    if _CACHE_HITS is not None:
+                        _CACHE_HITS.labels(source=normalized).inc()
+                    logger.debug(
+                        "Cache hit for source=%s docs=%d", normalized, len(cached)
+                    )
+                    # Return a shallow copy so downstream in-place mutations
+                    # (sort, pop, etc.) cannot poison the cached entry.
+                    return list(cached)
+                if _CACHE_MISSES is not None:
+                    _CACHE_MISSES.labels(source=normalized).inc()
 
-        if metadata_filter:
-            docs = self._retrieve_with_filter(source, query, metadata_filter)
-        else:
-            retriever = self.get_retriever(source)
-            if hasattr(retriever, "invoke"):
-                docs = retriever.invoke(query)
+                # Single-flight coalescing: if another thread is already
+                # computing this key, wait for it instead of issuing a
+                # duplicate upstream call.
+                existing = self._inflight.get(cache_key)
+                if existing is not None:
+                    waiter_event = existing
+                else:
+                    waiter_event = threading.Event()
+                    self._inflight[cache_key] = waiter_event
+                    is_winner = True
+
+        # Losers wait for the winner, then try the cache again.
+        if waiter_event is not None and not is_winner:
+            if _CACHE_COALESCED is not None:
+                _CACHE_COALESCED.labels(source=normalized).inc()
+            waiter_event.wait(timeout=_COALESCE_WAIT_TIMEOUT)
+            if cache_key is not None:
+                with self._query_cache_lock:
+                    cached = self._query_cache.get(cache_key) if self._query_cache is not None else None
+                if cached is not None:
+                    return list(cached)
+            logger.debug(
+                "Coalesce waiter timed out or winner failed; falling through "
+                "for source=%s", normalized,
+            )
+
+        try:
+            if metadata_filter:
+                docs = self._retrieve_with_filter(source, query, metadata_filter)
             else:
-                docs = retriever.get_relevant_documents(query)
-            logger.debug("Retrieved %d docs for source=%s (no filter)", len(docs), source)
+                retriever = self.get_retriever(source)
+                if hasattr(retriever, "invoke"):
+                    docs = retriever.invoke(query)
+                else:
+                    docs = retriever.get_relevant_documents(query)
+                logger.debug(
+                    "Retrieved %d docs for source=%s (no filter)", len(docs), source,
+                )
 
-        if cache_key is not None:
-            # Store a shallow copy to decouple the cached list from the caller's
-            # reference. Protects the cache from accidental in-place mutations.
-            with self._query_cache_lock:
-                self._query_cache[cache_key] = list(docs)
-        return docs
+            if cache_key is not None and self._query_cache is not None:
+                # Store a shallow copy to decouple the cached list from
+                # the caller's reference.
+                with self._query_cache_lock:
+                    self._query_cache[cache_key] = list(docs)
+            return docs
+        finally:
+            # Winner always signals waiters (success OR failure) and cleans up.
+            if is_winner and cache_key is not None:
+                with self._query_cache_lock:
+                    self._inflight.pop(cache_key, None)
+                assert waiter_event is not None
+                waiter_event.set()
 
     def clear_query_cache(self) -> int:
         """Clear the retrieval query cache (useful after reindexing).
